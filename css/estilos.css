@@ -1,0 +1,133 @@
+body {
+  position: relative;
+  /* zoom: 90%; */
+}
+
+/* #status {
+  zoom: 90%;
+} */
+
+#status,
+#gestiones {
+  font-size: small;
+}
+
+#status h6,
+#gestiones h6 {
+  font-size: small;
+  margin-bottom: 1px;
+}
+
+#tablaElementos {
+  /* zoom: 70%; */
+  font-size: small;
+}
+
+#elcontenido {
+  /*  position: relative;
+        overflow-y: none  ; */
+}
+
+#encabezado {
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#contenido {
+  position: fixed;
+  width: 100%;
+  height: 400px;
+  /*  top: 156px; */
+  /*   background:silver; */
+  /*  overflow-y:hidden; */
+  padding: 0;
+}
+
+#pie {
+  position: fixed;
+  width: 100%;
+  top: 94%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+div.card-header.border-info.bg-light.m-0.p-0 div div h5 img {
+  margin-right: 15px;
+  height: 28px;
+  width: 28px;
+}
+
+.card-header {
+  margin-top: 50px;
+  padding-top: 50px;
+}
+
+td {
+  min-width: 35px;
+
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #abdde5;
+  border-color: #17a2b8;
+  border-style: solid;
+  border: 1px;
+  width: auto;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border: 1px solid #17a2b8;
+
+}
+
+.encabeza2s {
+  position: sticky;
+  top: 20;
+}
+
+.parpadea {
+  -webkit-animation-name: parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: 4;
+}
+
+@-webkit-keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 576) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 576px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
