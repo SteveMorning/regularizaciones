@@ -12,9 +12,9 @@ $(window).on("resize", function () {
 function corrigeAltoBody(){
   var ventana_alto = $(window).height();
   var ventana_alto = $(window).outerHeight();
-  var alto_header = 40;
-  var alto_pie = 40;
-  var top_pie = ventana_alto - 40;
+  var alto_header =  35;
+  var alto_pie = 35;
+  var top_pie = ventana_alto - alto_pie;
 
   var alto_contenido = ventana_alto - alto_pie - alto_header;
 
@@ -23,7 +23,7 @@ function corrigeAltoBody(){
   var alto_status = $("#status").outerHeight();
   var alto_filtros = $("#filtros").outerHeight();
   // var alto_gestiones = $("#gestiones").outerHeight();
-  var alto_gestiones = 125;
+  var alto_gestiones = 132;
   var top_gestiones = ventana_alto - alto_pie - alto_gestiones;
 
   var alto_elementos =  alto_contenido - alto_status - alto_filtros - alto_gestiones ;

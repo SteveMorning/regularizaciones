@@ -147,7 +147,7 @@ function mostrarLista($Lista)
 ?>
 
 <div class="row">
-	<div class="col-9">
+	<div class="col-8">
 		<div class="row">
 			<div class="row col-10" id="contenedorDropDown">
 
@@ -283,7 +283,7 @@ function mostrarLista($Lista)
 			</div>
 		</div>
 	</div>
-	<div class="col-3 " >
+	<div class="col-4 " >
 		<!-- ############## Mostrar / Ocultar   ############### -->
 		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar"  style="max-width: 350px;">
 			<h6 class="mb-0">Mostrar / Ocultar Campos</h6>
