@@ -25,11 +25,6 @@ function inicializaCampos() {
   });
 }
 
-
-//  #################################################
-//  ##########  Muestra / oculta campos   ###########
-//  #################################################
-
 function mostrarOcultarCampos(e) {
 
   var theClass = e.value;
@@ -113,7 +108,7 @@ function aplicaFiltrosElementos() {
 function limpiaFiltrosElementos() {
   cargarFiltros();
   cargarElementos();
-}
+  }
 
 function cargarStatus() {
   //  ##############################
@@ -132,6 +127,7 @@ function cargarStatus() {
     success: function (data) {
       $("#status").empty();
       $("#status").append(data);
+      corrigeAltoBody();
     },
   });
 }
@@ -153,6 +149,7 @@ function cargarFiltros() {
     success: function (data) {
       $("#filtros").empty();
       $("#filtros").append(data);
+      corrigeAltoBody();
     },
   });
 }
@@ -177,6 +174,7 @@ function cargarElementos($losFiltros) {
 
       corrigeAltoBody();
       inicializaCampos();
+
     },
   });
 }
@@ -198,6 +196,7 @@ function cargarGestiones() {
     success: function (data) {
       $("#gestiones").empty();
       $("#gestiones").append(data);
+      corrigeAltoBody();
     },
   });
 }

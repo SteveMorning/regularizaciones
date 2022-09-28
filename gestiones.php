@@ -54,7 +54,7 @@ $lstDesplegableGestiones = mysqli_query($con, $consulta);
 			<textarea name="area1" id="comentgestion" cols=60 rows=3 placeholder="Comentario de la gestion"></textarea>
 		</div>
 		<div class="col-1 p-0">
-			<button class="btn btn-primary ml-5" style="margin-top: 48px;" onclick="return finGestion()" type="button" id="Gestionar">
+			<button class="btn btn-primary ml-5" style="margin-top: 48px;" ondblclick="cuanto()" onclick="return finGestion()" type="button" id="Gestionar">
 				Gestionar
 			</button>
 		</div>

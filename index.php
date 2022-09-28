@@ -95,7 +95,7 @@
 			</div>
 
 			<!-- ################# TABLA ELEMENTOS ################# -->
-			<div class="card-header m-0 p-0">
+			<div class="card-header m-0 p-0" >
 				<div id="tablaElementos" class="ml-3 m-1"> </div>
 			</div>
 
