@@ -10,17 +10,13 @@ function inicializaCampos() {
     "#infoMostrarOcultar .form-check-input"
   );
 
-  console.log($losChecks);
-
   $losChecks.forEach(($elCheck) => {
     if ($elCheck.checked == true) {
       $losCampos = document.querySelectorAll("." + $elCheck.value);
       for (var obj of $losCampos) {
-        console.log(obj);
         obj.classList.remove("d-none");
       }
     } else {
-      console.log($elCheck);
       $losCampos = document.querySelectorAll("." + $elCheck.value);
       for (var obj of $losCampos) {
         obj.classList.add("d-none");
@@ -35,7 +31,6 @@ function inicializaCampos() {
 //  #################################################
 
 function mostrarOcultarCampos(e) {
-  console.log("mostrarOcultarCampos");
 
   var theClass = e.value;
   var visible = e.checked;
@@ -67,7 +62,6 @@ function mostrarOcultarCampos(e) {
 }
 
 function aplicaFiltrosElementos() {
-  console.log("function aplicaFiltrosAelementos()");
   $losFiltros = " ";
   $droplistRegion = $("#droplistRegion").attr("text");
   $droplistSubRegion = $("#droplistSubRegion").attr("text");
@@ -76,14 +70,6 @@ function aplicaFiltrosElementos() {
   $droplistDSLAM = $("#droplistDSLAM").attr("text");
   $droplistTipoElemento = $("#droplistTipoElemento").attr("text");
 
-  console.table({
-    $droplistRegion,
-    $droplistSubRegion,
-    $droplistBaseTecnica,
-    $droplistCentrales,
-    $droplistDSLAM,
-    $droplistTipoElemento,
-  });
 
   $droplistRegion =
     $droplistRegion != ""
@@ -120,15 +106,6 @@ function aplicaFiltrosElementos() {
     $droplistDSLAM +
     $droplistTipoElemento;
 
-  console.table({
-    $droplistRegion,
-    $droplistSubRegion,
-    $droplistBaseTecnica,
-    $droplistCentrales,
-    $droplistDSLAM,
-    $droplistTipoElemento,
-    $losFiltros,
-  });
 
   cargarElementos($losFiltros);
 }
@@ -181,13 +158,6 @@ function cargarFiltros() {
 }
 
 function cargarElementos($losFiltros) {
-  //  ##############################
-  //  ########## Elementos ############
-  //  ##############################
-
-  console.log("function cargarElementos($losFiltros)");
-
-  console.log($losFiltros);
 
   $.ajax({
     type: "post",
@@ -212,9 +182,7 @@ function cargarElementos($losFiltros) {
 }
 
 function cargarGestiones() {
-  //  #################################
-  //  ########## Gestiones ############
-  //  #################################
+
   $.ajax({
     type: "post",
     url: "gestiones.php",

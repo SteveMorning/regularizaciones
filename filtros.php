@@ -147,7 +147,7 @@ function mostrarLista($Lista)
 ?>
 
 <div class="row">
-	<div class="col-8">
+	<div class="col-9">
 		<div class="row">
 			<div class="row col-10" id="contenedorDropDown">
 
@@ -283,9 +283,9 @@ function mostrarLista($Lista)
 			</div>
 		</div>
 	</div>
-	<div class="col-4 text-center " style="max-width: fit-content;">
+	<div class="col-3 " >
 		<!-- ############## Mostrar / Ocultar   ############### -->
-		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar">
+		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar"  style="max-width: 350px;">
 			<h6 class="mb-0">Mostrar / Ocultar Campos</h6>
 			<hr class="m-1">
 			<div class="form-check form-check-inline">
@@ -310,7 +310,7 @@ function mostrarLista($Lista)
 			</div>
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" id="inlineCheckbox6" onclick="mostrarOcultarCampos(this)" value="campoParque" checked>
-				<label class="form-check-label" for="inlineCheckbox6">Parque Tkt</label>
+				<label class="form-check-label" for="inlineCheckbox6">Parque</label>
 			</div>
 		</div>
 
