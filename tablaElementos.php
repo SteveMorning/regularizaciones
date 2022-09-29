@@ -54,9 +54,15 @@ $lstElementos = mysqli_query($con, $consulta);
                 </tr>
                 <tr>
 
-                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8; min-width: 250px; ">Elemento
-                        <!-- ############## Busca Elemento ############### -->
-                        <input class=" p-0 m-1" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento...">
+                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8; min-width: 250px; ">
+                        <div class="row ml-2">
+                            <div class="col-3">Elementos</div>
+                            <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
+                            <div class="col-3 mr-0 text-right"> <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse"  data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px">
+                                </button></div>
+
+                        </div>  
                     </th>
 
                     <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">Tipo</th>
