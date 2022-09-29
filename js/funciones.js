@@ -3,6 +3,9 @@ $(document).ready(function () {
   cargarFiltros();
   cargarElementos();
   cargarGestiones();
+
+
+  
 });
 
 function inicializaCampos() {
@@ -200,3 +203,5 @@ function cargarGestiones() {
     },
   });
 }
+
+

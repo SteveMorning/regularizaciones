@@ -23,7 +23,7 @@ $tElemento = [];
 
 
 ##########################################################################################
-########### Listado de Region, SubRegion, BaseTecnica, Ebos, Central  #################### 
+########### Listado de Region, SubRegion, BaseTecnica, Ebos, Central para filtros######### 
 ##########################################################################################
 $consulta = "SELECT Region, SubRegion, BaseTecnica, Ebos, Central
 FROM bd3_reportes_acumulados.bit_agrupacion_elements_full

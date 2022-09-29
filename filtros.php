@@ -147,7 +147,7 @@ function mostrarLista($Lista)
 ?>
 
 <div class="row">
-	<div class="col-8">
+	<div class="col-md-8 col-xl-9">
 		<div class="row">
 			<div class="row col-10" id="contenedorDropDown">
 
@@ -266,6 +266,13 @@ function mostrarLista($Lista)
 					</div>
 				</div>
 
+
+				<!-- ############## Busca Elemento ############### -->
+				<div>
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarElemento" type="text" placeholder="Buscar Elemento...">
+				</div>
+
+
 			</div>
 
 			<!-- ############## Boton Aplicar Filtros ############### -->
@@ -283,21 +290,21 @@ function mostrarLista($Lista)
 			</div>
 		</div>
 	</div>
-	<div class="col-4 " >
+	<div class="col-md-4 col-xl-3">
 		<!-- ############## Mostrar / Ocultar   ############### -->
-		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar"  style="max-width: 350px;">
+		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar" style="max-width: 350px;">
 			<h6 class="mb-0">Mostrar / Ocultar Campos</h6>
 			<hr class="m-1">
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox"  id="inlineCheckbox1" onclick="mostrarOcultarCampos(this)" value="campoAntig" checked>
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" onclick="mostrarOcultarCampos(this)" value="campoAntig" checked>
 				<label class="form-check-label" for="inlineCheckbox1">Antiguedad</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" onclick="mostrarOcultarCampos(this)" value="campoAntigFlag" >
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" onclick="mostrarOcultarCampos(this)" value="campoAntigFlag">
 				<label class="form-check-label" for="inlineCheckbox2">Antig Flags</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox3" onclick="mostrarOcultarCampos(this)" value="campoIngresos" >
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox3" onclick="mostrarOcultarCampos(this)" value="campoIngresos">
 				<label class="form-check-label" for="inlineCheckbox3">Ingresos</label>
 			</div>
 			<div class="form-check form-check-inline">
@@ -378,6 +385,16 @@ function mostrarLista($Lista)
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 			});
 		});
+
+
+		$("#buscarElemento").on("keyup", function() {
+			$cajaItem = "#listadoElementos";
+			var value = $(this).val().toLowerCase();
+			$($cajaItem + "  > tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+
 
 		inicializaCampos();
 	});

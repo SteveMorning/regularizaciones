@@ -1,6 +1,6 @@
 <?php
 
- include "../recursos/recursos.php";
+include "../recursos/recursos.php";
 //  include "../recursos/tooltip.php";
 include "consolelog.php";
 // include "consultas.php";
@@ -43,7 +43,7 @@ $lstElementos = mysqli_query($con, $consulta);
 		<thead class="thead-info border-info" style=" text-align: center; position: sticky;"> -->
 
                 <tr>
-                    <th colspan="2" class="table-info text-center"  >Elemento de Red</th>
+                    <th colspan="2" class="table-info text-center">Elemento de Red</th>
                     <th colspan="8" class="table-info campoAntig text-center">Antiguedad Tkts</th>
                     <th colspan="3" class="table-info campoAntigFlag text-center">Antiguedad Flags</th>
                     <th colspan="8" class="table-info campoIngresos text-center">Ingresos Tkts</th>
@@ -53,7 +53,12 @@ $lstElementos = mysqli_query($con, $consulta);
 
                 </tr>
                 <tr>
-                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8; min-width: 250px; ">Elemento</th>
+
+                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8; min-width: 250px; ">Elemento
+                        <!-- ############## Busca Elemento ############### -->
+                        <input class=" p-0 m-1" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento...">
+                    </th>
+
                     <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">Tipo</th>
 
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; min-width: 80;"> Pendientes </th>
@@ -93,7 +98,7 @@ $lstElementos = mysqli_query($con, $consulta);
 
             </thead>
 
-            <tbody>
+            <tbody id="listadoElementos">
 
                 <tr>
                     <?php
@@ -102,10 +107,10 @@ $lstElementos = mysqli_query($con, $consulta);
 
                     ?>
 
-                        <td class="text-left" style="width:300px;"  >
+                        <td class="text-left" style="width:300px;">
                             <button class="btn btn-primary btn-xs ml-1 pinche " style="width:25px; heigth:25px" onclick="return inicioGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
-                                <span  class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button>
-                            <a   onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a>
+                                <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button>
+                            <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a>
 
                         </td>
 
@@ -118,8 +123,8 @@ $lstElementos = mysqli_query($con, $consulta);
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N4']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N5']; ?></td>
                         <td class="text-center campoAntig " style="border-right: 1px solid; border-right-color: #17a2b8; min-width:45px;"><?php echo $mostrar['Pend_mas_N5']; ?></td>
-                        <td class="text-center campoAntigFlag " style="min-width:45px;" ><?php echo $mostrar['Pend_mas_N15']; ?></td>
-                        <td class="text-center campoAntigFlag"  style="min-width:45px;"><?php echo $mostrar['Pend_mas_N30']; ?></td>
+                        <td class="text-center campoAntigFlag " style="min-width:45px;"><?php echo $mostrar['Pend_mas_N15']; ?></td>
+                        <td class="text-center campoAntigFlag" style="min-width:45px;"><?php echo $mostrar['Pend_mas_N30']; ?></td>
                         <td class="text-center campoAntigFlag " style="min-width:20px; border-right: 1px solid;  border-right-color: #17a2b8;"><?php echo $mostrar['Max_Antig']; ?></td>
 
 
@@ -139,7 +144,7 @@ $lstElementos = mysqli_query($con, $consulta);
                         <td class="text-center campoEstados "><?php echo $mostrar['HOLD']; ?></td>
                         <td class="text-center campoEstados "><?php echo $mostrar['Retencion']; ?></td>
                         <td class="text-center campoEstados " style="border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Otros']; ?></td>
-                     
+
                         <td class="text-center campoParque " <?php echo $mostrar['Parque']; ?></td>
                         <td class="text-Center campoParque "><?php echo $mostrar['Porc_Reclamado']; ?></td>
 
@@ -159,3 +164,18 @@ $lstElementos = mysqli_query($con, $consulta);
 
 
 </div>
+
+
+<script>
+    $(document).ready(function() {
+
+        $("#buscarElemento").on("keyup", function() {
+            $cajaItem = "#listadoElementos";
+            var value = $(this).val().toLowerCase();
+            $($cajaItem + "  > tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+    });
+</script>

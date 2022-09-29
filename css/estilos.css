@@ -67,7 +67,6 @@ div.card-header.border-info.bg-light.m-0.p-0 div div h5 img {
 
 td {
   min-width: 35px;
-
 }
 
 th {
@@ -83,7 +82,6 @@ th {
 .table thead th {
   vertical-align: bottom;
   border: 1px solid #17a2b8;
-
 }
 
 .encabeza2s {
@@ -110,24 +108,27 @@ th {
   }
 }
 
-
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 576) {
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 576px) {
+ 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+
 }
