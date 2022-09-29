@@ -23,8 +23,8 @@ FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
 WHERE cinum is not null " .  $losFiltros . " ORDER BY Pendiente_Total desc
 LIMIT 10000;";
 
-// var_dump($losFiltros);
-// var_dump($consulta);
+//  var_dump($losFiltros);
+//  var_dump($consulta);
 
 $lstElementos = mysqli_query($con, $consulta);
 

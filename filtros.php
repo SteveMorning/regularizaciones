@@ -267,9 +267,9 @@ function mostrarLista($Lista)
 				</div>
 
 
-				<!-- ############## Busca Elemento ############### -->
+				<!-- ############## Filtra Elemento ############### -->
 				<div>
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarElemento" type="text" placeholder="Buscar Elemento...">
+					<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:31px;  " type="text" placeholder="Filtra Elemento...">
 				</div>
 
 
@@ -387,15 +387,18 @@ function mostrarLista($Lista)
 		});
 
 
-		$("#buscarElemento").on("keyup", function() {
-			$cajaItem = "#listadoElementos";
-			var value = $(this).val().toLowerCase();
-			$($cajaItem + "  > tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
+		// VERIFICA EL ENTER PARA BUSCAR ELEMENTO
+		var input = document.getElementById("filtraElemento");
+		input.addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				aplicaFiltrosElementos(); 
+			}
 		});
 
 
-		inicializaCampos();
+
 	});
+
+	inicializaCampos();
 </Script>

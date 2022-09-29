@@ -3,9 +3,6 @@ $(document).ready(function () {
   cargarFiltros();
   cargarElementos();
   cargarGestiones();
-
-
-  
 });
 
 function inicializaCampos() {
@@ -29,7 +26,6 @@ function inicializaCampos() {
 }
 
 function mostrarOcultarCampos(e) {
-
   var theClass = e.value;
   var visible = e.checked;
   var elementos = document.getElementsByClassName(theClass);
@@ -67,33 +63,44 @@ function aplicaFiltrosElementos() {
   $droplistCentrales = $("#droplistCentrales").attr("text");
   $droplistDSLAM = $("#droplistDSLAM").attr("text");
   $droplistTipoElemento = $("#droplistTipoElemento").attr("text");
-
+  $filtraElemento = $("#filtraElemento").prop("value");
 
   $droplistRegion =
     $droplistRegion != ""
       ? ($droplistRegion = " AND Region in (" + $droplistRegion + ") ")
       : "";
+
   $droplistSubRegion =
     $droplistSubRegion != ""
       ? ($droplistSubRegion = " AND SubRegion in (" + $droplistSubRegion + ") ")
       : "";
+
   $droplistBaseTecnica =
     $droplistBaseTecnica != ""
       ? ($droplistBaseTecnica =
           " AND BaseTecnica in (" + $droplistBaseTecnica + ") ")
       : "";
+
   $droplistCentrales =
     $droplistCentrales != ""
       ? ($droplistCentrales = " AND Central in (" + $droplistCentrales + ") ")
       : "";
+
   $droplistDSLAM =
     $droplistDSLAM != ""
       ? ($droplistDSLAM = " AND DSLAM in (" + $droplistDSLAM + ") ")
       : "";
+
   $droplistTipoElemento =
     $droplistTipoElemento != ""
       ? ($droplistTipoElemento =
           " AND Tipo_Elemento in (" + $droplistTipoElemento + ") ")
+      : "";
+
+  $filtraElemento =
+    $filtraElemento != ""
+      ? ($filtraElemento =
+          " AND elemento like '%" + $filtraElemento + "%' ")
       : "";
 
   $losFiltros =
@@ -102,8 +109,9 @@ function aplicaFiltrosElementos() {
     $droplistBaseTecnica +
     $droplistCentrales +
     $droplistDSLAM +
-    $droplistTipoElemento;
-
+    $droplistTipoElemento +
+    $filtraElemento
+    ;
 
   cargarElementos($losFiltros);
 }
@@ -111,7 +119,7 @@ function aplicaFiltrosElementos() {
 function limpiaFiltrosElementos() {
   cargarFiltros();
   cargarElementos();
-  }
+}
 
 function cargarStatus() {
   //  ##############################
@@ -158,7 +166,6 @@ function cargarFiltros() {
 }
 
 function cargarElementos($losFiltros) {
-
   $.ajax({
     type: "post",
     url: "tablaElementos.php",
@@ -177,13 +184,11 @@ function cargarElementos($losFiltros) {
 
       corrigeAltoBody();
       inicializaCampos();
-
     },
   });
 }
 
 function cargarGestiones() {
-
   $.ajax({
     type: "post",
     url: "gestiones.php",
@@ -203,5 +208,3 @@ function cargarGestiones() {
     },
   });
 }
-
-
