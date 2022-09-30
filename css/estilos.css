@@ -84,6 +84,10 @@ th {
   border: 1px solid #17a2b8;
 }
 
+.table td{
+padding: 1px;
+}
+
 .encabeza2s {
   position: sticky;
   top: 20;

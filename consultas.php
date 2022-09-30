@@ -26,7 +26,7 @@ $tElemento = [];
 ########### Listado de Region, SubRegion, BaseTecnica, Ebos, Central para filtros######### 
 ##########################################################################################
 $consulta = "SELECT Region, SubRegion, BaseTecnica, Ebos, Central
-FROM bd3_reportes_acumulados.bit_agrupacion_elements_full
+FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
 where Region is not null AND Region != '' 
 AND SubRegion is not null AND SubRegion != ''
 AND BaseTecnica is not null AND BaseTecnica != ''

@@ -17,8 +17,8 @@ $cont = 0;
 
 if ($_POST) {
 
-	var_dump("si");
-	console_log("Si");
+	// var_dump("si");
+	// console_log("Si");
 } else {
 	foreach ($geografia as $datos) {
 		array_push($region, $datos['Region']);
@@ -89,7 +89,7 @@ if ($_POST) {
 ############################################
 
 $consulta = "SELECT Region, SubRegion, DSLAM
-FROM bd3_reportes_acumulados.bit_agrupacion_elements_full
+FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
 where Region is not null AND Region != '' 
 AND SubRegion is not null AND SubRegion != ''
 AND DSLAM is not null 
@@ -113,7 +113,7 @@ $lstDSLAM = array_unique($dslam);
 ########### Listado de Tipo Elemento ########
 #############################################
 $consulta = "SELECT Tipo_Elemento 
-FROM bd3_reportes_acumulados.bit_agrupacion_elements_full
+FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
 where Tipo_Elemento is not null AND Tipo_Elemento != ''
 GROUP by Tipo_Elemento;";
 
