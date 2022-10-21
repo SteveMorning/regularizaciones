@@ -7,7 +7,7 @@ include "../recursos/recursos.php";
 ###########    Valores de STATUS    ########
 ############################################
 $consulta = "SELECT DATE_FORMAT( ult_ejecucion , '%d/%m/%Y %H:%i:%s') as ultejecucion, 
-new + QUEUED +INPROG + PENDING    as totalpendientes, Sin_INCIDENT_Pend as pendientes, INCIDENT_Pend as  incidentes ,ingresos_hoy, cierres_hoy, Pend_anasop, 
+new + QUEUED +INPROG + PENDING    as totalpendientes, Sin_INCIDENT_Pend as pendientes, INCIDENT_Pend as  incidentes ,ingresos_hoy, cierres_hoy, Pend_anasop, Pend_cobre, 
 DATE_FORMAT( ult_actualstart , '%d/%m/%Y %H:%i:%s') as  actualstart,
 DATE_FORMAT( ult_actualfinish , '%d/%m/%Y %H:%i:%s') as  actualfinish, 
 DATE_FORMAT( ult_affecteddate , '%d/%m/%Y %H:%i:%s') as affecteddate, 
@@ -25,7 +25,7 @@ $status = mysqli_query($con, $consulta);
 // $dato = mysqli_fetch_assoc($GLOBALS['status']);
 
 $ultejecucion = $dato['ultejecucion'];
-$totalpendientes = $dato['totalpendientes'];
+$totalpendientes = $dato['Pend_cobre'];
 $pendientes = $dato['pendientes'];
 $incidentes = $dato['incidentes'];
 $ingresos_hoy = $dato['ingresos_hoy'];

@@ -208,3 +208,39 @@ function cargarGestiones() {
     },
   });
 }
+
+
+
+function mostrarFiltrosSeleccionados() {
+
+  $filtrodroplistRegion = $("#droplistRegion").attr("value") ;
+  $filtrodroplistSubRegion = $("#droplistSubRegion").attr("value") ;
+  $filtrodroplistBaseTecnica = $("#droplistBaseTecnica").attr("text") ;
+  $filtrodroplistCentrales = $("#droplistCentrales").attr("text") ;
+  $filtrodroplistDSLAM = $("#droplistDSLAM").attr("text") ;
+  $filtrodroplistTipoElemento = $("#droplistTipoElemento").attr("text") ;
+  $filtrofiltraElemento = $("#filtraElemento").attr("text") ;
+
+ $filtrodroplistRegion = $filtrodroplistRegion = '' ? "" : $filtrodroplistRegion 
+ $filtrodroplistSubRegion = $filtrodroplistSubRegion = '' ? "" : $filtrodroplistSubRegion 
+//  $filtrodroplistSubRegion = 
+//  $filtrodroplistBaseTecnica 
+//  $filtrodroplistCentrales = 
+//  $filtrodroplistDSLAM = $("#
+//  $filtrodroplistTipoElemento
+//  $filtrofiltraElemento = $("
+
+
+
+ let $txtFiltroSelect = "'Filtros seleccionados: " + $filtrodroplistRegion + $filtrodroplistSubRegion + "'";
+//  + $filtrodroplistSubRegion + $filtrodroplistBaseTecnica
+// + $filtrodroplistDSLAM  + $filtrodroplistCentrales + $filtrodroplistDSLAM + 
+// $filtrodroplistTipoElemento ;
+console.log( $txtFiltroSelect  );
+document.getElementById("filtrosSeleccionados").outerText = $txtFiltroSelect  ;
+$($filtrosSeleccionados).attr("text", $resultadotxt);
+
+
+
+
+}

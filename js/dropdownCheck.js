@@ -59,6 +59,7 @@ function chkItemTodos(e) {
 
   $($cajaResultado).attr("value", $resultado);
   $($cajaResultado).attr("text", $resultadotxt);
+  // mostrarFiltrosSeleccionados();
 }
 
 function chkItem(e) {
@@ -103,6 +104,7 @@ function chkItem(e) {
 
   $($cajaResultado).attr("value", $resultado);
   $($cajaResultado).attr("text", $resultadotxt);
+  // mostrarFiltrosSeleccimostrarFiltrosSeleccionadosonados();
 
 //   console.log("function chkItem(e)");
 //   console.log($cajaItem);
@@ -146,7 +148,7 @@ function chkItem(e) {
 
 //SI SE USA EL CHECKBOX NO LLAMAR ESTA FUNCION en la funcion "mostrarlistado" EN EL onclick="dropDownItemOperador(this)"
 function dropDownItemOperador(e) {
-  console.log("function chkItem(e)");
+
 
   $cajaResultado = "#" + $(e).parent().parent().parent().attr("id");
   $cajaItem = "#" + $(e).parent().attr("id");
@@ -169,6 +171,7 @@ function dropDownItemOperador(e) {
   $($cajaResultado).attr("text", $resultadotxt);
   $($cajaResultado).attr("ultDia", $resultadoUltDia);
 
+  // mostrarFiltrosSeleccionados();
   // cargargrafico();
   // cargartabla();
 }
@@ -196,6 +199,7 @@ function dropDownItem(e) {
   $($cajaResultado).attr("text", $resultadotxt);
   $($cajaResultado).attr("ultDia", $resultadoUltDia);
 
+  // mostrarFiltrosSeleccionados();
   //cargargrafico();
   //cargartabla();
   // actualizarTodo();

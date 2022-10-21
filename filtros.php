@@ -89,7 +89,7 @@ if ($_POST) {
 ############################################
 
 $consulta = "SELECT Region, SubRegion, DSLAM
-FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
+FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
 where Region is not null AND Region != '' 
 AND SubRegion is not null AND SubRegion != ''
 AND DSLAM is not null 
@@ -114,6 +114,11 @@ $lstDSLAM = array_unique($dslam);
 #############################################
 $consulta = "SELECT Tipo_Elemento 
 FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
+where Tipo_Elemento is not null AND Tipo_Elemento != ''
+GROUP by Tipo_Elemento;";
+
+$consulta = "SELECT Tipo_Elemento 
+FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
 where Tipo_Elemento is not null AND Tipo_Elemento != ''
 GROUP by Tipo_Elemento;";
 
@@ -284,7 +289,7 @@ function mostrarLista($Lista)
 		</div>
 		<!-- ############## Limpia de Filtros ############### -->
 		<div class="row mt-1">
-			<div class="row col-10 text-Left">Filtros seleccionados:</div>
+			<div class="row col-10 text-Left" id="filtrosSeleccionados">Filtros seleccionados:</div>
 			<div class="col-2 text-right">
 				<button type=" button" id="btnLimpiarFiltros" onclick="limpiaFiltrosElementos()" class="btn btn-danger btn-sm">Limpiar Filtros</button>
 			</div>
@@ -392,6 +397,7 @@ function mostrarLista($Lista)
 		input.addEventListener("keypress", function(event) {
 			if (event.key === "Enter") {
 				event.preventDefault();
+				// mostrarFiltrosSeleccionados();
 				aplicaFiltrosElementos(); 
 			}
 		});
