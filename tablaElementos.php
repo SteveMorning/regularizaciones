@@ -116,7 +116,7 @@ $lstElementos = mysqli_query($con, $consulta);
                     ?>
 
                         <td class="text-left" style="width:300px;">
-                            <button class="btn btn-primary btn-xs ml-1 pinche " style="width:25px; heigth:25px" onclick="return inicioGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
+                            <button class="btn btn-primary btn-xs ml-1 pinche " style="width:25px; heigth:25px" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button>
                             <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
                             <strong><?php echo $mostrar['Elemento']; ?> </strong> 

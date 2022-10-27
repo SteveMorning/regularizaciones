@@ -4,6 +4,12 @@
 include "../recursos/recursos.php";
 
 
+if ($_POST) {
+	$elemento = $_POST['elemento'];
+} else {
+	$elemento = '';
+}
+
 ############################################
 ###########  Listado  de Gestiones  ########
 ############################################
@@ -13,6 +19,17 @@ FROM bd3_gestiones.cobre_items_gestiones
 where MOSTRAR = true;";
 
 $lstDesplegableGestiones = mysqli_query($con, $consulta);
+
+
+############################################
+###########   Datos del elemento    ########
+############################################
+$consulta = "SELECT DISTINCT ID_ITEM_GESTION,
+TEXTO_A_MOSTRAR
+FROM bd3_gestiones.cobre_items_gestiones
+where MOSTRAR = true;";
+
+// $lstDesplegableGestiones = mysqli_query($con, $consulta);
 
 
 
@@ -29,9 +46,13 @@ $lstDesplegableGestiones = mysqli_query($con, $consulta);
 		<div class="col-4">
 			<h5>Gestion</h5>
 			<div class="alert alert-info   m-0 p-1" role="alert">
-				<h6 m-1 id="TipoElemento" style="margin: 1px;"> Tipo de Elemento: Cable Secundario </h6>
+
+				
+				<h6 m-1 id="tipoElemento" style="margin: 1px;"> Tipo de Elemento: Cable Secundario </h6>
 				<h6 m-1 id="Elemento" style="margin: 1px;">Elemento: SUR->ARJ->XXX->REPARJ</h6>
 				<h6 id="cantidadTickets" style="margin-bottom: 0px;">Cantidad de Tickets: 454</h6>
+			
+
 			</div>
 		</div>
 
