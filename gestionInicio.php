@@ -1,9 +1,12 @@
 <?php
 
-session_start();
+
 
 include "../recursos/recursos.php";
-include "consolelog.php";
+
+session_start();
+
+
 
 $data = array();
 $data['status'] = 'err';
@@ -22,6 +25,7 @@ if (!empty($_POST['idElemento'])) {
         }
     }
 }
+
 echo json_encode($data);
 
 
@@ -31,7 +35,7 @@ values (
 '" . $_POST['idElemento'] . "',
 '" . $_SESSION['id'] . "',
 now() ,
-'" . $_POST['web'] . "',
+'" . "concentraciones_ICD" . "',
 '" . $_POST['idElemento'] . "',
 now()
 )

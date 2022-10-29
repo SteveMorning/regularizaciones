@@ -37,7 +37,6 @@ where MOSTRAR = true;";
 
 
 
-
 <div class="row">
 	<div class="col-12 p-0">
 
@@ -48,9 +47,16 @@ where MOSTRAR = true;";
 			<div class="alert alert-info   m-0 p-1" role="alert">
 
 				
-				<h6 m-1 id="tipoElemento" style="margin: 1px;"> Tipo de Elemento: Cable Secundario </h6>
+				<div class="row p-0 m-0" > <h6> <strong> Tipo de Elemento:</strong> </h6>  <h6 class="ml-2" id="tipoElemento" >  </h6> </div> 
+				<div class="row p-0 m-0" > <h6><strong>Elemento:</strong> </h6>  <h6 class="ml-2" id="elemento" >  </h6> </div> 
+				<div class="row p-0 m-0" > <h6><strong>Cantidad de Tickets:</strong> </h6>  <h6 class="ml-2" id="cantidadTickets" >  </h6> </div> 
+<!-- 			
 				<h6 m-1 id="Elemento" style="margin: 1px;">Elemento: SUR->ARJ->XXX->REPARJ</h6>
-				<h6 id="cantidadTickets" style="margin-bottom: 0px;">Cantidad de Tickets: 454</h6>
+				<h6 id="cantidadTickets" style="margin-bottom: 0px;">Cantidad de Tickets: 454</h6> -->
+
+				<!-- <h6 m-1 id="tipoElemento" style="margin: 1px;"> Tipo de Elemento: Cable Secundario </h6>
+				<h6 m-1 id="Elemento" style="margin: 1px;">Elemento: SUR->ARJ->XXX->REPARJ</h6>
+				<h6 id="cantidadTickets" style="margin-bottom: 0px;">Cantidad de Tickets: 454</h6> -->
 			
 
 			</div>
@@ -75,7 +81,7 @@ where MOSTRAR = true;";
 			<textarea name="area1" id="comentgestion" cols=60 rows=3 placeholder="Comentario de la gestion"></textarea>
 		</div>
 		<div class="col-1 p-0">
-			<button class="btn btn-primary ml-5" style="margin-top: 48px;" ondblclick="cuanto()" onclick="return finGestion()" type="button" id="Gestionar">
+			<button class="btn btn-primary ml-5 " style="margin-top: 48px;"  onclick="return finalizarGestion()" type="button" id="Gestionar">
 				Gestionar
 			</button>
 		</div>

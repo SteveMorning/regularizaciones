@@ -19,6 +19,15 @@
 
 
 	session_start();
+	global $idUsuario ;
+	global $web;
+	$idUsuario =  $_SESSION['id'];
+	$web = "concentraciones_ICD";
+
+
+	// $GLOBALS['idUsuario'] =  $_SESSION['user'];
+	// $GLOBALS['web'] = "concentraciones_ICD";
+
 	validar_sesion('Concentraciones_ICD');
 	headerBasico();
 	headerBootstrap(1);
