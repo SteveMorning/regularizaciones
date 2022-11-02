@@ -32,7 +32,7 @@ $(document).ready(function () {
 	qtkts = 0
 
 
-
+iunter
 
 	ordenar("Ingreso_ayer")
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
 									document.getElementById("" + user + "*").style.backgroundColor = "red";
 									document.getElementById("" + user + "**").style.backgroundColor = "red";
 								} catch (error) {
-									console.error(error);
+									// console.error(error);
 								}
 
 								/* if( typeof userarm !=='undefined'){
@@ -167,7 +167,7 @@ $(document).ready(function () {
 								document.getElementById("" + gestionados[i] + "*").style.backgroundColor = "green";
 								document.getElementById("" + gestionados[i] + "**").style.backgroundColor = "green";
 							} catch (error) {
-								console.error(error);
+								// console.error(error);
 							}
 
 
@@ -390,13 +390,13 @@ $(document).ready(function () {
 		$("#idDslam li").filter(function () {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
-		console.log(value)
+		// // console.log(value)
 	});
 
 	$("#busquedaCentral").on("keyup", function () {
 		var value = $(this).val().toLowerCase();
 		//el id se pone en el tbody para que no filtre el thead!!
-		console.log(value)
+		// console.log(value)
 		$("#idCentral li").filter(function () {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
@@ -405,7 +405,7 @@ $(document).ready(function () {
 	$("#busquedaArmario").on("keyup", function () {
 		var value = $(this).val().toLowerCase();
 		//el id se pone en el tbody para que no filtre el thead!!
-		console.log(value)
+		// console.log(value)
 		$("#idArmario li").filter(function () {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
@@ -478,7 +478,7 @@ function funTipo(obj) {
 	var contenedor = "#grafico"
 
 	var titulo = tipo
-	console.log(titulo)
+	// console.log(titulo)
 
 	var escala = "50"
 
@@ -515,7 +515,7 @@ function funRegion(obj) {
 	inicio = 'region';
 	tipoGraf = "region";
 	filtroReg = " AND Region IN ('" + reg + "')";
-	console.log(filtroReg);
+	// console.log(filtroReg);
 
 	$.ajax(
 		{
@@ -686,8 +686,8 @@ function funSubRegion(obj) {
 
 	tipoGraf = "subregion";
 	filtroSreg = " AND SubRegion IN ('" + sreg + "') ";
-	console.log(filtroReg);
-	console.log(filtroSreg);
+	// console.log(filtroReg);
+	// console.log(filtroSreg);
 
 	$.ajax(
 		{
@@ -1030,7 +1030,7 @@ function funArmario(obj) {
 
 	//filtroArm = " AND Zona = '" + arm + "' ";
 
-	console.log(filtroArm)
+	// console.log(filtroArm)
 
 	$.ajax(
 		{
@@ -1473,7 +1473,7 @@ function filtrarElemento(obj) {
 	var arm = string[2];;
 	var ter = string[2];
 	var dslam = string[2];
-	console.log(tipo)
+	// console.log(tipo)
 
 	if (tipo != 'Dslam') {
 		$.ajax(
@@ -1705,7 +1705,7 @@ function filtrarElemento(obj) {
 
 		var vaciar1 = '#mostrararmarios';
 		var vaciar2 = '#mostracentral';
-		console.log(tipo)
+		// console.log(tipo)
 
 		$("#collapsethree").collapse("hide");
 		$("#collapsefour").collapse("show");
@@ -2077,7 +2077,7 @@ function abreModal(obj) {
 	idEle = string[0];
 	tipo = string[1].toLowerCase();
 	ele = string[2];
-	console.log(tipo)
+	// console.log(tipo)
 
 	if (tipo.toLowerCase() == 'dslam') {
 		campo = 'Dslam'
@@ -2209,7 +2209,7 @@ function ordenar(obj, tabla) {
 
 	ordena = "Order By " + obj + " " + desc + " ";
 
-	console.log(ordena)
+	// console.log(ordena)
 
 	if (tabla == 'elementos') {
 
@@ -2376,7 +2376,7 @@ function funServicio(obj) {
 function gestionar() {
 	var gestion = $("#selectGestion").val();
 
-	console.log(gestion)
+	// console.log(gestion)
 	return false;
 
 }
@@ -2430,7 +2430,7 @@ function inicioGestion(obj, obj2) {
 	$(pinche).css("background-color", "red");
 
 	idEleGes = idEle;
-	console.log(idEleGes)
+	// console.log(idEleGes)
 	$.ajax(
 		{
 			type: "POST",
@@ -2459,8 +2459,8 @@ function inicioGestion(obj, obj2) {
 
 			}
 		});
-	console.log(idEle)
-	console.log(inicio)
+	// console.log(idEle)
+	// console.log(inicio)
 	$.ajax(
 		{
 			type: "POST",
@@ -2506,8 +2506,8 @@ function finGestion() {
 	});
 	/* var eliminado = tickets.shift() */
 
-	console.log(tickets);
-	console.log(qtkts);
+	// console.log(tickets);
+	// console.log(qtkts);
 	$.ajax(
 		{
 			type: "POST",
@@ -2525,7 +2525,7 @@ function finGestion() {
 			success: function (data) {
 				alert("Gestion exitosa");
 				document.getElementById('cantidadTickets').innerHTML = "Tickets seleccionados:  ";
-				console.log(data)
+				// console.log(data)
 
 			}
 		});
@@ -2590,7 +2590,7 @@ function miFuncion(rol) {
 		$('#idcentralesaaee').removeClass('d-none')
 		$('#iddslamaaee').removeClass('d-none')
 		$('#idticketsaaee').removeClass('d-none')
-		console.log(roles)
+		// console.log(roles)
 		ordenar('Ingreso_ayer', 'elementos')
 
 
@@ -2618,7 +2618,7 @@ function miFuncion(rol) {
 		ordenar('Ingresos', 'armarios')
 	}
 
-	//console.log(web)
+	//// console.log(web)
 
 
 }
@@ -2658,7 +2658,7 @@ function funRol(obj) {
 		ordenar('Ingreso_ayer', 'centrales')
 		ordenar('Ingreso_ayer', 'armarios')
 
-		console.log('rol-detec')
+		// console.log('rol-detec')
 
 	}
 
@@ -2682,12 +2682,12 @@ function funRol(obj) {
 		ordenar('Ingresos', 'centrales')
 		ordenar('Ingresos', 'armarios')
 
-		console.log('rol-mon')
+		// console.log('rol-mon')
 
 
 	}
 
-	console.log(web)
+	// console.log(web)
 }
 
 function buscentral(obj) {

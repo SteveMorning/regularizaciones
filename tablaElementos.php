@@ -1,7 +1,7 @@
 <?php
 
 include "../recursos/recursos.php";
-//  include "../recursos/tooltip.php";
+ include "../recursos/tooltip.php";
 include "consolelog.php";
 // include "consultas.php";
 
@@ -60,11 +60,11 @@ $lstElementos = mysqli_query($con, $consulta);
                         <div class="row ml-2">
                             <div class="col-3">Elementos</div>
                             <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
-                            <div class="col-3 mr-0 text-right"> <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse"  data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <div class="col-3 mr-0 text-right"> <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse" data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     <img src="ico/search.svg" alt="" style="width:16px; height:16px">
                                 </button></div>
 
-                        </div>  
+                        </div>
                     </th>
 
                     <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">Tipo</th>
@@ -116,10 +116,16 @@ $lstElementos = mysqli_query($con, $consulta);
                     ?>
 
                         <td class="text-left" style="width:300px;">
-                            <button class="btn btn-primary btn-xs ml-1 pinche " style="width:25px; heigth:25px" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
+                            <button class="btn btn-xs border-secondary pinche " style="width:25px; heigth:25px;  background-color:#e9ecef; " onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button>
+                            <!-- <span class="fas fa-clock text-right" aria-hidden="true"></span> -->
+
+                            </button>
                             <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
-                            <strong><?php echo $mostrar['Elemento']; ?> </strong> 
+                            <!-- <strong> --><?php echo $mostrar['Elemento']; ?>
+                            <!-- </strong> -->
+                            <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt=""  data-trigger="hover" data-html="true" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">
+                            
 
                         </td>
 
@@ -170,7 +176,7 @@ $lstElementos = mysqli_query($con, $consulta);
         </table>
     </div>
 
-
+<h5>sadfasd</h5>asdfsdas
 
 </div>
 
@@ -185,6 +191,11 @@ $lstElementos = mysqli_query($con, $consulta);
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
+
+        $("[data-toggle='popover']").popover();
+        
+             
+
 
     });
 </script>

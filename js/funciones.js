@@ -3,6 +3,8 @@ $(document).ready(function () {
   cargarFiltros();
   cargarElementos();
   cargarGestiones();
+  verificarPinchitos();
+
 });
 
 function inicializaCampos() {
@@ -236,7 +238,7 @@ function mostrarFiltrosSeleccionados() {
 //  + $filtrodroplistSubRegion + $filtrodroplistBaseTecnica
 // + $filtrodroplistDSLAM  + $filtrodroplistCentrales + $filtrodroplistDSLAM + 
 // $filtrodroplistTipoElemento ;
-console.log( $txtFiltroSelect  );
+// console.log( $txtFiltroSelect  );
 document.getElementById("filtrosSeleccionados").outerText = $txtFiltroSelect  ;
 $($filtrosSeleccionados).attr("text", $resultadotxt);
 

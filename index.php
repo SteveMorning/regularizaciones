@@ -19,7 +19,7 @@
 
 
 	session_start();
-	global $idUsuario ;
+	global $idUsuario;
 	global $web;
 	$idUsuario =  $_SESSION['id'];
 	$web = "concentraciones_ICD";
@@ -43,16 +43,16 @@
 	<script type='text/javascript' src='js/gestiones.js?" . $aleatorio . "'></script>
 	<script type='text/javascript' src='../recursos/js.js?" . $aleatorio . "'></script>
 	<link rel='stylesheet' href='css/estilos.css?" . $aleatorio . "'>
+
+	<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js?" . $aleatorio . "'></script>
+
+
+
 "
 	);
 
 	?>
 
-	<!-- <script type='text/javascript' src='js/jquery-3.0.0.min.js'></script>
-	<script type='text/javascript' src='js/corrigeAltoBody.js'></script>
-	<script type='text/javascript' src='js/funciones.js'></script>
-	<script type='text/javascript' src='../recursos/js.js?$aleatorio'></script>
-	<link rel="stylesheet" href="css/estilos.css"> -->
 	<link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
 
 	<title>Concentraciones ICD</title>
@@ -63,8 +63,8 @@
 
 	<div id="elcontenido">
 		<!-- ################# HEADER ################# -->
-		<div class="card-header" id="encabezado" >
-			<nav class="navbar navbar-expand-lg bg-dark navbar-dark"  style="height: 40px;">
+		<div class="card-header" id="encabezado">
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
 				<a class="navbar-brand" href="#">Concentraciones ICD</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>

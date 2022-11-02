@@ -177,7 +177,7 @@ function dropDownItemOperador(e) {
 }
 
 function dropDownItem(e) {
-  console.log("dropDownItem(e)");
+  // console.log("dropDownItem(e)");
   $cajaResultado = "#" + $(e).parent().parent().parent().attr("id");
   $cajaItem = "#" + $(e).parent().attr("id");
   $chkboxItem = "#" + $(e).attr("value");
