@@ -1,6 +1,6 @@
 $(document).ready(function () {
   setInterval(() => {
-    // verificarPinchitos();
+    verificarPinchitos();
   }, 5000);
 });
 
@@ -88,11 +88,45 @@ function verificarPinchitos() {
 }
 
 function dibujarpinchito(descripcion) {
-console.log(descripcion);
-
-  console.log(descripcion.fields);
+  // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
+  // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
+  // <img src="https://img.icons8.com/ultraviolet/40/000000/active-state.png"/>
+  //  <img src="https://img.icons8.com/external-konkapp-detailed-outline-konkapp/64/FFFFFF/external-working-work-from-home-konkapp-detailed-outline-konkapp.png"/>
+  //  <img src="https://img.icons8.com/external-konkapp-detailed-outline-konkapp/64/FFFFFF/external-working-work-from-home-konkapp-detailed-outline-konkapp-1.png"/>
 
   descripcion.result.forEach((element) => {
+    // let icoDefault = "https://img.icons8.com/office/16/000000/play--v1.png" ;
+    // let icoDefault = "https://img.icons8.com/ultraviolet/40/000000/plus--v1.png" ;
+    // let icoDefault = "https://img.icons8.com/external-febrian-hidayat-outline-color-febrian-hidayat/25/000000/external-plus-ui-essential-febrian-hidayat-outline-color-febrian-hidayat.png" ;
+    // let icoDefault = "https://img.icons8.com/carbon-copy/100/228BE6/plus-2-math.png" ;
+    // let icoDefault = "https://img.icons8.com/ultraviolet/40/null/plus--v1.png" ;
+    // let icoDefault = "https://img.icons8.com/external-bluetone-bomsymbols-/25/null/external-add-digital-design-bluetone-set-2-bluetone-bomsymbols-.png" ;     // let icoDefault = "https://img.icons8.com/color/25/000000/checked--v1.png" ;
+    // let icoDefault = "https://img.icons8.com/office/25/null/info--v1.png" ;
+    let icoDefault = "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+    // let icoDefault = "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/228BE6/external-exclamation-mark-essentials-tanah-basah-glyph-tanah-basah.png" ;
+    // let icoDefault = "https://img.icons8.com/ios/50/228BE6/box-important--v1.png" ;
+    // let icoDefault =  "https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/null/external-information-notification-alert-xnimrodx-blue-xnimrodx.png" ;
+
+    let icoTomado = "https://img.icons8.com/fluency/25/000000/coworking.png";
+    //  let icoTomado = "https://img.icons8.com/external-tulpahn-outline-color-tulpahn/30/null/external-working-digital-nomad-tulpahn-outline-color-tulpahn-1.png";
+    // let icoTomado = "https://img.icons8.com/ios-filled/50/null/collaborating-in-circle.png";
+
+    let icoTomadoMio = "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
+
+    // let icoResuelto = "https://img.icons8.com/color/48/000000/ok--v1.png";
+    // let icoResuelto = "https://img.icons8.com/color/25/000000/checked--v1.png";
+    // let icoResuelto = "https://img.icons8.com/ultraviolet/25/null/add--v1.png";
+    // let icoResuelto = "https://img.icons8.com/officel/25/null/plus-math.png";
+    let icoResuelto = icoDefault;
+
+    let icoResueltoHoy =  "https://img.icons8.com/color/25/000000/checked--v1.png";
+    // let icoResueltoHoy = "https://img.icons8.com/offices/30/null/checked.png";
+
+
+
+
+
+
     let obj = document.getElementById(element[0]);
     let icodelay = document.getElementById("icodelay" + element[0]);
 
@@ -104,7 +138,7 @@ console.log(descripcion);
       switch (element[7]) {
         case "0":
           // #######################  TOMADO POR MI  #######################
-          obj.classList.remove("border-secondary");
+          // obj.classList.remove("border-secondary");
           // AZUL
           // obj.classList.add("border-primary");
           // $(obj).css("background-color", "#cfe2ff");
@@ -113,61 +147,123 @@ console.log(descripcion);
           $(obj).css("border-color", "#ffc107");
           $(obj).css("background-color", "#fff3cd");
 
+          // Naranja
+          // $(obj).css("border-color", "#fd7e14");
+          // $(obj).css("background-color", "#ffe5d0");
+
+          $(obj).attr("src", icoTomadoMio);
+
           break;
         case "1":
           // #######################  TOMADO   #######################
           // console.log(obj);
           // YELLOW
-          obj.classList.remove("border-secondary");
+          // obj.classList.remove("border-secondary");
           // Amarillo
-          $(obj).css("border-color", "#ffc107");
-          $(obj).css("background-color", "#fff3cd");
+          // $(obj).css("border-color", "#ffc107");
+          // $(obj).css("background-color", "#fff3cd");
           // Naranja
           $(obj).css("border-color", "#fd7e14");
           $(obj).css("background-color", "#ffe5d0");
+          // ROJO
+          $(obj).css("border-color", "#dc3545");
+          $(obj).css("background-color", "#f8d7da");
+
+          $(obj).attr("src", icoTomado);
+
           break;
         case "2":
           // #######################  RESUELTO HOY   #######################
           if (element[3] == "0") {
-            obj.classList.remove("border-secondary");
-            obj.classList.add("border-success");
+            $(obj).css("border-color", "#198754");
             $(obj).css("background-color", "#d1e7dd");
 
-            $(icodelay).attr(
-              "src",
-              "https://img.icons8.com/fluency/25/000000/today.png" );
+            $(obj).attr("src", icoResueltoHoy);
+            // $(obj).attr("src" , "https://img.icons8.com/color/30/000000/checked--v1.png");
 
-              $(icodelay).attr("data-original-title" , "Analizado el " + element[2] + "Hs");
-              $(icodelay).attr("data-content" ,  "<strong>" + descripcion.fields[4].name + ": </strong> " + element[4]  + "<br>" + 
-              "<strong>" + descripcion.fields[5].name + ": </strong> " + element[5]  + "<br>" + 
-              "<strong>" + descripcion.fields[8].name + ": </strong> " + element[8] + "<br>" + 
-              "<strong>" + descripcion.fields[6].name + ": </strong> " + element[6] + "<br>"  );
-              
+            // $(icodelay).attr( "src", "https://img.icons8.com/fluency/25/000000/today.png"  );
+            $(icodelay).attr( "src", "https://img.icons8.com/color/25/null/today.png"  );
+
+            $(icodelay).attr(
+              "data-original-title",
+              "Analizado el " + element[2] + "Hs"
+            );
+            $(icodelay).attr(
+              "data-content",
+              "<strong>" +
+                descripcion.fields[4].name +
+                ": </strong> " +
+                element[4] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[5].name +
+                ": </strong> " +
+                element[5] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[8].name +
+                ": </strong> " +
+                element[8] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[6].name +
+                ": </strong> " +
+                element[6] +
+                "<br>"
+            );
           } else {
             // #######################  RESUELTO ANTES   #######################
-            // obj.classList.remove("border-secondary");
-            obj.classList.add("border-secondary");
-            $(obj).css("background-color", "#e9ecef");
-            
-              $(icodelay).attr(
-            "src",
-              "https://img.icons8.com/fluency/25/000000/calendar-" +
-                element[3] +
-                ".png" );
 
-              $(icodelay).attr("data-original-title" , "Analizado el " + element[2] + "Hs");
-              $(icodelay).attr("data-content" ,  "<strong>" + descripcion.fields[4].name + ": </strong> " + element[4]  + "<br>" + 
-              "<strong>" + descripcion.fields[5].name + ": </strong> " + element[5]  + "<br>" + 
-              "<strong>" + descripcion.fields[8].name + ": </strong> " + element[8] + "<br>" + 
-              "<strong>" + descripcion.fields[6].name + ": </strong> " + element[6] + "<br>"  );
+            $(obj).css("border-color", "#0d6efd");
+            $(obj).css("background-color", "#cfe2ff");
+
+            $(obj).attr("src", icoResuelto);
+            // $(obj).attr("src" , "https://img.icons8.com/ultraviolet/30/000000/active-state.png");
+
+            $(icodelay).attr( "src",  "https://img.icons8.com/color/25/null/calendar-week" + element[3] + ".png"
+            );
+
+            $(icodelay).attr(
+              "data-original-title",
+              "Analizado el " + element[2] + "Hs"
+            );
+            $(icodelay).attr(
+              "data-content",
+              "<strong>" +
+                descripcion.fields[4].name +
+                ": </strong> " +
+                element[4] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[5].name +
+                ": </strong> " +
+                element[5] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[8].name +
+                ": </strong> " +
+                element[8] +
+                "<br>" +
+                "<strong>" +
+                descripcion.fields[6].name +
+                ": </strong> " +
+                element[6] +
+                "<br>"
+            );
           }
           break;
         default:
           // #######################  DEFAULT   #######################
-          obj.classList.add("border-secondary");
-          $(obj).css("background-color", "#e9ecef");
+          // obj.classList.add("border-secondary");
+          // $(obj).css("background-color", "#e9ecef");
+          $(obj).css("border-color", "#0d6efd");
+          $(obj).css("background-color", "#cfe2ff");
+          $(obj).attr("src", icoDefault);
+          // $(obj).attr("src" , "https://img.icons8.com/office/16/000000/play--v1.png");
+          // $(obj).attr("src" , "https://img.icons8.com/ultraviolet/30/000000/active-state.png");
+          //img.icons8.com/office/16/000000/play--v1.png
 
-          break;
+          https: break;
       }
     }
   });
