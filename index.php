@@ -9,7 +9,6 @@
 
 	<?php
 
-	// include "../recursos/recursos.php";
 	include "../recursos/encabezado.php";
 
 	include "../utilidades/cargaArchivo.php";
@@ -37,15 +36,12 @@
 
 	echo ("
 
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js?" . $aleatorio . "'></script>
-	<script type='text/javascript' src='js/jquery-3.0.0.min.js?" . $aleatorio . "'></script>
+
 	<script type='text/javascript' src='js/funciones.js?" . $aleatorio . "'></script>
 	<script type='text/javascript' src='js/gestiones.js?" . $aleatorio . "'></script>
 	<script type='text/javascript' src='../recursos/js.js?" . $aleatorio . "'></script>
 	<link rel='stylesheet' href='css/estilos.css?" . $aleatorio . "'>
-
-	<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js?" . $aleatorio . "'></script>
-
+	
 
 
 "
@@ -131,7 +127,10 @@
 	echo ('
 		<script src="js/dropdownCheck.js?' . $aleatorio . '"></script>
 	<script type="text/javascript" src="js/corrigeAltoBody.js?' . $aleatorio . '"></script>
+
 	');
+
+
 
 	?>
 </footer>

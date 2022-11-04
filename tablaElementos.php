@@ -116,26 +116,22 @@ $lstElementos = mysqli_query($con, $consulta);
 
                     ?>
 
-                        <td class="text-left" style="width:300px; border-right:none">
+                        <td class="text-left" style="width:280px; border-right:none">
                             <img class="btn btn-xs  pinche p-0" src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
 
                             </img>
 
-
-
-
                             <!-- <button class="btn btn-xs border-secondary pinche " style="width:25px; heigth:25px;  background-color:#e9ecef;  " onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button> -->
-
 
                             <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
                             <strong><?php echo $mostrar['Elemento']; ?> </strong>
 
                         </td>
-                        <td class="text-right" style="border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">
+                        <td class="text-right" style=" border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover"  data-original-title="titulo" data-content="Some content inside the popover">
                         </td>
 
-                        <td class="text-left" style="border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
+                        <td class="text-left" style=" width:150px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pendiente_Total']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N0']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N1']; ?></td>
@@ -182,12 +178,13 @@ $lstElementos = mysqli_query($con, $consulta);
         </table>
     </div>
 
-    <h5>sadfasd</h5>asdfsdas
-
 </div>
 
 
 <script>
+
+
+
     $(document).ready(function() {
 
         $("#buscarElemento").on("keyup", function() {

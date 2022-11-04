@@ -149,6 +149,7 @@ function cargarFiltros() {
   //  ##############################
   //  ########## Filtros ############
   //  ##############################
+
   $.ajax({
     type: "post",
     url: "filtros.php",

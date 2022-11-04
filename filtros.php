@@ -5,6 +5,7 @@ include "consultas.php";
 include "consolelog.php";
 
 
+
 $region = [];
 $subRegion = [];
 $baseTecnica = [];
@@ -13,6 +14,7 @@ $dslam = [];
 $tElemento = [];
 
 $geo = $GLOBALS['geografia'];
+
 $cont = 0;
 
 if ($_POST) {

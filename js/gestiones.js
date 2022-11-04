@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 function iniciarGestion(idElemento, obj) {
-  // console.log('iniciarGestion');
+  console.log("iniciarGestion");
   // console.log(idElemento);
   // console.log(obj);
 
@@ -16,6 +16,7 @@ function iniciarGestion(idElemento, obj) {
     data: { idElemento: idElemento, web: "concentraciones_ICD" },
     success: function (data) {
       if (data.status == "ok") {
+        cambiaPinchitoActual(idElemento);
         dibujarGestionDescripcion(data.result);
       }
       // console.log(data.status);
@@ -23,10 +24,37 @@ function iniciarGestion(idElemento, obj) {
     },
   });
 
-  verificarPinchitos();
+  // verificarPinchitos();
 }
 
+
+
+function cambiaPinchitoActual(elementoNuevo) {
+  console.log("cambiaPinchitoActual");
+  let elementoActual = document.getElementById("elemento").innerText;
+  console.log({ elementoActual, elementoNuevo });
+  let objActual = document.getElementById(elementoActual);
+  let objNuevo = document.getElementById(elementoNuevo);
+
+  let icoTomadoMio =  "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
+  let icoDefault = "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+
+            // Amarillo
+            $(objNuevo).css("border-color", "#ffc107");
+            $(objNuevo).css("background-color", "#fff3cd");
+            $(objNuevo).attr("src", icoTomadoMio);
+
+            $(objActual).css("border-color", "#0d6efd");
+            $(objActual).css("background-color", "#cfe2ff");
+            $(objActual).attr("src", icoDefault);      
+
+}
+
+
+
+
 function dibujarGestionDescripcion(descripcion) {
+  console.log("dibujarGestionDescripcion");
   document.getElementById("tipoElemento").innerHTML = descripcion.Tipo_Elemento;
   document.getElementById("elemento").innerHTML = descripcion.Elemento;
   document.getElementById("cantidadTickets").innerHTML =
@@ -36,7 +64,7 @@ function dibujarGestionDescripcion(descripcion) {
 }
 
 function finalizarGestion() {
-  // console.log("finalizarGestion");
+  console.log("finalizarGestion");
 
   let tipoGestion = document.getElementById("selectGestion").value;
   let comentario = document.getElementById("comentgestion").value;
@@ -73,7 +101,7 @@ function finalizarGestion() {
 }
 
 function verificarPinchitos() {
-  // console.log("verificarPinchitos");
+  console.log("verificarPinchitos");
   $.ajax({
     type: "POST",
     url: "pinchitos.php",
@@ -87,7 +115,9 @@ function verificarPinchitos() {
   });
 }
 
+
 function dibujarpinchito(descripcion) {
+  console.log("dibujarpinchito");
   // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
   // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
   // <img src="https://img.icons8.com/ultraviolet/40/000000/active-state.png"/>
@@ -102,7 +132,8 @@ function dibujarpinchito(descripcion) {
     // let icoDefault = "https://img.icons8.com/ultraviolet/40/null/plus--v1.png" ;
     // let icoDefault = "https://img.icons8.com/external-bluetone-bomsymbols-/25/null/external-add-digital-design-bluetone-set-2-bluetone-bomsymbols-.png" ;     // let icoDefault = "https://img.icons8.com/color/25/000000/checked--v1.png" ;
     // let icoDefault = "https://img.icons8.com/office/25/null/info--v1.png" ;
-    let icoDefault = "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+    let icoDefault =
+      "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
     // let icoDefault = "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/228BE6/external-exclamation-mark-essentials-tanah-basah-glyph-tanah-basah.png" ;
     // let icoDefault = "https://img.icons8.com/ios/50/228BE6/box-important--v1.png" ;
     // let icoDefault =  "https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/null/external-information-notification-alert-xnimrodx-blue-xnimrodx.png" ;
@@ -111,7 +142,8 @@ function dibujarpinchito(descripcion) {
     //  let icoTomado = "https://img.icons8.com/external-tulpahn-outline-color-tulpahn/30/null/external-working-digital-nomad-tulpahn-outline-color-tulpahn-1.png";
     // let icoTomado = "https://img.icons8.com/ios-filled/50/null/collaborating-in-circle.png";
 
-    let icoTomadoMio = "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
+    let icoTomadoMio =
+      "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
 
     // let icoResuelto = "https://img.icons8.com/color/48/000000/ok--v1.png";
     // let icoResuelto = "https://img.icons8.com/color/25/000000/checked--v1.png";
@@ -119,13 +151,9 @@ function dibujarpinchito(descripcion) {
     // let icoResuelto = "https://img.icons8.com/officel/25/null/plus-math.png";
     let icoResuelto = icoDefault;
 
-    let icoResueltoHoy =  "https://img.icons8.com/color/25/000000/checked--v1.png";
+    let icoResueltoHoy =
+      "https://img.icons8.com/color/25/000000/checked--v1.png";
     // let icoResueltoHoy = "https://img.icons8.com/offices/30/null/checked.png";
-
-
-
-
-
 
     let obj = document.getElementById(element[0]);
     let icodelay = document.getElementById("icodelay" + element[0]);
@@ -182,7 +210,10 @@ function dibujarpinchito(descripcion) {
             // $(obj).attr("src" , "https://img.icons8.com/color/30/000000/checked--v1.png");
 
             // $(icodelay).attr( "src", "https://img.icons8.com/fluency/25/000000/today.png"  );
-            $(icodelay).attr( "src", "https://img.icons8.com/color/25/null/today.png"  );
+            $(icodelay).attr(
+              "src",
+              "https://img.icons8.com/color/25/null/today.png"
+            );
 
             $(icodelay).attr(
               "data-original-title",
@@ -220,7 +251,11 @@ function dibujarpinchito(descripcion) {
             $(obj).attr("src", icoResuelto);
             // $(obj).attr("src" , "https://img.icons8.com/ultraviolet/30/000000/active-state.png");
 
-            $(icodelay).attr( "src",  "https://img.icons8.com/color/25/null/calendar-week" + element[3] + ".png"
+            $(icodelay).attr(
+              "src",
+              "https://img.icons8.com/color/25/null/calendar-week" +
+                element[3] +
+                ".png"
             );
 
             $(icodelay).attr(
