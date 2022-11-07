@@ -4,57 +4,68 @@ $(document).ready(function () {
   }, 5000);
 });
 
-function iniciarGestion(idElemento, obj) {
+function iniciarGestion(idElementoNuevo, obj) {
   console.log("iniciarGestion");
   // console.log(idElemento);
   // console.log(obj);
+  let icoDefault =
+    "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+  let elementoActual = document.getElementById("elemento").innerText;
+  let objActual = document.getElementById(elementoActual);
+  let ListaElementos = "'" + idElementoNuevo + "' , '" + elementoActual + "'";
 
   $.ajax({
     type: "POST",
     url: "gestionInicio.php",
     dataType: "json",
-    data: { idElemento: idElemento, web: "concentraciones_ICD" },
+    data: { idElemento: idElementoNuevo, web: "concentraciones_ICD" },
     success: function (data) {
-      if (data.status == "ok") {
-        cambiaPinchitoActual(idElemento);
-        dibujarGestionDescripcion(data.result);
-      }
       // console.log(data.status);
       // console.log(data);
+      if (data.status == "ok") {
+        /*  ################   AGREGO CORRECTAMENTE EL INICIO DE LA GESTION ################# */
+        dibujarGestionDescripcion(data.result);
+
+        $.ajax({
+          type: "POST",
+          url: "pinchitos.php",
+          dataType: "json",
+          data: { idElemento: ListaElementos },
+          success: function (data2) {
+            if (data2.status == "ok") {
+              $(objActual).css("border-color", "#0d6efd");
+              $(objActual).css("background-color", "#cfe2ff");
+              $(objActual).attr("src", icoDefault);
+
+              data2.result.forEach((element) => {
+                dibujarpinchito_Ok(data2.fields, element);
+              });
+            }
+          },
+        });
+      } else {
+        /*  ################   ELEMENTO TOMADO  ################# */
+        let desde =
+          data.result.Tomado_Dias == 0
+            ? data.result.Tomado_Horas + "Hs"
+            : data.result.Tomado_Dias + " Dias";
+        let mensaje =
+          "Elemento tomado por " +
+          data.result.Colaborador +
+          " (" +
+          data.result.mail +
+          ") hace " +
+          desde;
+        alert(mensaje);
+      }
     },
   });
-
-  // verificarPinchitos();
 }
-
-
-
-function cambiaPinchitoActual(elementoNuevo) {
-  console.log("cambiaPinchitoActual");
-  let elementoActual = document.getElementById("elemento").innerText;
-  console.log({ elementoActual, elementoNuevo });
-  let objActual = document.getElementById(elementoActual);
-  let objNuevo = document.getElementById(elementoNuevo);
-
-  let icoTomadoMio =  "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
-  let icoDefault = "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
-
-            // Amarillo
-            $(objNuevo).css("border-color", "#ffc107");
-            $(objNuevo).css("background-color", "#fff3cd");
-            $(objNuevo).attr("src", icoTomadoMio);
-
-            $(objActual).css("border-color", "#0d6efd");
-            $(objActual).css("background-color", "#cfe2ff");
-            $(objActual).attr("src", icoDefault);      
-
-}
-
-
 
 
 function dibujarGestionDescripcion(descripcion) {
-  console.log("dibujarGestionDescripcion");
+  // console.log("dibujarGestionDescripcion");
+  // console.log(descripcion);
   document.getElementById("tipoElemento").innerHTML = descripcion.Tipo_Elemento;
   document.getElementById("elemento").innerHTML = descripcion.Elemento;
   document.getElementById("cantidadTickets").innerHTML =
@@ -108,16 +119,152 @@ function verificarPinchitos() {
     dataType: "json",
     data: {},
     success: function (data) {
-      setTimeout(() => {
-        dibujarpinchito(data);
-      }, 300);
+      console.log(data);
+      if (data.status == "ok") {
+        data.result.forEach((element) => {
+          dibujarpinchito_Ok(data.fields, element);
+        });
+      }
+
+      // setTimeout(() => {
+      //   dibujarpinchito(data);
+      // }, 300);
     },
   });
 }
 
+function dibujarpinchito_Ok(fields, element) {
+  // console.log("dibujarpinchito_Ok");
+  // idElemento , esUserLocal , fechaGestionFin, diasGestionFin,gestion,tktVinculados,usuarioId,usuarioNombre,observaciones
+
+  // console.log(fields,element);
+
+  // console.log(fields[0].name + ": " + element[0]);
+
+  let icoDefault =
+    "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+  let icoTomado = "https://img.icons8.com/fluency/25/000000/coworking.png";
+  let icoTomadoMio =
+    "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
+  let icoResuelto = icoDefault;
+  let icoResueltoHoy = "https://img.icons8.com/color/25/000000/checked--v1.png";
+
+  let obj = document.getElementById(element[0]);
+  let icodelay = document.getElementById("icodelay" + element[0]);
+
+  // let pinchitos = document.querySelectorAll(".pinche");
+
+  if (obj !== null) {
+    //  /* este es el usuario 0:tomado por mi, 1:tomado  , 2:resuelto  y el element[5]  te dice cuando fue resuelto */
+    switch (element[2]) {
+      case "0": // #######################  TOMADO POR MI  #######################
+        // Amarillo
+        $(obj).css("border-color", "#ffc107");
+        $(obj).css("background-color", "#fff3cd");
+        $(obj).attr("src", icoTomadoMio);
+        break;
+      case "1": // #######################  TOMADO   #######################
+        // ROJO
+        $(obj).css("border-color", "#dc3545");
+        $(obj).css("background-color", "#f8d7da");
+        $(obj).attr("src", icoTomado);
+        break;
+      case "2":
+        // #######################  RESUELTO HOY   #######################
+        if (element[5] == "0") {
+          $(obj).css("border-color", "#198754");
+          $(obj).css("background-color", "#d1e7dd");
+          $(obj).attr("src", icoResueltoHoy);
+
+          $(icodelay).attr(
+            "src",
+            "https://img.icons8.com/color/25/null/today.png"
+          );
+          $(icodelay).attr(
+            "data-original-title",
+            "Analizado el " + element[4] + "Hs"
+          );
+          $(icodelay).attr(
+            "data-content",
+            "<strong>" +
+              fields[6].name +
+              ": </strong> " +
+              element[6] +
+              "<br>" +
+              "<strong>" +
+              fields[7].name +
+              ": </strong> " +
+              element[7] +
+              "<br>" +
+              "<strong>" +
+              fields[8].name +
+              ": </strong> " +
+              element[8] +
+              "<br>" +
+              "<strong>" +
+              fields[10].name +
+              ": </strong> " +
+              element[10] +
+              "<br>"
+          );
+        } else {
+          // #######################  RESUELTO ANTES   #######################
+          $(obj).css("border-color", "#0d6efd");
+          $(obj).css("background-color", "#cfe2ff");
+          $(obj).attr("src", icoResuelto);
+
+          $(icodelay).attr(
+            "src",
+            "https://img.icons8.com/color/25/null/calendar-week" +
+              element[5] +
+              ".png"
+          );
+
+          $(icodelay).attr(
+            "data-original-title",
+            "Analizado el " + element[4] + "Hs"
+          );
+          $(icodelay).attr(
+            "data-content",
+            "<strong>" +
+              fields[6].name +
+              ": </strong> " +
+              element[6] +
+              "<br>" +
+              "<strong>" +
+              fields[7].name +
+              ": </strong> " +
+              element[7] +
+              "<br>" +
+              "<strong>" +
+              fields[8].name +
+              ": </strong> " +
+              element[8] +
+              "<br>" +
+              "<strong>" +
+              fields[10].name +
+              ": </strong> " +
+              element[10] +
+              "<br>" /* +
+              "<strong>" +
+              fields[9].name +
+              ": </strong> " +
+              element[9] +
+              "<br>" */
+          );
+        }
+        break;
+      default: // #######################  DEFAULT   #######################
+        $(obj).css("border-color", "#0d6efd");
+        $(obj).css("background-color", "#cfe2ff");
+        $(obj).attr("src", icoDefault);
+        break;
+    }
+  }
+}
 
 function dibujarpinchito(descripcion) {
-  console.log("dibujarpinchito");
+  // console.log("dibujarpinchito");
   // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
   // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
   // <img src="https://img.icons8.com/ultraviolet/40/000000/active-state.png"/>

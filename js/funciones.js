@@ -4,7 +4,6 @@ $(document).ready(function () {
   cargarElementos();
   cargarGestiones();
   verificarPinchitos();
-
 });
 
 function inicializaCampos() {

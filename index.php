@@ -119,6 +119,8 @@
 		</div>
 	</div>
 
+<div  id="msjError" > </div>
+
 </body>
 
 
