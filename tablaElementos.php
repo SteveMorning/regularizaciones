@@ -125,7 +125,7 @@ $lstElementos = mysqli_query($con, $consulta);
                                 <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button> -->
 
                             <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
-                            <strong><?php echo $mostrar['Elemento']; ?> </strong>
+                            <strong><?php echo $mostrar['Elemento']; ?> </strong>   
 
                         </td>
                         <td class="text-right" style=" border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover"  data-original-title="titulo" data-content="Some content inside the popover">

@@ -243,6 +243,4 @@ document.getElementById("filtrosSeleccionados").outerText = $txtFiltroSelect  ;
 $($filtrosSeleccionados).attr("text", $resultadotxt);
 
 
-
-
 }

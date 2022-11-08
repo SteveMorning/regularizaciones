@@ -2618,7 +2618,7 @@ function miFuncion(rol) {
 		ordenar('Ingresos', 'armarios')
 	}
 
-	//// console.log(web)
+	
 
 
 }

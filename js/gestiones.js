@@ -145,7 +145,7 @@ function verificarPinchitos() {
     dataType: "json",
     data: {},
     success: function (data) {
-       console.log(data);
+      //  console.log(data);
       if (data.status == "ok") {
         data.result.forEach((element) => {
             dibujarpinchito(data.fields, element);
