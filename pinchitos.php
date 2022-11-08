@@ -12,10 +12,6 @@ $data['status'] = 'err';
 $filtraUnElemento = ($_POST) ?  "   where IdElemento in  ( ".$_POST['idElemento']." ) " : "  " ;
 
 //CONSULTAMOS LOS ELEMENTOS en TRATAMIENTO
-// $consulta = "SELECT ID_Elemento_ACTUAL , USUARIO  FROM bd3_gestiones.gestiones_actuales_elementos WHERE HERRAMIENTA = 'concentraciones_ICD' ; ";
-$consulta = "SELECT ID_Elemento_ACTUAL as IdElemento, Usuario , if(Usuario = '" .  $_SESSION['id']  . "',TRUE, FALSE) as userlocal ,FECHA_ULTIMA_MODIFICACION as Fecha,DATEDIFF ( curdate(), FECHA_ULTIMA_MODIFICACION)as dias, 'tomado' as status ,null as TICKETS_ALCANZADOS, null as	OBSERVACIONES FROM bd3_gestiones.gestiones_actuales_elementos   WHERE HERRAMIENTA = 'concentraciones_ICD' ;";
-
-
 
 $consulta = "SELECT todo.* , if ( isnull(concat(user.nombre,' ' ,user.apellido)), todo.usuario ,concat(user.nombre,' ' ,user.apellido)) as Colaborador , mail as email 
 from 

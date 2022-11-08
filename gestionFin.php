@@ -62,6 +62,7 @@ if (!empty($_POST)) {
     $data['insert_gestion'] = $consulta;
     $resultado = mysqli_query($con_w, $consulta);
     $data['insert_gestion'] = $consulta;
+    $data['status'] = "ok";
 };
 
 // ##################### BUSCA EL ID DE GESTION RECIEN INSERTADO #####################  
@@ -99,5 +100,7 @@ $consulta = "Delete  FROM bd3_gestiones.gestiones_actuales_elementos
 where usuario =  '" . $_SESSION['id'] . "'
 and  HERRAMIENTA   = '" . "concentraciones_ICD" . "';";
 $resultado = mysqli_query($con_w, $consulta);
+
+
 
 echo json_encode($data);

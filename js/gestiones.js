@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 function iniciarGestion(idElementoNuevo, obj) {
-  console.log("iniciarGestion");
+  // console.log("iniciarGestion");
   // console.log(idElemento);
   // console.log(obj);
   let icoDefault =
@@ -38,7 +38,7 @@ function iniciarGestion(idElementoNuevo, obj) {
               $(objActual).attr("src", icoDefault);
 
               data2.result.forEach((element) => {
-                dibujarpinchito_Ok(data2.fields, element);
+                dibujarpinchito(data2.fields, element);
               });
             }
           },
@@ -62,7 +62,6 @@ function iniciarGestion(idElementoNuevo, obj) {
   });
 }
 
-
 function dibujarGestionDescripcion(descripcion) {
   // console.log("dibujarGestionDescripcion");
   // console.log(descripcion);
@@ -75,66 +74,90 @@ function dibujarGestionDescripcion(descripcion) {
 }
 
 function finalizarGestion() {
-  console.log("finalizarGestion");
-
+  // console.log("function finalizarGestion");
+  
+  // let dddd = document.getElementById("selectGestion").innerText;
+  // let dddd = document.getElementById("selectGestion").innerHTML;
+  
+  
   let tipoGestion = document.getElementById("selectGestion").value;
+  let tipoGestionName = document.getElementById("selectGestion").children[tipoGestion].innerText ;
   let comentario = document.getElementById("comentgestion").value;
   let elemento = document.getElementById("elemento").textContent;
   let tipoElemento = document.getElementById("tipoElemento").textContent;
   let cantidadTickets = document.getElementById("cantidadTickets").textContent;
+  let errElemento,
+    errtipoGestion = 0;
+
+  errElemento = elemento == "  " ? (errElemento = 1) : (errElemento = 0);
+  errtipoGestion =
+    tipoGestion == "......" ? (errtipoGestion = 1) : (errtipoGestion = 0);
+
   // console.log({
   //   tipoGestion,
   //   comentario,
   //   tipoElemento,
   //   elemento,
-  //   cantidadTickets,
+  //   cantidadTickets, errElemento,errtipoGestion
   // });
 
-  $.ajax({
-    type: "POST",
-    url: "gestionFin.php",
-    dataType: "json",
-    data: {
-      tipoGestion: tipoGestion,
-      comentario: comentario,
-      elemento: elemento,
-      tipoElemento: tipoElemento,
-      cantidadTickets: cantidadTickets,
-    },
-    success: function (data) {
-      if (data.status == "ok") {
-        // console.log(data);
-      }
-    },
-  });
+  if (errElemento + errtipoGestion == 0) {
+    let acepta = confirm("¿Desea guardar la gestion " + tipoGestionName + " del " + tipoElemento + "  " + elemento + " ?");
 
-  verificarPinchitos();
+    if (acepta == true) {
+    
+    $.ajax({
+      type: "POST",
+      url: "gestionFin.php",
+      dataType: "json",
+      data: {
+        tipoGestion: tipoGestion,
+        comentario: comentario,
+        elemento: elemento,
+        tipoElemento: tipoElemento,
+        cantidadTickets: cantidadTickets,
+      },
+      success: function (data) {
+        if (data.status == "ok") {
+          alert("Gestion registrada correctamente");
+        } else {
+          alert("Error al guardar Gestion");
+        }
+      },
+    });
+
+    verificarPinchitos();
+  }
+  }else{
+    let mensaje = "";
+    mensaje = (errElemento == 1) ?  mensaje + " Seleccione el elemento a gestionar. " : mensaje  ;
+    mensaje = (errtipoGestion == 1) ?  mensaje +" Seleccione la gestion realizada. " :mensaje  ;
+    alert("Error al guardar la gestion!!! "  + mensaje);
+  }
+
 }
 
 function verificarPinchitos() {
-  console.log("verificarPinchitos");
+  // console.log("verificarPinchitos");
   $.ajax({
     type: "POST",
     url: "pinchitos.php",
     dataType: "json",
     data: {},
     success: function (data) {
-      console.log(data);
+       console.log(data);
       if (data.status == "ok") {
         data.result.forEach((element) => {
-          dibujarpinchito_Ok(data.fields, element);
+            dibujarpinchito(data.fields, element);
         });
       }
 
-      // setTimeout(() => {
-      //   dibujarpinchito(data);
-      // }, 300);
     },
   });
 }
 
-function dibujarpinchito_Ok(fields, element) {
-  // console.log("dibujarpinchito_Ok");
+function dibujarpinchito(fields, element) {
+  // console.log("dibujarpinchito");
   // idElemento , esUserLocal , fechaGestionFin, diasGestionFin,gestion,tktVinculados,usuarioId,usuarioNombre,observaciones
 
   // console.log(fields,element);
@@ -162,6 +185,8 @@ function dibujarpinchito_Ok(fields, element) {
         $(obj).css("border-color", "#ffc107");
         $(obj).css("background-color", "#fff3cd");
         $(obj).attr("src", icoTomadoMio);
+        // dibujarGestionDescripcion(element);
+
         break;
       case "1": // #######################  TOMADO   #######################
         // ROJO
@@ -263,190 +288,3 @@ function dibujarpinchito_Ok(fields, element) {
   }
 }
 
-function dibujarpinchito(descripcion) {
-  // console.log("dibujarpinchito");
-  // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
-  // <img src="https://img.icons8.com/color/48/000000/checked--v1.png"/>
-  // <img src="https://img.icons8.com/ultraviolet/40/000000/active-state.png"/>
-  //  <img src="https://img.icons8.com/external-konkapp-detailed-outline-konkapp/64/FFFFFF/external-working-work-from-home-konkapp-detailed-outline-konkapp.png"/>
-  //  <img src="https://img.icons8.com/external-konkapp-detailed-outline-konkapp/64/FFFFFF/external-working-work-from-home-konkapp-detailed-outline-konkapp-1.png"/>
-
-  descripcion.result.forEach((element) => {
-    // let icoDefault = "https://img.icons8.com/office/16/000000/play--v1.png" ;
-    // let icoDefault = "https://img.icons8.com/ultraviolet/40/000000/plus--v1.png" ;
-    // let icoDefault = "https://img.icons8.com/external-febrian-hidayat-outline-color-febrian-hidayat/25/000000/external-plus-ui-essential-febrian-hidayat-outline-color-febrian-hidayat.png" ;
-    // let icoDefault = "https://img.icons8.com/carbon-copy/100/228BE6/plus-2-math.png" ;
-    // let icoDefault = "https://img.icons8.com/ultraviolet/40/null/plus--v1.png" ;
-    // let icoDefault = "https://img.icons8.com/external-bluetone-bomsymbols-/25/null/external-add-digital-design-bluetone-set-2-bluetone-bomsymbols-.png" ;     // let icoDefault = "https://img.icons8.com/color/25/000000/checked--v1.png" ;
-    // let icoDefault = "https://img.icons8.com/office/25/null/info--v1.png" ;
-    let icoDefault =
-      "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
-    // let icoDefault = "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/228BE6/external-exclamation-mark-essentials-tanah-basah-glyph-tanah-basah.png" ;
-    // let icoDefault = "https://img.icons8.com/ios/50/228BE6/box-important--v1.png" ;
-    // let icoDefault =  "https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/null/external-information-notification-alert-xnimrodx-blue-xnimrodx.png" ;
-
-    let icoTomado = "https://img.icons8.com/fluency/25/000000/coworking.png";
-    //  let icoTomado = "https://img.icons8.com/external-tulpahn-outline-color-tulpahn/30/null/external-working-digital-nomad-tulpahn-outline-color-tulpahn-1.png";
-    // let icoTomado = "https://img.icons8.com/ios-filled/50/null/collaborating-in-circle.png";
-
-    let icoTomadoMio =
-      "https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
-
-    // let icoResuelto = "https://img.icons8.com/color/48/000000/ok--v1.png";
-    // let icoResuelto = "https://img.icons8.com/color/25/000000/checked--v1.png";
-    // let icoResuelto = "https://img.icons8.com/ultraviolet/25/null/add--v1.png";
-    // let icoResuelto = "https://img.icons8.com/officel/25/null/plus-math.png";
-    let icoResuelto = icoDefault;
-
-    let icoResueltoHoy =
-      "https://img.icons8.com/color/25/000000/checked--v1.png";
-    // let icoResueltoHoy = "https://img.icons8.com/offices/30/null/checked.png";
-
-    let obj = document.getElementById(element[0]);
-    let icodelay = document.getElementById("icodelay" + element[0]);
-
-    let pinchitos = document.querySelectorAll(".pinche");
-    // pinchitos.classList.add("border-primary");
-    // $(pinchitos).css("background-color", "#cfe2ff");
-
-    if (obj !== null) {
-      switch (element[7]) {
-        case "0":
-          // #######################  TOMADO POR MI  #######################
-          // obj.classList.remove("border-secondary");
-          // AZUL
-          // obj.classList.add("border-primary");
-          // $(obj).css("background-color", "#cfe2ff");
-
-          // Amarillo
-          $(obj).css("border-color", "#ffc107");
-          $(obj).css("background-color", "#fff3cd");
-
-          // Naranja
-          // $(obj).css("border-color", "#fd7e14");
-          // $(obj).css("background-color", "#ffe5d0");
-
-          $(obj).attr("src", icoTomadoMio);
-
-          break;
-        case "1":
-          // #######################  TOMADO   #######################
-          // console.log(obj);
-          // YELLOW
-          // obj.classList.remove("border-secondary");
-          // Amarillo
-          // $(obj).css("border-color", "#ffc107");
-          // $(obj).css("background-color", "#fff3cd");
-          // Naranja
-          $(obj).css("border-color", "#fd7e14");
-          $(obj).css("background-color", "#ffe5d0");
-          // ROJO
-          $(obj).css("border-color", "#dc3545");
-          $(obj).css("background-color", "#f8d7da");
-
-          $(obj).attr("src", icoTomado);
-
-          break;
-        case "2":
-          // #######################  RESUELTO HOY   #######################
-          if (element[3] == "0") {
-            $(obj).css("border-color", "#198754");
-            $(obj).css("background-color", "#d1e7dd");
-
-            $(obj).attr("src", icoResueltoHoy);
-            // $(obj).attr("src" , "https://img.icons8.com/color/30/000000/checked--v1.png");
-
-            // $(icodelay).attr( "src", "https://img.icons8.com/fluency/25/000000/today.png"  );
-            $(icodelay).attr(
-              "src",
-              "https://img.icons8.com/color/25/null/today.png"
-            );
-
-            $(icodelay).attr(
-              "data-original-title",
-              "Analizado el " + element[2] + "Hs"
-            );
-            $(icodelay).attr(
-              "data-content",
-              "<strong>" +
-                descripcion.fields[4].name +
-                ": </strong> " +
-                element[4] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[5].name +
-                ": </strong> " +
-                element[5] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[8].name +
-                ": </strong> " +
-                element[8] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[6].name +
-                ": </strong> " +
-                element[6] +
-                "<br>"
-            );
-          } else {
-            // #######################  RESUELTO ANTES   #######################
-
-            $(obj).css("border-color", "#0d6efd");
-            $(obj).css("background-color", "#cfe2ff");
-
-            $(obj).attr("src", icoResuelto);
-            // $(obj).attr("src" , "https://img.icons8.com/ultraviolet/30/000000/active-state.png");
-
-            $(icodelay).attr(
-              "src",
-              "https://img.icons8.com/color/25/null/calendar-week" +
-                element[3] +
-                ".png"
-            );
-
-            $(icodelay).attr(
-              "data-original-title",
-              "Analizado el " + element[2] + "Hs"
-            );
-            $(icodelay).attr(
-              "data-content",
-              "<strong>" +
-                descripcion.fields[4].name +
-                ": </strong> " +
-                element[4] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[5].name +
-                ": </strong> " +
-                element[5] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[8].name +
-                ": </strong> " +
-                element[8] +
-                "<br>" +
-                "<strong>" +
-                descripcion.fields[6].name +
-                ": </strong> " +
-                element[6] +
-                "<br>"
-            );
-          }
-          break;
-        default:
-          // #######################  DEFAULT   #######################
-          // obj.classList.add("border-secondary");
-          // $(obj).css("background-color", "#e9ecef");
-          $(obj).css("border-color", "#0d6efd");
-          $(obj).css("background-color", "#cfe2ff");
-          $(obj).attr("src", icoDefault);
-          // $(obj).attr("src" , "https://img.icons8.com/office/16/000000/play--v1.png");
-          // $(obj).attr("src" , "https://img.icons8.com/ultraviolet/30/000000/active-state.png");
-          //img.icons8.com/office/16/000000/play--v1.png
-
-          https: break;
-      }
-    }
-  });
-}
