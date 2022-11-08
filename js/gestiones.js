@@ -193,6 +193,8 @@ function dibujarpinchito(fields, element) {
         $(obj).css("border-color", "#dc3545");
         $(obj).css("background-color", "#f8d7da");
         $(obj).attr("src", icoTomado);
+        
+
         break;
       case "2":
         // #######################  RESUELTO HOY   #######################
