@@ -193,7 +193,8 @@ function dibujarpinchito(fields, element) {
         $(obj).css("border-color", "#dc3545");
         $(obj).css("background-color", "#f8d7da");
         $(obj).attr("src", icoTomado);
-        
+        let mensaje = "<strong>Tomado por </strong>: " + element[10] + " <br>" + "<strong>email</strong>: "+ element[11] + " <br>" + "<strong>Desde las</strong>: "+ element[3]+"Hs"
+        $(obj).attr ("data-original-title" ,mensaje);
 
         break;
       case "2":
