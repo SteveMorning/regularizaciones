@@ -20,8 +20,9 @@ Pendiente_Total, Max_Antig, Pend_N0, Pend_N1, Pend_N2, Pend_N3, Pend_N4, Pend_N5
 Ingreso_N0, Ingreso_N1, Ingreso_N2, Ingreso_N3, Ingreso_N4, Ingreso_N5, Ingreso_N6, Ingreso_N7,
 Promedio, Parque, Porc_Reclamado, IMPI, IMPI_Datos, IMPI_Voz, IMPE, HOLD, Retencion, Otros
 FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
-WHERE cinum IS NOT null " .  $losFiltros . " ORDER BY Pendiente_Total desc
--- ORDER BY Pend_N0 DESC   
+WHERE cinum IS NOT null " .  $losFiltros . " 
+-- ORDER BY Pendiente_Total desc
+ ORDER BY Pend_N1 DESC   
 LIMIT 100
 ;";
 
@@ -61,7 +62,7 @@ $lstElementos = mysqli_query($con, $consulta);
                             <div class="col-3">Elementos</div>
                             <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
                             <div class="col-3 mr-0 text-right"> <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse" data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px">
+                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px" data-trigger="hover"  data-toggle="tooltip"  data-original-title="Buscar texto cargado en el listado de elementos" >
                                 </button></div>
 
                         </div>

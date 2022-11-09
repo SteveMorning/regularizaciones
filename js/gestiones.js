@@ -145,7 +145,7 @@ function verificarPinchitos() {
     dataType: "json",
     data: {},
     success: function (data) {
-      //  console.log(data);
+        //  console.log(data);
       if (data.status == "ok") {
         data.result.forEach((element) => {
             dibujarpinchito(data.fields, element);
@@ -160,7 +160,7 @@ function dibujarpinchito(fields, element) {
   // console.log("dibujarpinchito");
   // idElemento , esUserLocal , fechaGestionFin, diasGestionFin,gestion,tktVinculados,usuarioId,usuarioNombre,observaciones
 
-  // console.log(fields,element);
+  //  console.log(fields,element);
 
   // console.log(fields[0].name + ": " + element[0]);
 
@@ -193,7 +193,7 @@ function dibujarpinchito(fields, element) {
         $(obj).css("border-color", "#dc3545");
         $(obj).css("background-color", "#f8d7da");
         $(obj).attr("src", icoTomado);
-        let mensaje = "<strong>Tomado por </strong>: " + element[10] + " <br>" + "<strong>email</strong>: "+ element[11] + " <br>" + "<strong>Desde las</strong>: "+ element[3]+"Hs"
+        let mensaje = "<strong>Tomado por </strong>: " + element[10] + " <br>" + "<strong>email</strong>: "+ element[11] + " <br>" + "<strong>Desde </strong>: "+ element[3]+"Hs"
         $(obj).attr ("data-original-title" ,mensaje);
 
         break;
