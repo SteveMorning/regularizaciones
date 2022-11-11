@@ -4,6 +4,7 @@ $(document).ready(function () {
   cargarElementos();
   cargarGestiones();
   verificarPinchitos();
+   
 });
 
 function inicializaCampos() {
@@ -183,7 +184,6 @@ function cargarElementos($losFiltros) {
     success: function (data) {
       $("#tablaElementos").empty();
       $("#tablaElementos").append(data);
-
       corrigeAltoBody();
       inicializaCampos();
     },

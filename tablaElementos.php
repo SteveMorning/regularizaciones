@@ -39,7 +39,7 @@ $lstElementos = mysqli_query($con, $consulta);
 
     <div>
 
-        <table class="table table-hover table-striped table-bordered table-sm">
+        <table class="table table-hover table-striped table-bordered table-sm" id="laTabla">
             <thead style="background-color: #ABDDE5; color:black; text-align: left; position: sticky; ">
 
                 <!-- <table class="table table-striped table-hover table-bordered table-sm">
@@ -62,7 +62,7 @@ $lstElementos = mysqli_query($con, $consulta);
                             <div class="col-3">Elementos</div>
                             <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
                             <div class="col-3 mr-0 text-right"> <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse" data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px" data-trigger="hover"  data-toggle="tooltip"  data-original-title="Buscar texto cargado en el listado de elementos" >
+                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px" data-trigger="hover" data-toggle="tooltip" data-original-title="Buscar texto cargado en el listado de elementos">
                                 </button></div>
 
                         </div>
@@ -118,7 +118,7 @@ $lstElementos = mysqli_query($con, $consulta);
                     ?>
 
                         <td class="text-left" style="width:280px; border-right:none">
-                            <img class="btn btn-xs  pinche p-0" src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip"  onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>" >
+                            <img class="btn btn-xs  pinche p-0" src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
 
                             </img>
 
@@ -126,10 +126,10 @@ $lstElementos = mysqli_query($con, $consulta);
                                 <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button> -->
 
                             <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
-                            <strong><?php echo $mostrar['Elemento']; ?> </strong>   
+                            <strong><?php echo $mostrar['Elemento']; ?> </strong>
 
                         </td>
-                        <td class="text-right" style=" border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover"  data-original-title="titulo" data-content="Some content inside the popover">
+                        <td class="text-right" style=" border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
                         </td>
 
                         <td class="text-left" style=" width:150px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
@@ -183,9 +183,6 @@ $lstElementos = mysqli_query($con, $consulta);
 
 
 <script>
-
-
-
     $(document).ready(function() {
 
         $("#buscarElemento").on("keyup", function() {
@@ -199,6 +196,10 @@ $lstElementos = mysqli_query($con, $consulta);
         $("[data-toggle='popover']").popover();
 
 
+        $('#laTabla').DataTable({
+            paging: false,
+            searching: false
+        });
 
 
     });
