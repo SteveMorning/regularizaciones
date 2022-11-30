@@ -322,10 +322,10 @@ function mostrarLista($Lista)
 				<input class="form-check-input" type="checkbox" id="inlineCheckbox5" onclick="mostrarOcultarCampos(this)" value="campoEstados" checked>
 				<label class="form-check-label" for="inlineCheckbox5">Estado Tkt</label>
 			</div>
-			<div class="form-check form-check-inline">
+			<!-- <div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" id="inlineCheckbox6" onclick="mostrarOcultarCampos(this)" value="campoParque" checked>
 				<label class="form-check-label" for="inlineCheckbox6">Parque</label>
-			</div>
+			</div> -->
 		</div>
 
 	</div>

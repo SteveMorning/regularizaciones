@@ -22,7 +22,7 @@ Promedio, Parque, Porc_Reclamado, IMPI, IMPI_Datos, IMPI_Voz, if(IMPE = 1 ,'Si',
 FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
 WHERE cinum IS NOT null " .  $losFiltros . " 
 -- ORDER BY Pendiente_Total desc
- ORDER BY Pend_N1 DESC   
+ ORDER BY Pend_N0 DESC   
 LIMIT 100
 ;";
 
@@ -50,9 +50,9 @@ $lstElementos = mysqli_query($con, $consulta);
                     <th colspan="8" class="table-info campoAntig text-center">Antiguedad Tkts</th>
                     <th colspan="3" class="table-info campoAntigFlag text-center">Antiguedad Flags</th>
                     <th colspan="8" class="table-info campoIngresos text-center">Ingresos Tkts</th>
-                    <th colspan="2" class="table-info campoAfectaciones text-center">Afectacion IMs</th>
+                    <th colspan="2" class="table-info campoAfectaciones text-center">Afectaciones</th>
                     <th colspan="3" class="table-info campoEstados text-center">Estado Tkts</th>
-                    <th colspan="3" class="table-info campoParque text-center">Parque</th>
+                    <!-- <th colspan="3" class="table-info campoParque text-center">Parque</th> -->
 
                 </tr>
                 <tr>
@@ -99,11 +99,11 @@ $lstElementos = mysqli_query($con, $consulta);
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; "> HOLD </th>
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; ">RETENCION </th>
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; "> OTROS </th>
-
+<!-- 
                     <th class="encabeza2s table-info campoParque text-center" style="border-color: #17a2b8; ">PARQUE </th>
                     <th class="encabeza2s table-info campoParque text-center" style="border-color: #17a2b8; "> % Reclamado </th>
                     <th class="encabeza2s table-info" style="border-color: #17a2b8; ">Analizar</th>
-
+ -->
                 </tr>
 
             </thead>
@@ -162,13 +162,11 @@ $lstElementos = mysqli_query($con, $consulta);
                         <td class="text-center campoEstados "><?php echo $mostrar['HOLD']; ?></td>
                         <td class="text-center campoEstados "><?php echo $mostrar['Retencion']; ?></td>
                         <td class="text-center campoEstados " style="border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Otros']; ?></td>
-
+<!-- 
                         <td class="text-center campoParque " <?php echo $mostrar['Parque']; ?></td>
                         <td class="text-Center campoParque "><?php echo $mostrar['Porc_Reclamado']; ?></td>
-
-
                         <td class="text-center" style="border-right: 1px solid; border-right-color: #17a2b8;"><button class="btn btn-warning btn-xs" style="width:25px; heigth:25px" type="button" id="myBtn" onclick="abreModal('<?php echo $mostrar['Region'] . '/' . $mostrar['Region'] . '/' . $mostrar['Region']; ?>')"><span class="fa fa-pencil-square-o" aria-hidden="true"></span></button></td>
-
+ -->
                 </tr>
             <?php
                     }
