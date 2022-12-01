@@ -154,145 +154,131 @@ function mostrarLista($Lista)
 ?>
 
 <div class="row">
-	<div class="col-md-8 col-xl-9">
-		<div class="row">
-			<div class="row col-10" id="contenedorDropDown">
+	<div class="col-md-8 col-xl-9 pr-0">
+		<div class="row col-11" id="contenedorDropDown">
 
-				<!-- ############## Regiones ############### -->
-				<div class="dropdown m-0 " data-mdb-filter="true" id="droplistRegion" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="region" data-toggle="dropdown">
-						Regiones
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
-						<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstRegiones" class="listaValores">
-							<?php mostrarLista('lstRegiones')  ?>
-						</div>
+			<!-- ############## Regiones ############### -->
+			<div class="dropdown m-0 " data-mdb-filter="true" id="droplistRegion" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="region" data-toggle="dropdown">
+					Regiones
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
+					<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0 " href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstRegiones" class="listaValores">
+						<?php mostrarLista('lstRegiones')  ?>
 					</div>
 				</div>
-
-
-				<!-- ############## SubRegiones ############### -->
-				<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
-						SubRegion
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstSubRegiones" class="listaValores">
-							<?php mostrarLista('lstSubRegiones')  ?>
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- ############## Base Tecnica ############### -->
-				<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
-						Base Tecnica
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosBaseTecnica">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstBaseTecnica" class="listaValores">
-							<?php mostrarLista('lstBaseTecnica')  ?>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- ############## Central ############### -->
-				<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistCentrales" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
-						Central
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarCentrales" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstCentrales" class="listaValores">
-							<?php mostrarLista('lstCentrales')  ?>
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- ############## DSLAM ############### -->
-				<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
-						DSLAM
-					</button>
-					<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarDSLAM" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstDSLAM">
-							<?php mostrarLista('lstDSLAM')  ?>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- ############## Tipo Elemento ############### -->
-				<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
-					<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
-						Tipo de Elemento
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarTipoElemento" type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosTipoElemento">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstTipoElemento">
-							<?php mostrarLista('lstTipoElemento')  ?>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- ############## Filtra Elemento ############### -->
-				<div>
-					<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:31px;  " type="text" placeholder="Filtra Elemento...">
-				</div>
-
-
 			</div>
 
-			<!-- ############## Boton Aplicar Filtros ############### -->
-			<div class="col-2 text-right">
-				<button type="button" id="btnAplicarFiltros" onclick="aplicaFiltrosElementos()" class="btn btn-primary btn-sm">Aplicar Filtros</button>
+			<!-- ############## SubRegiones ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
+					SubRegion
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0" href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstSubRegiones" class="listaValores">
+						<?php mostrarLista('lstSubRegiones')  ?>
+					</div>
+				</div>
 			</div>
 
+			<!-- ############## Base Tecnica ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
+					Base Tecnica
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0" href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosBaseTecnica">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstBaseTecnica" class="listaValores">
+						<?php mostrarLista('lstBaseTecnica')  ?>
+					</div>
+				</div>
+			</div>
 
+			<!-- ############## Central ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistCentrales" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
+					Central
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarCentrales" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0 " href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstCentrales" class="listaValores">
+						<?php mostrarLista('lstCentrales')  ?>
+					</div>
+				</div>
+			</div>
+
+			<!-- ############## DSLAM ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
+					DSLAM
+				</button>
+				<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarDSLAM" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0 " href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstDSLAM">
+						<?php mostrarLista('lstDSLAM')  ?>
+					</div>
+				</div>
+			</div>
+
+			<!-- ############## Tipo Elemento ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
+				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
+					Tipo de Elemento
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarTipoElemento" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0" href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosTipoElemento">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstTipoElemento">
+						<?php mostrarLista('lstTipoElemento')  ?>
+					</div>
+				</div>
+			</div>
+
+			<!-- ############## Filtra Elemento ############### -->
+			<div>
+				<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:31px;  " type="text" placeholder="Filtra Elemento...">
+			</div>
 		</div>
-		<!-- ############## Limpia de Filtros ############### -->
-		<div class="row mt-1">
-			<div class="row col-10 text-Left" id="filtrosSeleccionados">Filtros seleccionados:</div>
-			<div class="col-2 text-right">
+
+		<!-- ############## Botones de Filtros  ############### -->
+		<div class="row mt-1 m-0">
+			<div class="row col-9 text-Left" id="filtrosSeleccionados">Filtros seleccionados:</div>
+
+			<!-- ############## Boton Limpia de Filtros ############### -->
+			<div class="col-3 ml-4 pt-2 pr-0 text-right">
+				<!-- ############## Boton Aplicar Filtros ############### -->
+				<button type="button" id="btnAplicarFiltros" onclick="aplicaFiltrosElementos()" class="btn btn-primary btn-sm">Aplicar Filtros</button>
 				<button type=" button" id="btnLimpiarFiltros" onclick="limpiaFiltrosElementos()" class="btn btn-danger btn-sm">Limpiar Filtros</button>
 			</div>
 		</div>
@@ -400,7 +386,7 @@ function mostrarLista($Lista)
 			if (event.key === "Enter") {
 				event.preventDefault();
 				// mostrarFiltrosSeleccionados();
-				aplicaFiltrosElementos(); 
+				aplicaFiltrosElementos();
 			}
 		});
 
