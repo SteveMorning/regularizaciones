@@ -94,22 +94,22 @@
 
 			<!-- ################# STATUS ################# -->
 			<div class="card-header m-0 p-0 mt-2">
-				<div id="status" class="ml-3 m-1 "> </div>
+				<div id="status" class="ml-3 m-0 p-1 "> </div>
 			</div>
 
 			<!-- ################# FILTROS ################# -->
 			<div class="card-header m-0 p-0">
-				<div id="filtros" class="ml-3 m-1"> </div>
+				<div id="filtros" class="ml-3  m-0 p-0"> </div>
 			</div>
 
 			<!-- ################# TABLA ELEMENTOS ################# -->
 			<div class="card-header m-0 p-0">
-				<div id="tablaElementos" class="ml-3 m-1"> </div>
+				<div id="tablaElementos" class="ml-3  m-0 p-0"> </div>
 			</div>
 
 			<!-- ################# GESTION ################# -->
 			<div class="card-header m-0 p-0">
-				<div id="gestiones" class="ml-3"> </div>
+				<div id="gestiones" class="ml-3  m-0 p-1"> </div>
 			</div>
 
 

@@ -18,7 +18,7 @@ if ($_POST) {
 $consulta = "SELECT cinum, Region, SubRegion, BaseTecnica,  Elemento, Tipo_Elemento, 
 Pendiente_Total, Max_Antig, Pend_N0, Pend_N1, Pend_N2, Pend_N3, Pend_N4, Pend_N5, Pend_mas_N5, Pend_mas_N15, Pend_mas_N30, 
 Ingreso_N0, Ingreso_N1, Ingreso_N2, Ingreso_N3, Ingreso_N4, Ingreso_N5, Ingreso_N6, Ingreso_N7,
-Promedio, Parque, Porc_Reclamado, IMPI, IMPI_Datos, IMPI_Voz, if(IMPE = 1 ,'Si','No') as IMPE, HOLD, Retencion, Otros
+Promedio, Parque, Porc_Reclamado, if(IMPI = 1 ,'Si','No') as IMPI, IMPI_Datos, IMPI_Voz, if(IMPE = 1 ,'Si','No') as IMPE, HOLD, Retencion, Otros
 FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
 WHERE cinum IS NOT null " .  $losFiltros . " 
 -- ORDER BY Pendiente_Total desc

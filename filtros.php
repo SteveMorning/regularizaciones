@@ -155,11 +155,12 @@ function mostrarLista($Lista)
 
 <div class="row">
 	<div class="col-md-8 col-xl-9 pr-0">
+		<!-- ############## DropDown Filtros  ############### -->
 		<div class="row col-11" id="contenedorDropDown">
 
 			<!-- ############## Regiones ############### -->
 			<div class="dropdown m-0 " data-mdb-filter="true" id="droplistRegion" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="region" data-toggle="dropdown">
+				<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="region" data-toggle="dropdown">
 					Regiones
 				</button>
 				<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
@@ -176,8 +177,8 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## SubRegiones ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
+			<div class="dropdown p-0 m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
 					SubRegion
 				</button>
 				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
@@ -195,7 +196,7 @@ function mostrarLista($Lista)
 
 			<!-- ############## Base Tecnica ############### -->
 			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
+				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
 					Base Tecnica
 				</button>
 				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
@@ -211,9 +212,27 @@ function mostrarLista($Lista)
 				</div>
 			</div>
 
+			<!-- ############## Tipo Elemento ############### -->
+			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
+				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
+					Tipo de Elemento
+				</button>
+				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarTipoElemento" type="text" placeholder="Buscar..">
+					<a class="dropdown-item  btn-sm pr-0" href="#">
+						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosTipoElemento">
+						<label class="form-check-label">(Todos)</label>
+					</a>
+					<hr class="hr" style="margin : 0px ; ">
+					<div id="lstTipoElemento">
+						<?php mostrarLista('lstTipoElemento')  ?>
+					</div>
+				</div>
+			</div>
+
 			<!-- ############## Central ############### -->
 			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistCentrales" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
+				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
 					Central
 				</button>
 				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
@@ -231,7 +250,7 @@ function mostrarLista($Lista)
 
 			<!-- ############## DSLAM ############### -->
 			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
+				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
 					DSLAM
 				</button>
 				<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
@@ -247,28 +266,13 @@ function mostrarLista($Lista)
 				</div>
 			</div>
 
-			<!-- ############## Tipo Elemento ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
-				<button class="btn  btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
-					Tipo de Elemento
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarTipoElemento" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0" href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosTipoElemento">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstTipoElemento">
-						<?php mostrarLista('lstTipoElemento')  ?>
-					</div>
-				</div>
+			<!-- ############## Filtra Elemento ############### -->
+
+
+			<div class="mt-1">
+				<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:22px;  " type="text" placeholder="Filtra Elemento...">
 			</div>
 
-			<!-- ############## Filtra Elemento ############### -->
-			<div>
-				<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:31px;  " type="text" placeholder="Filtra Elemento...">
-			</div>
 		</div>
 
 		<!-- ############## Botones de Filtros  ############### -->
@@ -276,7 +280,7 @@ function mostrarLista($Lista)
 			<div class="row col-9 text-Left" id="filtrosSeleccionados">Filtros seleccionados:</div>
 
 			<!-- ############## Boton Limpia de Filtros ############### -->
-			<div class="col-3 ml-4 pt-2 pr-0 text-right">
+			<div class="col-3 ml-4 pt-0 pr-0 text-right">
 				<!-- ############## Boton Aplicar Filtros ############### -->
 				<button type="button" id="btnAplicarFiltros" onclick="aplicaFiltrosElementos()" class="btn btn-primary btn-sm">Aplicar Filtros</button>
 				<button type=" button" id="btnLimpiarFiltros" onclick="limpiaFiltrosElementos()" class="btn btn-danger btn-sm">Limpiar Filtros</button>
