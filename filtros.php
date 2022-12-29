@@ -277,8 +277,38 @@ function mostrarLista($Lista)
 
 		<!-- ############## Botones de Filtros  ############### -->
 		<div class="row mt-1 m-0">
-			<div class="row col-9 text-Left" id="filtrosSeleccionados">Filtros seleccionados:</div>
 
+			<div class="row col-8 text-Left">
+
+				<!-- ############## IMPI ############### -->
+				<div class="ml-2 m-1">IMPI</div>
+				<div class="custom-control custom-switch m-1">
+					<input type="checkbox" class="custom-control-input" id="customSwitch1">
+					<label class="custom-control-label" for="customSwitch1"></label>
+				</div>
+
+				<!-- ############## IMPE ############### -->
+				<div class="ml-2 m-1">IMPE</div>
+				<div class="custom-control custom-switch m-1 ">
+					<input type="checkbox" class="custom-control-input" id="customSwitch2">
+					<label class="custom-control-label" for="customSwitch2"></label>
+				</div>
+
+				<!-- ############## Hold ############### -->
+				<div class="ml-2 m-1">Hold</div>
+				<div class="custom-control custom-switch m-1">
+					<input type="checkbox" class="custom-control-input" id="customSwitch3">
+					<label class="custom-control-label" for="customSwitch3"></label>
+				</div>
+
+				<!-- ############## Retenidos ############### -->
+				<div class="ml-2 m-1">Retenidos</div>
+				<div class="custom-control custom-switch m-1">
+					<input type="checkbox" class="custom-control-input" id="customSwitch4">
+					<label class="custom-control-label" for="customSwitch4"></label>
+				</div>
+
+			</div>
 			<!-- ############## Boton Limpia de Filtros ############### -->
 			<div class="col-3 ml-4 pt-0 pr-0 text-right">
 				<!-- ############## Boton Aplicar Filtros ############### -->
@@ -289,9 +319,9 @@ function mostrarLista($Lista)
 	</div>
 	<div class="col-md-4 col-xl-3">
 		<!-- ############## Mostrar / Ocultar   ############### -->
-		<div class="alert alert-info  text-center p-0 m-0 mr-1" id="infoMostrarOcultar" style="max-width: 350px;">
-			<h6 class="mb-0">Mostrar / Ocultar Campos</h6>
-			<hr class="m-1">
+		<div class="alert alert-info  border-primary text-center p-0 m-0 mr-1 mt-1" id="infoMostrarOcultar" style="max-width: 350px;">
+			<!-- <h6 class="mb-0">Mostrar / Ocultar Campos</h6> -->
+			<!-- <hr class="m-1"> -->
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" onclick="mostrarOcultarCampos(this)" value="campoAntig" checked>
 				<label class="form-check-label" for="inlineCheckbox1">Antiguedad</label>

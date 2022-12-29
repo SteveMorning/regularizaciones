@@ -98,8 +98,8 @@
 			</div>
 
 			<!-- ################# FILTROS ################# -->
-			<div class="card-header m-0 p-0">
-				<div id="filtros" class="ml-3  m-0 p-0"> </div>
+			<div class="card-header m-0 p-0 ">
+				<div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
 			</div>
 
 			<!-- ################# TABLA ELEMENTOS ################# -->
@@ -109,7 +109,7 @@
 
 			<!-- ################# GESTION ################# -->
 			<div class="card-header m-0 p-0">
-				<div id="gestiones" class="ml-3  m-0 p-0 pt-1"> </div>
+				<div id="gestiones" class="ml-3  m-0 p-0 pt-1 pb-1"> </div>
 			</div>
 
 
@@ -117,7 +117,7 @@
 
 		<!-- ################# FOOTER ################# -->
 		<div class="card-footer" id="pie">
-			<label style="margin-top: 8px;">AES - Estudio SVC Pendiente:</label> <a href="mailto:estudioSVC@cablevision.com.ar" target="_top">estudioSVC@cablevision.com.ar</a>
+			<label style="margin-top: 3px;">AES - Estudio SVC Pendiente:</label> <a href="mailto:estudioSVC@cablevision.com.ar" target="_top">estudioSVC@cablevision.com.ar</a>
 		</div>
 	</div>
 

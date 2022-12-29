@@ -60,7 +60,7 @@ where MOSTRAR = true;";
 	</div>
 
 	<div class="col-4 m-0 p-0">
-		<div class="alert alert-info   m-0 p-0" role="alert">
+		<div class="alert alert-info border-primary    m-0 p-0" role="alert">
 			<div class="row m-1">
 				<h6> <strong> Tipo de Elemento:</strong> </h6>
 				<h6 class="ml-2" id="tipoElemento"> </h6>
