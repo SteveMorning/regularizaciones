@@ -23,7 +23,7 @@ function corrigeAltoBody(){
   var alto_status = $("#status").outerHeight();
   var alto_filtros = $("#filtros").outerHeight();
   // var alto_gestiones = $("#gestiones").outerHeight();
-  var alto_gestiones = 130;
+  var alto_gestiones = 78;
   var top_gestiones = ventana_alto - alto_pie - alto_gestiones;
 
   var alto_elementos =  alto_contenido - alto_status - alto_filtros - alto_gestiones ;
