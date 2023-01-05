@@ -91,15 +91,15 @@ function finalizarGestion() {
 
   errElemento = elemento == "  " ? (errElemento = 1) : (errElemento = 0);
   errtipoGestion =
-    tipoGestion == "......" ? (errtipoGestion = 1) : (errtipoGestion = 0);
+    tipoGestion == "Seleccione Gestion..." ? (errtipoGestion = 1) : (errtipoGestion = 0);
 
-  // console.log({
-  //   tipoGestion,
-  //   comentario,
-  //   tipoElemento,
-  //   elemento,
-  //   cantidadTickets, errElemento,errtipoGestion
-  // });
+  console.log({
+    tipoGestion,
+    comentario,
+    tipoElemento,
+    elemento,
+    cantidadTickets, errElemento,errtipoGestion
+  });
 
   if (errElemento + errtipoGestion == 0) {
     let acepta = confirm("¿Desea guardar la gestion " + tipoGestionName + " del " + tipoElemento + "  " + elemento + " ?");
