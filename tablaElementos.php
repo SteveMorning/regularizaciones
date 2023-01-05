@@ -26,6 +26,7 @@ WHERE cinum IS NOT null " .  $losFiltros . "
 LIMIT 100
 ;";
 
+// console_log($consulta);
 //  var_dump($losFiltros);
 //   var_dump($consulta);
 

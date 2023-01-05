@@ -4,7 +4,6 @@ $(document).ready(function () {
   cargarElementos();
   cargarGestiones();
   verificarPinchitos();
-   
 });
 
 function inicializaCampos() {
@@ -65,6 +64,11 @@ function aplicaFiltrosElementos() {
   $droplistCentrales = $("#droplistCentrales").attr("text");
   $droplistDSLAM = $("#droplistDSLAM").attr("text");
   $droplistTipoElemento = $("#droplistTipoElemento").attr("text");
+  $switchImpi = $("#switchIMPI").attr("text");
+  $switchImpe = $("#switchIMPE").attr("text");
+  $switchHold = $("#switchHold").attr("text");
+  $switchRetencion = $("#switchRetencion").attr("text");
+
   $filtraElemento = $("#filtraElemento").prop("value");
 
   $droplistRegion =
@@ -101,19 +105,43 @@ function aplicaFiltrosElementos() {
 
   $filtraElemento =
     $filtraElemento != ""
-      ? ($filtraElemento =
-          " AND elemento like '%" + $filtraElemento + "%' ")
+      ? ($filtraElemento = " AND elemento like '%" + $filtraElemento + "%' ")
       : "";
 
-  $losFiltros =
+  $switchImpi =
+    $switchImpi != ""
+      ? ($switchImpi = " AND Impi IS NOT TRUE  ")
+      : "";
+
+  $switchImpe =
+    $switchImpe != ""
+    ? ($switchImpe = " AND Impe IS NOT TRUE  ")
+      : "";
+  
+      $switchHold =
+    $switchHold != ""
+    ? ($switchHold = " AND HOLD = 0 ")
+      : "";
+
+      $switchRetencion =
+    $switchRetencion != ""
+    ? ($switchRetencion = " AND Retencion = 0 ")
+      : "";
+
+
+
+    $losFiltros =
     $droplistRegion +
     $droplistSubRegion +
     $droplistBaseTecnica +
     $droplistCentrales +
     $droplistDSLAM +
     $droplistTipoElemento +
-    $filtraElemento
-    ;
+    $switchImpi +
+    $switchImpe +
+    $switchHold +
+    $switchRetencion +
+    $filtraElemento;
 
   cargarElementos($losFiltros);
 }
@@ -211,36 +239,53 @@ function cargarGestiones() {
   });
 }
 
-
-
 function mostrarFiltrosSeleccionados() {
+  $filtrodroplistRegion = $("#droplistRegion").attr("value");
+  $filtrodroplistSubRegion = $("#droplistSubRegion").attr("value");
+  $filtrodroplistBaseTecnica = $("#droplistBaseTecnica").attr("text");
+  $filtrodroplistCentrales = $("#droplistCentrales").attr("text");
+  $filtrodroplistDSLAM = $("#droplistDSLAM").attr("text");
+  $filtrodroplistTipoElemento = $("#droplistTipoElemento").attr("text");
+  $filtrofiltraElemento = $("#filtraElemento").attr("text");
 
-  $filtrodroplistRegion = $("#droplistRegion").attr("value") ;
-  $filtrodroplistSubRegion = $("#droplistSubRegion").attr("value") ;
-  $filtrodroplistBaseTecnica = $("#droplistBaseTecnica").attr("text") ;
-  $filtrodroplistCentrales = $("#droplistCentrales").attr("text") ;
-  $filtrodroplistDSLAM = $("#droplistDSLAM").attr("text") ;
-  $filtrodroplistTipoElemento = $("#droplistTipoElemento").attr("text") ;
-  $filtrofiltraElemento = $("#filtraElemento").attr("text") ;
+  $filtrodroplistRegion = $filtrodroplistRegion = ""
+    ? ""
+    : $filtrodroplistRegion;
+  $filtrodroplistSubRegion = $filtrodroplistSubRegion = ""
+    ? ""
+    : $filtrodroplistSubRegion;
+  //  $filtrodroplistSubRegion =
+  //  $filtrodroplistBaseTecnica
+  //  $filtrodroplistCentrales =
+  //  $filtrodroplistDSLAM = $("#
+  //  $filtrodroplistTipoElemento
+  //  $filtrofiltraElemento = $("
 
- $filtrodroplistRegion = $filtrodroplistRegion = '' ? "" : $filtrodroplistRegion 
- $filtrodroplistSubRegion = $filtrodroplistSubRegion = '' ? "" : $filtrodroplistSubRegion 
-//  $filtrodroplistSubRegion = 
-//  $filtrodroplistBaseTecnica 
-//  $filtrodroplistCentrales = 
-//  $filtrodroplistDSLAM = $("#
-//  $filtrodroplistTipoElemento
-//  $filtrofiltraElemento = $("
+  let $txtFiltroSelect =
+    "'Filtros seleccionados: " +
+    $filtrodroplistRegion +
+    $filtrodroplistSubRegion +
+    "'";
+  //  + $filtrodroplistSubRegion + $filtrodroplistBaseTecnica
+  // + $filtrodroplistDSLAM  + $filtrodroplistCentrales + $filtrodroplistDSLAM +
+  // $filtrodroplistTipoElemento ;
+  // console.log( $txtFiltroSelect  );
+  document.getElementById("filtrosSeleccionados").outerText = $txtFiltroSelect;
+  $($filtrosSeleccionados).attr("text", $resultadotxt);
+}
 
+function cambioSwitch(objeto) {
+  console.log("function cambioSwitch");
+  console.log(objeto);
+  console.log(objeto.checked);
 
+  $switch = $(objeto);
 
- let $txtFiltroSelect = "'Filtros seleccionados: " + $filtrodroplistRegion + $filtrodroplistSubRegion + "'";
-//  + $filtrodroplistSubRegion + $filtrodroplistBaseTecnica
-// + $filtrodroplistDSLAM  + $filtrodroplistCentrales + $filtrodroplistDSLAM + 
-// $filtrodroplistTipoElemento ;
-// console.log( $txtFiltroSelect  );
-document.getElementById("filtrosSeleccionados").outerText = $txtFiltroSelect  ;
-$($filtrosSeleccionados).attr("text", $resultadotxt);
-
-
+  if (objeto.checked) {
+    /*   objeto.text = 'Si'; */
+    $($switch).attr("text", true);
+  } else {
+    /*   objeto.text = 'No'; */
+    $($switch).attr("text", "");
+  }
 }

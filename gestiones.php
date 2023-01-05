@@ -45,7 +45,7 @@ where MOSTRAR = true;";
 		<h5 class="m-0" >Gestion de elementos</h5>
 		<!-- <select name="select" class="custom-select p-1 " id="selectGestion"> -->
 		<select name="select" class="dropdown-toggle p-1 mt-1 " id="selectGestion">
-			<option selected>Seleccione Gestion</option>
+			<option selected>Seleccione Gestion...</option>
 			<?php
 			while ($gestion = mysqli_fetch_array($lstDesplegableGestiones)) {
 				echo "<option value='" . $gestion[0] . "'>" . $gestion[1] . "</option>";

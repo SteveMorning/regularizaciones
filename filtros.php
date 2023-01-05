@@ -281,31 +281,31 @@ function mostrarLista($Lista)
 			<div class="row col-8 text-Left">
 
 				<!-- ############## IMPI ############### -->
-				<div class="ml-2 m-1">IMPI</div>
-				<div class="custom-control custom-switch m-1">
-					<input type="checkbox" class="custom-control-input" id="customSwitch1">
-					<label class="custom-control-label" for="customSwitch1"></label>
+				<div class="ml-2 m-1" data-toggle="tooltip"  title="Filtra IMPI= No">Sin IMPI</div>
+				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra IMPI= No">
+					<input type="checkbox" class="custom-control-input" id="switchIMPI" onchange=cambioSwitch(this)   text="">
+					<label class="custom-control-label" for="switchIMPI"></label>
 				</div>
 
 				<!-- ############## IMPE ############### -->
-				<div class="ml-2 m-1">IMPE</div>
-				<div class="custom-control custom-switch m-1 ">
-					<input type="checkbox" class="custom-control-input" id="customSwitch2">
-					<label class="custom-control-label" for="customSwitch2"></label>
+				<div class="ml-3 m-1" data-toggle="tooltip"  title="Filtra IMPE= No">Sin IMPE</div>
+				<div class="custom-control custom-switch m-1 "  data-toggle="tooltip"  title="Filtra IMPE= No">
+					<input type="checkbox" class="custom-control-input" id="switchIMPE"  onchange=cambioSwitch(this) text="">
+					<label class="custom-control-label" for="switchIMPE"></label>
 				</div>
 
 				<!-- ############## Hold ############### -->
-				<div class="ml-2 m-1">Hold</div>
-				<div class="custom-control custom-switch m-1">
-					<input type="checkbox" class="custom-control-input" id="customSwitch3">
-					<label class="custom-control-label" for="customSwitch3"></label>
+				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Holdeados= 0">Sin Hold</div>
+				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra cantidad de Holdeados= 0">
+					<input type="checkbox" class="custom-control-input" id="switchHold" onchange=cambioSwitch(this)   text="">
+					<label class="custom-control-label" for="switchHold"></label>
 				</div>
 
 				<!-- ############## Retenidos ############### -->
-				<div class="ml-2 m-1">Retenidos</div>
-				<div class="custom-control custom-switch m-1">
-					<input type="checkbox" class="custom-control-input" id="customSwitch4">
-					<label class="custom-control-label" for="customSwitch4"></label>
+				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >Sin Retenidos</div>
+				<div class="custom-control custom-switch m-1"  data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >
+					<input type="checkbox" class="custom-control-input" id="switchRetencion"  onchange=cambioSwitch(this)   text="">
+					<label class="custom-control-label" for="switchRetencion" ></label>
 				</div>
 
 			</div>
