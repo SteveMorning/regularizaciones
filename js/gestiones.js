@@ -18,7 +18,7 @@ function iniciarGestion(idElementoNuevo, obj) {
     type: "POST",
     url: "gestionInicio.php",
     dataType: "json",
-    data: { idElemento: idElementoNuevo, web: "concentraciones_ICD" },
+    data: { idElemento: idElementoNuevo, web: "analisis_cobre" },
     success: function (data) {
       // console.log(data.status);
       // console.log(data);

@@ -57,7 +57,7 @@ if ($_SESSION['id'] == '') {  /* ############ VERIFICA SI EL USUARIO ESTA LOGUEA
                                 '" . $_POST['idElemento'] . "',
                                 '" . $_SESSION['id'] . "',
                                 now() ,
-                                '" . "concentraciones_ICD" . "',
+                                '" . "analisis_cobre" . "',
                                 '" . $_POST['idElemento'] . "',
                                 now()
                                 )

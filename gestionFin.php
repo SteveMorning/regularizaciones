@@ -52,11 +52,11 @@ if (!empty($_POST)) {
     curdate() as DIA, 
     'REGION' as REGION , 
     'SUBREGION' as SUBREGION,
-    '" . "concentraciones_ICD" . "' as Herramienta ,
+    '" . "analisis_cobre" . "' as Herramienta ,
     " . $_POST['cantidadTickets'] . " as TICKETS_ALCANZADOS
   from  bd3_gestiones.gestiones_actuales_elementos
   Where usuario = '" . $_SESSION['id'] . "'
-  and  HERRAMIENTA   = '" . "concentraciones_ICD" . "'
+  and  HERRAMIENTA   = '" . "analisis_cobre" . "'
   ;";
 
     $data['insert_gestion'] = $consulta;
@@ -68,7 +68,7 @@ if (!empty($_POST)) {
 // ##################### BUSCA EL ID DE GESTION RECIEN INSERTADO #####################  
 $consulta = "select max(id_gestion) as Id_Gestion from  bd3_gestiones.gestiones_operadores_elementos
 Where usuario = '" . $_SESSION['id'] . "'
-and  HERRAMIENTA   = '" . "concentraciones_ICD" . "'
+and  HERRAMIENTA   = '" . "analisis_cobre" . "'
 ;";
 $resultado = mysqli_query($con, $consulta);
 $ultGestion = mysqli_fetch_array($resultado);
@@ -98,7 +98,7 @@ $consulta = "Insert into  bd3_gestiones.gestiones_operadores_tickets
 /*     Borra el usuario de las gestiones actuales  */
 $consulta = "Delete  FROM bd3_gestiones.gestiones_actuales_elementos 
 where usuario =  '" . $_SESSION['id'] . "'
-and  HERRAMIENTA   = '" . "concentraciones_ICD" . "';";
+and  HERRAMIENTA   = '" . "analisis_cobre" . "';";
 $resultado = mysqli_query($con_w, $consulta);
 
 

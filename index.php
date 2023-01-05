@@ -21,13 +21,13 @@
 	global $idUsuario;
 	global $web;
 	$idUsuario =  $_SESSION['id'];
-	$web = "concentraciones_ICD";
+	$web = "analisis_cobre";
 
 
 	// $GLOBALS['idUsuario'] =  $_SESSION['user'];
-	// $GLOBALS['web'] = "concentraciones_ICD";
+	// $GLOBALS['web'] = "analisis_cobre";
 
-	validar_sesion('Concentraciones_ICD');
+	validar_sesion('analisis_cobre');
 	headerBasico();
 	headerBootstrap(1);
 	headerDatatables();
@@ -53,7 +53,7 @@
 
 	<link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
 
-	<title>Concentraciones ICD</title>
+	<title>Análisis Cobre</title>
 
 </head>
 
@@ -63,7 +63,7 @@
 		<!-- ################# HEADER ################# -->
 		<div class="card-header" id="encabezado">
 			<nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
-				<a class="navbar-brand" href="#">Concentraciones ICD</a>
+				<a class="navbar-brand" href="#">Análisis Cobre</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -82,7 +82,7 @@
 							</span>
 						</li>
 						<li class="nav-item">
-							<a href="../recursos/sesion/desconectar.php?pag=Concentraciones_ICD" class="nav-link"><span class="fa fa-sign-out" aria-hidden="true"></span> CERRAR SESION</a>
+							<a href="../recursos/sesion/desconectar.php?pag=analisis_cobre" class="nav-link"><span class="fa fa-sign-out" aria-hidden="true"></span> CERRAR SESION</a>
 						</li>
 					</ul>
 				</div>
