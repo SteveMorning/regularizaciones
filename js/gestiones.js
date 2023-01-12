@@ -4,6 +4,9 @@ $(document).ready(function () {
   }, 5000);
 });
 
+
+
+
 function iniciarGestion(idElementoNuevo, obj) {
   // console.log("iniciarGestion");
   // console.log(idElemento);
@@ -68,65 +71,75 @@ function dibujarGestionDescripcion(descripcion) {
   document.getElementById("tipoElemento").innerHTML = descripcion.Tipo_Elemento;
   document.getElementById("elemento").innerHTML = descripcion.Elemento;
   document.getElementById("cantidadTickets").innerHTML =
-    descripcion.Pendiente_Total;
+  descripcion.Pendiente_Total;
   document.getElementById("comentgestion").innerHTML =
     "idElemento cinum=" + descripcion.cinum;
 }
 
 function finalizarGestion() {
-  // console.log("function finalizarGestion");
+   console.log("function finalizarGestion");
+
   
-  // let dddd = document.getElementById("selectGestion").innerText;
-  // let dddd = document.getElementById("selectGestion").innerHTML;
-  
-  
-  let tipoGestion = document.getElementById("selectGestion").value;
-  let tipoGestionName = document.getElementById("selectGestion").children[tipoGestion].innerText ;
+  // let tipoGestion = document.getElementById("selectGestion").value;
+  let tipoGestion = document.getElementById("selectGestion").options[document.getElementById("selectGestion").selectedIndex].value;
+  let tipoGestionName = document.getElementById("selectGestion").options[document.getElementById("selectGestion").selectedIndex].text;
   let comentario = document.getElementById("comentgestion").value;
   let elemento = document.getElementById("elemento").textContent;
   let tipoElemento = document.getElementById("tipoElemento").textContent;
   let cantidadTickets = document.getElementById("cantidadTickets").textContent;
-  let errElemento,
-    errtipoGestion = 0;
+  let errElemento;
+  let errtipoGestion = 0;
 
-  errElemento = elemento == "  " ? (errElemento = 1) : (errElemento = 0);
-  errtipoGestion =
-    tipoGestion == "Seleccione Gestion..." ? (errtipoGestion = 1) : (errtipoGestion = 0);
+  errElemento = elemento == " " ? (errElemento = 1) : (errElemento = 0);
+  errtipoGestion =  tipoGestion == "Seleccione Gestion..." ? (errtipoGestion = 1) : (errtipoGestion = 0);
 
-  console.log({
-    tipoGestion,
-    comentario,
-    tipoElemento,
-    elemento,
-    cantidadTickets, errElemento,errtipoGestion
-  });
+  // console.log({
+  //   tipoGestion,
+  //   tipoGestionName,
+  //   comentario,
+  //   tipoElemento,
+  //   elemento,
+  //   cantidadTickets, errElemento,errtipoGestion
+  // });
 
   if (errElemento + errtipoGestion == 0) {
     let acepta = confirm("¿Desea guardar la gestion " + tipoGestionName + " del " + tipoElemento + "  " + elemento + " ?");
+    console.log("Acepta:" + acepta);
 
     if (acepta == true) {
-    
-    $.ajax({
-      type: "POST",
-      url: "gestionFin.php",
-      dataType: "json",
-      data: {
-        tipoGestion: tipoGestion,
-        comentario: comentario,
-        elemento: elemento,
-        tipoElemento: tipoElemento,
-        cantidadTickets: cantidadTickets,
-      },
-      success: function (data) {
-        if (data.status == "ok") {
-          alert("Gestion registrada correctamente");
-        } else {
-          alert("Error al guardar Gestion");
+      console.log("Acepta:" + 'si');
+      blanquearGestion();
+      $.ajax({
+        type: "POST",
+        url: "gestionFin.php",
+        dataType: "json",
+        data: {
+          tipoGestion: tipoGestion,
+          comentario: comentario,
+          elemento: elemento,
+          tipoElemento: tipoElemento,
+          cantidadTickets: cantidadTickets,
+        },
+        // verificar la devolucion OK 
+        success: function (data) {
+          console.log('exito');
+          console.log(data);
+          console.log(data.status);
+          if (data.status == "ok") {
+            alert("Gestion registrada correctamente");
+          } else {
+            alert("Error al guardar Gestion");
+          }
+        },
+        error: function(data){
+          console.log('error');
+          //Cuando la interacción retorne un error, se ejecutará esto.
         }
-      },
-    });
-
-    verificarPinchitos();
+      });
+      
+      verificarPinchitos();
+    }else{
+    console.log('No se impacto la gestion');
   }
   }else{
     let mensaje = "";
@@ -134,6 +147,26 @@ function finalizarGestion() {
     mensaje = (errtipoGestion == 1) ?  mensaje +" Seleccione la gestion realizada. " :mensaje  ;
     alert("Error al guardar la gestion!!! "  + mensaje);
   }
+
+}
+
+function  blanquearGestion ()
+{
+  document.getElementById("selectGestion").selectedIndex = 'Seleccione Gestion...';
+  document.getElementById("comentgestion").textContent = 'Comentario de la gestion';
+  document.getElementById("tipoElemento").textContent = '';
+  document.getElementById("elemento").textContent =  ' ';
+  document.getElementById("cantidadTickets").textContent = '';
+
+}
+
+function  testear ()
+{
+  document.getElementById("selectGestion").selectedIndex = 'Seleccione Gestion...';
+  document.getElementById("comentgestion").textContent = 'Test';
+  document.getElementById("tipoElemento").textContent = 'UC';
+  document.getElementById("elemento").textContent =  'FSH2';
+  document.getElementById("cantidadTickets").textContent = '100';
 
 }
 

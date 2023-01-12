@@ -32,9 +32,7 @@ where MOSTRAR = true;";
 // $lstDesplegableGestiones = mysqli_query($con, $consulta);
 
 
-
 ?>
-
 
 
 
@@ -42,9 +40,9 @@ where MOSTRAR = true;";
 <div class="row pl-1">
 	
 	<div class="col-2 m-0 p-0">
-		<h5 class="m-0" >Gestion de elementos</h5>
+		<h5 class="m-0"  >Gestion de elementos</h5>
 		<!-- <select name="select" class="custom-select p-1 " id="selectGestion"> -->
-		<select name="select" class="dropdown-toggle p-1 mt-1 " id="selectGestion">
+		<select name="select" class="dropdown-toggle p-1 mt-1 " id="selectGestion"  text="">
 			<option selected>Seleccione Gestion...</option>
 			<?php
 			while ($gestion = mysqli_fetch_array($lstDesplegableGestiones)) {
