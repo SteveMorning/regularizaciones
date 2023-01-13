@@ -31,7 +31,9 @@ from bd3_gestiones.cobre_items_gestiones) itm
 ON ele.ID_ITEM_GESTION = itm.ID_ITEM_GESTION
 ) todo
 LEFT JOIN bd3_sistema.sesion user
-ON user.id = todo.usuario ". $filtraUnElemento . " order by fecha_fin asc
+ON user.id = todo.usuario ". $filtraUnElemento . " 
+Where gestion not in ('cierre por demora de gestion' , 'Liberar Gestion')
+order by fecha_fin asc
 ;";
 
 
