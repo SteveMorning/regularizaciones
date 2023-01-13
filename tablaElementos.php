@@ -36,7 +36,7 @@ $lstElementos = mysqli_query($con, $consulta);
 ?>
 
 
-<div class="row " id="tableElementosInterna" style="height: 500px;  overflow-y:auto; display:block ">
+<div class="row " id="tableElementosInterna" style="height: 500px;  overflow-y:auto; display:block; ">
 
     <div>
 

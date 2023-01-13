@@ -109,28 +109,17 @@ function aplicaFiltrosElementos() {
       : "";
 
   $switchImpi =
-    $switchImpi != ""
-      ? ($switchImpi = " AND Impi IS NOT TRUE  ")
-      : "";
+    $switchImpi != "" ? ($switchImpi = " AND Impi IS NOT TRUE  ") : "";
 
   $switchImpe =
-    $switchImpe != ""
-    ? ($switchImpe = " AND Impe IS NOT TRUE  ")
-      : "";
-  
-      $switchHold =
-    $switchHold != ""
-    ? ($switchHold = " AND HOLD = 0 ")
-      : "";
+    $switchImpe != "" ? ($switchImpe = " AND Impe IS NOT TRUE  ") : "";
 
-      $switchRetencion =
-    $switchRetencion != ""
-    ? ($switchRetencion = " AND Retencion = 0 ")
-      : "";
+  $switchHold = $switchHold != "" ? ($switchHold = " AND HOLD = 0 ") : "";
 
+  $switchRetencion =
+    $switchRetencion != "" ? ($switchRetencion = " AND Retencion = 0 ") : "";
 
-
-    $losFiltros =
+  $losFiltros =
     $droplistRegion +
     $droplistSubRegion +
     $droplistBaseTecnica +
@@ -203,7 +192,6 @@ function cargarElementos($losFiltros) {
     data: { losFiltros: $losFiltros },
 
     beforeSend: function () {
-      /*  $("#tablaDia").html("Procesando, espere por favor..."); */
       $("#tablaElementos").html(
         '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
       );
@@ -227,7 +215,8 @@ function cargarGestiones() {
     beforeSend: function () {
       /*  $("#tablaDia").html("Procesando, espere por favor..."); */
       $("#gestiones").html(
-        '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+        // '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+        '<div class="spinner-border" role="status"  ><span class="sr-only"  >Loading...</span> </div>'
       );
     },
 

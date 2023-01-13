@@ -77,7 +77,7 @@ function dibujarGestionDescripcion(descripcion) {
 }
 
 function finalizarGestion() {
-   console.log("function finalizarGestion");
+  //  console.log("function finalizarGestion");
 
   
   // let tipoGestion = document.getElementById("selectGestion").value;
@@ -104,10 +104,10 @@ function finalizarGestion() {
 
   if (errElemento + errtipoGestion == 0) {
     let acepta = confirm("¿Desea guardar la gestion " + tipoGestionName + " del " + tipoElemento + "  " + elemento + " ?");
-    console.log("Acepta:" + acepta);
+    // console.log("Acepta:" + acepta);
 
     if (acepta == true) {
-      console.log("Acepta:" + 'si');
+      // console.log("Acepta:" + 'si');
       blanquearGestion();
       $.ajax({
         type: "POST",
@@ -122,9 +122,9 @@ function finalizarGestion() {
         },
         // verificar la devolucion OK 
         success: function (data) {
-          console.log('exito');
-          console.log(data);
-          console.log(data.status);
+          // console.log('exito');
+          // console.log(data);
+          // console.log(data.status);
           if (data.status == "ok") {
             alert("Gestion registrada correctamente");
           } else {
@@ -132,14 +132,14 @@ function finalizarGestion() {
           }
         },
         error: function(data){
-          console.log('error');
+          // console.log('error');
           //Cuando la interacción retorne un error, se ejecutará esto.
         }
       });
       
       verificarPinchitos();
     }else{
-    console.log('No se impacto la gestion');
+    // console.log('No se impacto la gestion');
   }
   }else{
     let mensaje = "";
@@ -178,8 +178,7 @@ function verificarPinchitos() {
     dataType: "json",
     data: {},
     success: function (data) {
-        //  console.log(data);
-      if (data.status == "ok") {
+          if (data.status == "ok") {
         data.result.forEach((element) => {
             dibujarpinchito(data.fields, element);
         });
@@ -190,12 +189,7 @@ function verificarPinchitos() {
 }
 
 function dibujarpinchito(fields, element) {
-  // console.log("dibujarpinchito");
-  // idElemento , esUserLocal , fechaGestionFin, diasGestionFin,gestion,tktVinculados,usuarioId,usuarioNombre,observaciones
 
-  //  console.log(fields,element);
-
-  // console.log(fields[0].name + ": " + element[0]);
 
   let icoDefault =
     "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
@@ -208,7 +202,6 @@ function dibujarpinchito(fields, element) {
   let obj = document.getElementById(element[0]);
   let icodelay = document.getElementById("icodelay" + element[0]);
 
-  // let pinchitos = document.querySelectorAll(".pinche");
 
   if (obj !== null) {
     //  /* este es el usuario 0:tomado por mi, 1:tomado  , 2:resuelto  y el element[5]  te dice cuando fue resuelto */
