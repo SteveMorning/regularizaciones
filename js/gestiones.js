@@ -92,7 +92,7 @@ function finalizarGestion() {
 
   errElemento = elemento == " " ? (errElemento = 1) : (errElemento = 0);
   errtipoGestion =  tipoGestion == "Seleccione Gestion..." ? (errtipoGestion = 1) : (errtipoGestion = 0);
-
+  cantidadTickets = tipoGestion == 8 ? cantidadTickets = 0 : cantidadTickets = cantidadTickets ;
   // console.log({
   //   tipoGestion,
   //   tipoGestionName,

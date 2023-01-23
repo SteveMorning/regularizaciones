@@ -154,7 +154,7 @@ function mostrarLista($Lista)
 ?>
 
 <div class="row">
-	<div class="col-md-8 col-xl-9 pr-0">
+	<div class="col-md-8 col-xl-9 pr-0 pl-1">
 		<!-- ############## DropDown Filtros  ############### -->
 		<div class="row col-11" id="contenedorDropDown">
 
@@ -177,7 +177,7 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## SubRegiones ############### -->
-			<div class="dropdown p-0 m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+			<div class="dropdown p-0 m-0 ml-1" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
 				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
 					SubRegion
 				</button>
@@ -195,7 +195,7 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## Base Tecnica ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+			<div class="dropdown m-0 ml-1" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
 				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
 					Base Tecnica
 				</button>
@@ -213,7 +213,7 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## Tipo Elemento ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
+			<div class="dropdown m-0 ml-1" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
 				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
 					Tipo de Elemento
 				</button>
@@ -231,7 +231,7 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## Central ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistCentrales" value="" text="">
+			<div class="dropdown m-0 ml-1" data-mdb-filter="true" id="droplistCentrales" value="" text="">
 				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
 					Central
 				</button>
@@ -249,7 +249,7 @@ function mostrarLista($Lista)
 			</div>
 
 			<!-- ############## DSLAM ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
+			<div class="dropdown m-0 ml-1" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
 				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
 					DSLAM
 				</button>
@@ -317,9 +317,9 @@ function mostrarLista($Lista)
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 col-xl-3">
+	<div class="col-md-4 col-xl-3 p-0 m-0">
 		<!-- ############## Mostrar / Ocultar   ############### -->
-		<div class="alert alert-info  border-primary text-center p-0 m-0 mr-1 mt-1" id="infoMostrarOcultar" style="max-width: 350px;">
+		<div class="alert alert-info  border-primary text-center p-0 m-0 mr-1 mt-1" id="infoMostrarOcultar" style="max-width: 350px; min-width:310px">
 			<!-- <h6 class="mb-0">Mostrar / Ocultar Campos</h6> -->
 			<!-- <hr class="m-1"> -->
 			<div class="form-check form-check-inline">
