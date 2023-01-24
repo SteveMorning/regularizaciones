@@ -57,7 +57,7 @@ where MOSTRAR = true;";
 		<textarea name="area1" id="comentgestion" cols=60 rows=3 placeholder="Comentario de la gestion"></textarea>
 	</div>
 
-	<div class="col-4 m-0 p-0 ml-3">
+	<div class="col-4 m-0 p-0">
 		<div class="alert alert-info border-primary    m-0 p-0" role="alert">
 			<div class="row m-1">
 				<h6> <strong> Tipo de Elemento:</strong> </h6>

@@ -108,7 +108,7 @@ function finalizarGestion() {
 
     if (acepta == true) {
       // console.log("Acepta:" + 'si');
-      blanquearGestion();
+       blanquearGestion();
       $.ajax({
         type: "POST",
         url: "gestionFin.php",
