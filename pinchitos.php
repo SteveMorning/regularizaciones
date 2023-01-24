@@ -32,7 +32,7 @@ ON ele.ID_ITEM_GESTION = itm.ID_ITEM_GESTION
 ) todo
 LEFT JOIN bd3_sistema.sesion user
 ON user.id = todo.usuario ". $filtraUnElemento . " 
-order by fecha_fin asc
+order by fecha_fin desc
 ;";
 
 // ON user.id = todo.usuario ". $filtraUnElemento . " 

@@ -1,11 +1,9 @@
 $(document).ready(function () {
+  marcarElementoInicialTomado();
   setInterval(() => {
     verificarPinchitos();
   }, 5000);
 });
-
-
-
 
 function iniciarGestion(idElementoNuevo, obj) {
   // console.log("iniciarGestion");
@@ -71,7 +69,7 @@ function dibujarGestionDescripcion(descripcion) {
   document.getElementById("tipoElemento").innerHTML = descripcion.Tipo_Elemento;
   document.getElementById("elemento").innerHTML = descripcion.Elemento;
   document.getElementById("cantidadTickets").innerHTML =
-  descripcion.Pendiente_Total;
+    descripcion.Pendiente_Total;
   document.getElementById("comentgestion").innerHTML =
     "idElemento cinum=" + descripcion.cinum;
 }
@@ -79,10 +77,15 @@ function dibujarGestionDescripcion(descripcion) {
 function finalizarGestion() {
   //  console.log("function finalizarGestion");
 
-  
   // let tipoGestion = document.getElementById("selectGestion").value;
-  let tipoGestion = document.getElementById("selectGestion").options[document.getElementById("selectGestion").selectedIndex].value;
-  let tipoGestionName = document.getElementById("selectGestion").options[document.getElementById("selectGestion").selectedIndex].text;
+  let tipoGestion =
+    document.getElementById("selectGestion").options[
+      document.getElementById("selectGestion").selectedIndex
+    ].value;
+  let tipoGestionName =
+    document.getElementById("selectGestion").options[
+      document.getElementById("selectGestion").selectedIndex
+    ].text;
   let comentario = document.getElementById("comentgestion").value;
   let elemento = document.getElementById("elemento").textContent;
   let tipoElemento = document.getElementById("tipoElemento").textContent;
@@ -91,8 +94,14 @@ function finalizarGestion() {
   let errtipoGestion = 0;
 
   errElemento = elemento == " " ? (errElemento = 1) : (errElemento = 0);
-  errtipoGestion =  tipoGestion == "Seleccione Gestion..." ? (errtipoGestion = 1) : (errtipoGestion = 0);
-  cantidadTickets = tipoGestion == 8 ? cantidadTickets = 0 : cantidadTickets = cantidadTickets ;
+  errtipoGestion =
+    tipoGestion == "Seleccione Gestion..."
+      ? (errtipoGestion = 1)
+      : (errtipoGestion = 0);
+  cantidadTickets =
+    tipoGestion == 8
+      ? (cantidadTickets = 0)
+      : (cantidadTickets = cantidadTickets);
   // console.log({
   //   tipoGestion,
   //   tipoGestionName,
@@ -103,12 +112,20 @@ function finalizarGestion() {
   // });
 
   if (errElemento + errtipoGestion == 0) {
-    let acepta = confirm("¿Desea guardar la gestion " + tipoGestionName + " del " + tipoElemento + "  " + elemento + " ?");
+    let acepta = confirm(
+      "¿Desea guardar la gestion " +
+        tipoGestionName +
+        " del " +
+        tipoElemento +
+        "  " +
+        elemento +
+        " ?"
+    );
     // console.log("Acepta:" + acepta);
 
     if (acepta == true) {
       // console.log("Acepta:" + 'si');
-       blanquearGestion();
+      blanquearGestion();
       $.ajax({
         type: "POST",
         url: "gestionFin.php",
@@ -120,7 +137,7 @@ function finalizarGestion() {
           tipoElemento: tipoElemento,
           cantidadTickets: cantidadTickets,
         },
-        // verificar la devolucion OK 
+        // verificar la devolucion OK
         success: function (data) {
           // console.log('exito');
           // console.log(data);
@@ -131,43 +148,66 @@ function finalizarGestion() {
             alert("Error al guardar Gestion");
           }
         },
-        error: function(data){
+        error: function (data) {
           // console.log('error');
           //Cuando la interacción retorne un error, se ejecutará esto.
-        }
+        },
       });
-      
+
       verificarPinchitos();
-    }else{
-    // console.log('No se impacto la gestion');
-  }
-  }else{
+    } else {
+      // console.log('No se impacto la gestion');
+    }
+  } else {
     let mensaje = "";
-    mensaje = (errElemento == 1) ?  mensaje + " Seleccione el elemento a gestionar. " : mensaje  ;
-    mensaje = (errtipoGestion == 1) ?  mensaje +" Seleccione la gestion realizada. " :mensaje  ;
-    alert("Error al guardar la gestion!!! "  + mensaje);
+    mensaje =
+      errElemento == 1
+        ? mensaje + " Seleccione el elemento a gestionar. "
+        : mensaje;
+    mensaje =
+      errtipoGestion == 1
+        ? mensaje + " Seleccione la gestion realizada. "
+        : mensaje;
+    alert("Error al guardar la gestion!!! " + mensaje);
   }
-
 }
 
-function  blanquearGestion ()
-{
-  document.getElementById("selectGestion").selectedIndex = 'Seleccione Gestion...';
-  document.getElementById("comentgestion").textContent = 'Comentario de la gestion';
-  document.getElementById("tipoElemento").textContent = '';
-  document.getElementById("elemento").textContent =  ' ';
-  document.getElementById("cantidadTickets").textContent = '';
-
+function blanquearGestion() {
+  document.getElementById("selectGestion").selectedIndex =
+    "Seleccione Gestion...";
+  document.getElementById("comentgestion").textContent =
+    "Comentario de la gestion";
+  document.getElementById("tipoElemento").textContent = "";
+  document.getElementById("elemento").textContent = " ";
+  document.getElementById("cantidadTickets").textContent = "";
 }
 
-function  testear ()
-{
-  document.getElementById("selectGestion").selectedIndex = 'Seleccione Gestion...';
-  document.getElementById("comentgestion").textContent = 'Test';
-  document.getElementById("tipoElemento").textContent = 'UC';
-  document.getElementById("elemento").textContent =  'FSH2';
-  document.getElementById("cantidadTickets").textContent = '100';
+function testear() {
+  document.getElementById("selectGestion").selectedIndex =
+    "Seleccione Gestion...";
+  document.getElementById("comentgestion").textContent = "Test";
+  document.getElementById("tipoElemento").textContent = "UC";
+  document.getElementById("elemento").textContent = "FSH2";
+  document.getElementById("cantidadTickets").textContent = "100";
+}
 
+function marcarElementoInicialTomado() {
+  // console.log("marcarElementoInicialTomado");
+  $.ajax({
+    type: "POST",
+    url: "pinchitos.php",
+    dataType: "json",
+    data: {},
+    success: function (data) {
+      if (data.status == "ok") {
+        data.result.forEach((element) => {
+          if (element[2] == "0") {
+            document.getElementById("elemento").textContent = element[0];
+          }
+        });
+      }
+    },
+  });
 }
 
 function verificarPinchitos() {
@@ -178,19 +218,17 @@ function verificarPinchitos() {
     dataType: "json",
     data: {},
     success: function (data) {
-          if (data.status == "ok") {
+      if (data.status == "ok") {
         data.result.forEach((element) => {
-            dibujarpinchito(data.fields, element);
+          dibujarpinchito(data.fields, element);
+          // console.log(element);
         });
       }
-
     },
   });
 }
 
 function dibujarpinchito(fields, element) {
-
-
   let icoDefault =
     "https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
   let icoTomado = "https://img.icons8.com/fluency/25/000000/coworking.png";
@@ -201,7 +239,6 @@ function dibujarpinchito(fields, element) {
 
   let obj = document.getElementById(element[0]);
   let icodelay = document.getElementById("icodelay" + element[0]);
-
 
   if (obj !== null) {
     //  /* este es el usuario 0:tomado por mi, 1:tomado  , 2:resuelto  y el element[5]  te dice cuando fue resuelto */
@@ -219,8 +256,17 @@ function dibujarpinchito(fields, element) {
         $(obj).css("border-color", "#dc3545");
         $(obj).css("background-color", "#f8d7da");
         $(obj).attr("src", icoTomado);
-        let mensaje = "<strong>Tomado por </strong>: " + element[10] + " <br>" + "<strong>email</strong>: "+ element[11] + " <br>" + "<strong>Desde </strong>: "+ element[3]+"Hs"
-        $(obj).attr ("data-original-title" ,mensaje);
+        let mensaje =
+          "<strong>Tomado por </strong>: " +
+          element[10] +
+          " <br>" +
+          "<strong>email</strong>: " +
+          element[11] +
+          " <br>" +
+          "<strong>Desde </strong>: " +
+          element[3] +
+          "Hs";
+        $(obj).attr("data-original-title", mensaje);
 
         break;
       case "2":
@@ -316,4 +362,3 @@ function dibujarpinchito(fields, element) {
     }
   }
 }
-
