@@ -281,31 +281,38 @@ function mostrarLista($Lista)
 			<div class="row col-8 text-Left">
 
 				<!-- ############## IMPI ############### -->
-				<div class="ml-2 m-1" data-toggle="tooltip"  title="Filtra IMPI= No">Sin IMPI</div>
+				<div class="ml-2 m-1" data-toggle="tooltip"  title="Filtra IMPI= No">s/IMPI</div>
 				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra IMPI= No">
 					<input type="checkbox" class="custom-control-input" id="switchIMPI" onchange=cambioSwitch(this)   text="">
 					<label class="custom-control-label" for="switchIMPI"></label>
 				</div>
 
 				<!-- ############## IMPE ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip"  title="Filtra IMPE= No">Sin IMPE</div>
+				<div class="ml-3 m-1" data-toggle="tooltip"  title="Filtra IMPE= No">s/IMPE</div>
 				<div class="custom-control custom-switch m-1 "  data-toggle="tooltip"  title="Filtra IMPE= No">
 					<input type="checkbox" class="custom-control-input" id="switchIMPE"  onchange=cambioSwitch(this) text="">
 					<label class="custom-control-label" for="switchIMPE"></label>
 				</div>
 
 				<!-- ############## Hold ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Holdeados= 0">Sin Hold</div>
+				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Holdeados= 0">s/Hold</div>
 				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra cantidad de Holdeados= 0">
 					<input type="checkbox" class="custom-control-input" id="switchHold" onchange=cambioSwitch(this)   text="">
 					<label class="custom-control-label" for="switchHold"></label>
 				</div>
 
 				<!-- ############## Retenidos ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >Sin Retenidos</div>
+				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >s/Retenidos</div>
 				<div class="custom-control custom-switch m-1"  data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >
 					<input type="checkbox" class="custom-control-input" id="switchRetencion"  onchange=cambioSwitch(this)   text="">
 					<label class="custom-control-label" for="switchRetencion" ></label>
+				</div>
+
+		<!-- ############## Gestionados ############### -->
+		<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra los elementos con gestiones hoy" >c/Gestiones</div>
+				<div class="custom-control custom-switch m-1"  data-toggle="tooltip" data-placement="top" title="Filtra los elementos con gestiones hoy" >
+					<input type="checkbox" class="custom-control-input" id="switchSinGestion"  onchange=cambioSwitch(this)   text="">
+					<label class="custom-control-label" for="switchSinGestion" ></label>
 				</div>
 
 			</div>

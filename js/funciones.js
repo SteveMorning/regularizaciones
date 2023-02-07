@@ -68,6 +68,7 @@ function aplicaFiltrosElementos() {
   $switchImpe = $("#switchIMPE").attr("text");
   $switchHold = $("#switchHold").attr("text");
   $switchRetencion = $("#switchRetencion").attr("text");
+  $switchSinGestion = $("#switchSinGestion").attr("text");
 
   $filtraElemento = $("#filtraElemento").prop("value");
 
@@ -119,6 +120,10 @@ function aplicaFiltrosElementos() {
   $switchRetencion =
     $switchRetencion != "" ? ($switchRetencion = " AND Retencion = 0 ") : "";
 
+    $switchSinGestion =
+    $switchSinGestion != "" ? ($switchSinGestion = " AND oper.id_elemento is not null ") : "";
+
+
   $losFiltros =
     $droplistRegion +
     $droplistSubRegion +
@@ -130,7 +135,10 @@ function aplicaFiltrosElementos() {
     $switchImpe +
     $switchHold +
     $switchRetencion +
+    $switchSinGestion + 
     $filtraElemento;
+
+    console.log( $losFiltros);
 
   cargarElementos($losFiltros);
 }
@@ -192,6 +200,7 @@ function cargarElementos($losFiltros) {
     data: { losFiltros: $losFiltros },
 
     beforeSend: function () {
+      console.log($losFiltros);
       $("#tablaElementos").html(
         '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
       );
@@ -264,9 +273,9 @@ function mostrarFiltrosSeleccionados() {
 }
 
 function cambioSwitch(objeto) {
-  console.log("function cambioSwitch");
-  console.log(objeto);
-  console.log(objeto.checked);
+  // console.log("function cambioSwitch");
+  // console.log(objeto);
+  // console.log(objeto.checked);
 
   $switch = $(objeto);
 
