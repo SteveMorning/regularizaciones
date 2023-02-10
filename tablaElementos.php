@@ -122,7 +122,7 @@ $lstElementos = mysqli_query($con, $consulta);
                              <img class="btn btn-xs  pinche p-0 mr-1 " src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 </img>
                                 <strong ><?php echo $mostrar['Elemento']; ?> </strong>
-                           <img class="text-right" style="position: relative; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
+                           <img class="text-right" style="position: absolute; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
                            
                  
                         </td> 
