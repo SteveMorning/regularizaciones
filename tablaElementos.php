@@ -12,20 +12,6 @@ if ($_POST) {
     $losFiltros = '';
 }
 
-#########################################################
-##############      Listado de Elementos      ###########
-#########################################################
-// $consulta = "SELECT cinum, Region, SubRegion, BaseTecnica,  Elemento, Tipo_Elemento, 
-// Pendiente_Total, Max_Antig, Pend_N0, Pend_N1, Pend_N2, Pend_N3, Pend_N4, Pend_N5, Pend_mas_N5, Pend_mas_N15, Pend_mas_N30, 
-// Ingreso_N0, Ingreso_N1, Ingreso_N2, Ingreso_N3, Ingreso_N4, Ingreso_N5, Ingreso_N6, Ingreso_N7,
-// Promedio, Parque, Porc_Reclamado, if(IMPI = 1 ,'Si','No') as IMPI, IMPI_Datos, IMPI_Voz, if(IMPE = 1 ,'Si','No') as IMPE, HOLD, Retencion, Otros
-// FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
-// WHERE cinum IS NOT null " .  $losFiltros . " 
-// -- ORDER BY Pendiente_Total desc
-//  ORDER BY Pend_N0 DESC   
-// LIMIT 100
-// ;";
-
 
 $consulta = "SELECT cinum, Region, SubRegion, BaseTecnica,  Elemento, Tipo_Elemento, 
 Pendiente_Total, Max_Antig, Pend_N0, Pend_N1, Pend_N2, Pend_N3, Pend_N4, Pend_N5, Pend_mas_N5, Pend_mas_N15, Pend_mas_N30, 
@@ -124,11 +110,7 @@ $lstElementos = mysqli_query($con, $consulta);
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; "> HOLD </th>
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; ">RETENCION </th>
                     <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; "> OTROS </th>
-<!-- 
-                    <th class="encabeza2s table-info campoParque text-center" style="border-color: #17a2b8; ">PARQUE </th>
-                    <th class="encabeza2s table-info campoParque text-center" style="border-color: #17a2b8; "> % Reclamado </th>
-                    <th class="encabeza2s table-info" style="border-color: #17a2b8; ">Analizar</th>
- -->
+
                 </tr>
 
             </thead>
@@ -147,10 +129,6 @@ $lstElementos = mysqli_query($con, $consulta);
 
                             </img>
 
-                            <!-- <button class="btn btn-xs border-secondary pinche " style="width:25px; heigth:25px;  background-color:#e9ecef;  " onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
-                                <span class="fa fa-thumb-tack text-right" aria-hidden="true"></span></button> -->
-
-                            <!-- <a onclick="return filtrarElemento('<?php echo $mostrar['Elemento']; ?>')" href="#"><?php echo $mostrar['Elemento']; ?> </a> -->
                             <strong><?php echo $mostrar['Elemento']; ?> </strong>
 
                         </td>
@@ -187,11 +165,7 @@ $lstElementos = mysqli_query($con, $consulta);
                         <td class="text-center campoEstados "><?php echo $mostrar['HOLD']; ?></td>
                         <td class="text-center campoEstados "><?php echo $mostrar['Retencion']; ?></td>
                         <td class="text-center campoEstados " style="border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Otros']; ?></td>
-<!-- 
-                        <td class="text-center campoParque " <?php echo $mostrar['Parque']; ?></td>
-                        <td class="text-Center campoParque "><?php echo $mostrar['Porc_Reclamado']; ?></td>
-                        <td class="text-center" style="border-right: 1px solid; border-right-color: #17a2b8;"><button class="btn btn-warning btn-xs" style="width:25px; heigth:25px" type="button" id="myBtn" onclick="abreModal('<?php echo $mostrar['Region'] . '/' . $mostrar['Region'] . '/' . $mostrar['Region']; ?>')"><span class="fa fa-pencil-square-o" aria-hidden="true"></span></button></td>
- -->
+
                 </tr>
             <?php
                     }
