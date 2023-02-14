@@ -37,16 +37,18 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
 
 <!-- ####################################### LISTADO DE ELEMENTOS ABAJO ####################################### -->
 <div class="card border-primary" style="max-height: 250px; ">
-    <div class="card-header  m-0 p-1 text-center"  style="background-color: #9dd8e1;"> <h5 class="p-0 m-0"> Elementos Abajo </h5></div>
+    <div class="card-header  m-0 p-1 text-center" style="background-color: #9dd8e1;">
+        <h5 class="p-0 m-0"> Elementos Abajo </h5>
+    </div>
     <div class="card-body m-0 p-0" style="max-height:260px; overflow-y: auto; ">
         <div class="container m-0 p-0">
-            <table class="table table-hover  table-striped table-bordered table-sm"  id="tablaElementoAbajo">
+            <table class="table table-hover  table-striped table-bordered table-sm" id="tablaElementoAbajo">
                 <thead>
                     <tr class=" table-info ">
                         <?php  
            for($i=0; $i < $cantCampos; $i++) { 
                  ?>
-                        <th class="text-center  " > <?php echo$camposNombres[$i]; ?></th>
+                        <th class="text-center  "> <?php echo$camposNombres[$i]; ?></th>
                         <?php
                     };
             ?>
@@ -57,12 +59,13 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
                     <tr>
                         <?php         while ($mostrar = mysqli_fetch_assoc($lstElementos)) {         ?>
 
-                        <td class="text-left p-0 m-0" style="max-width: 250px;">  <?php echo $mostrar[$camposNombres[0]]; ?></td>
+                        <td class="text-left p-0 m-0" style="max-width: 250px;">
+                            <?php echo $mostrar[$camposNombres[0]]; ?></td>
                         <?php 
           for($i=1; $i < $cantCampos; $i++) { 
                  ?>
 
-                        <td class="text-center p-0 m-0" ><?php echo $mostrar[$camposNombres[$i]]; ?></td>
+                        <td class="text-center p-0 m-0"><?php echo $mostrar[$camposNombres[$i]]; ?></td>
                         <?php
                     }
             ?>
@@ -103,21 +106,30 @@ $camposNombresGestiones = [];
 while ($camposGestiones= mysqli_fetch_field($lstGestiones)) {
     array_push( $camposNombresGestiones , $camposGestiones->name );
 }
-
-if ($cantGestiones == 0) {
 ?>
-    
-    <div class="h4">Elemento sin gestiones</div>
 
-<?php
+
+
+
+<div class="card border-primary" style="max-height: 180px; ">
+    <div class="card-header  text-center m-0 p-1" style="background-color: #9dd8e1;">
+        <h5 class="p-0 m-0 "> Historial de Gestiones </h5>
+    </div>
+    <div class="card-body m-0 p-0" style="max-height:190px; overflow-y: auto; ">
+
+        <?php
+if ($cantGestiones == 0) {
+    ?>
+
+        <br>
+        <div class="h5 text-center"> El elemento <?php echo  ' '. $elElemento . ' ' ?> no tiene gestiones.</div>
+        <br>
+        <?php
 }
 else{
 ?>
 
 
-<div class="card border-primary" style="height: 200px; ">
-    <div class="card-header  text-center m-0 p-1"  style="background-color: #9dd8e1;"> <h5  class="p-0 m-0 "> Gestiones Historicas </h5></div>
-    <div class="card-body m-0 p-0" style="height:210px; overflow-y: auto; ">
         <div class="container m-0 p-0">
             <table class="table table-hover  table-striped table-bordered table-sm">
                 <thead>
@@ -152,27 +164,31 @@ else{
                 </tbody>
             </table>
         </div>
+        <?php
+}
+?>
+
     </div>
 </div>
 
-<?php
-}
-?>
+
 
 
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
 
-        $('#tablaElementoAbajo').DataTable({
-            paging: false,
-            searching: false,
-            order:[[2,'desc']],
-            info:  false
-        });
-
-        
-
+    $('#tablaElementoAbajo').DataTable({
+        paging: false,
+        searching: false,
+        order: [
+            [2, 'desc']
+        ],
+        info: false
     });
+
+
+
+});
 </script>
