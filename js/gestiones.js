@@ -242,26 +242,12 @@ function dibujarpinchito(fields, element) {
   if (icodelay != null ) {
 
       let otrocampo = icodelay.parentElement.offsetWidth;
-      console.log(otrocampo);
+      // console.log(otrocampo);
       let b = otrocampo - 15;
 
       $(icodelay).css("left" , b);
 
-      // $(icodelay).attr("offsetLeft" , b);
-
-      // $(icodelay).css("left" , b+"px");
-      // $(icodelay).css("offsetleft" , b);
-
-      // let origen = icodelay.offsetLeft;
-      // let largocampo =  document.getElementById("icodelay" + element[0]).parentElement.style.width;
-      //   console.log(origen);
-      //   console.log( largocampo);
-      //   let a = largocampo.split("px");
-      //   console.log(a[0]);
-      //   let b = a[0] - origen + 75;
-      //   console.log(b);
-      //   $(icodelay).css("left" , b+"px");
-
+   
 
   } 
 

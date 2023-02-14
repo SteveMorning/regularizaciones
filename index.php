@@ -3,11 +3,11 @@
 
 <head>
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<?php
+    <?php
 
 	include "../recursos/encabezado.php";
 
@@ -51,83 +51,111 @@
 
 	?>
 
-	<link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
+    <link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
 
-	<title>Análisis Cobre</title>
+    <title>Análisis Cobre</title>
 
 </head>
 
 <body>
 
-	<div id="elcontenido">
-		<!-- ################# HEADER ################# -->
-		<div class="card-header" id="encabezado">
-			<nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
-				<a class="navbar-brand" href="#">Análisis Cobre</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+    <div id="elcontenido">
+        <!-- ################# HEADER ################# -->
+        <div class="card-header" id="encabezado">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
+                <a class="navbar-brand" href="#">Análisis Cobre</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<!--<a class='nav-link' onclick="window.open('configurar.php', '_blank', 'toolbar=no,scrollbars=no,resizable=no,top=200,left=200,width=700,height=500');" >Configuracion</a>-->
-						</li>
-					</ul>
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<span class="navbar-text">
-								<span class="fa fa-user-circle" aria-hidden="true"></span>
-								<?php echo "Bienvenido: " . $_SESSION['user'];  ?>
-							</span>
-						</li>
-						<li class="nav-item">
-							<a href="../recursos/sesion/desconectar.php?pag=analisis_cobre" class="nav-link"><span class="fa fa-sign-out" aria-hidden="true"></span> CERRAR SESION</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <!--<a class='nav-link' onclick="window.open('configurar.php', '_blank', 'toolbar=no,scrollbars=no,resizable=no,top=200,left=200,width=700,height=500');" >Configuracion</a>-->
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <span class="navbar-text">
+                                <span class="fa fa-user-circle" aria-hidden="true"></span>
+                                <?php echo "Bienvenido: " . $_SESSION['user'];  ?>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../recursos/sesion/desconectar.php?pag=analisis_cobre" class="nav-link"><span
+                                    class="fa fa-sign-out" aria-hidden="true"></span> CERRAR SESION</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
-		<!-- ################# CONTENIDO DE LA WEB ################# -->
-		<div class="card-body" id="contenido">
+        <!-- ################# CONTENIDO DE LA WEB ################# -->
+        <div class="card-body" id="contenido">
 
-			<!-- ################# STATUS ################# -->
-			<div class="card-header m-0 p-0">
-				<div id="status" class="ml-3 m-0 p-1 mt-1 "> </div>
-			</div>
-
-			<!-- ################# FILTROS ################# -->
-			<div class="card-header m-0 p-0 ">
-				<div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
-			</div>
-
-			<!-- ################# TABLA ELEMENTOS ################# -->
-			<div class="card-header m-0 p-0">
-				<div id="tablaElementos" class="ml-3  m-0 p-0"> </div>
-			</div>
-
-			<!-- ################# GESTION ################# -->
-			<div class="card-header m-0 p-0">
-				<div id="gestiones" class="ml-3  m-0 p-0 pt-1 pb-1"> </div>
-			</div>
+            <!-- ################# STATUS ################# -->
+            <div class="card-header m-0 p-0">
+                <div id="status" class="ml-3 m-0 p-1 mt-1 "> </div>
+            </div>
 
 
-		</div>
+            <!-- ################# FILTROS ################# -->
+            <div class="card-header m-0 p-0 ">
+                <div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
+            </div>
 
-		<!-- ################# FOOTER ################# -->
-		<div class="card-footer" id="pie">
-			<label style="margin-top: 3px;">AES - Estudio SVC Pendiente:</label> <a href="mailto:estudioSVC@cablevision.com.ar" target="_top">estudioSVC@cablevision.com.ar</a>
-		</div>
-	</div>
+            <!-- ################# TABLA ELEMENTOS ################# -->
+            <div class="card-header m-0 p-0">
+                <div id="tablaElementos" class="ml-3  m-0 p-0"> </div>
+            </div>
 
-	<div id="msjError"> </div>
+            <!-- ################# GESTION ################# -->
+            <div class="card-header m-0 p-0">
+                <div id="gestiones" class="ml-3  m-0 p-0 pt-1 pb-1"> </div>
+            </div>
+
+
+        </div>
+
+        <!-- ################# FOOTER ################# -->
+        <div class="card-footer" id="pie">
+            <label style="margin-top: 3px;">AES - Estudio SVC Pendiente:</label> <a
+                href="mailto:estudioSVC@cablevision.com.ar" target="_top">estudioSVC@cablevision.com.ar</a>
+        </div>
+    </div>
+
+    <div id="msjError"> </div>
 
 </body>
 
 
 <footer>
-	<?php
+
+<!-- ################################## MODAL ################################## -->
+    <div class="modal  " tabindex="-1" id="elementosAbajo" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content " >
+                <div class="modal-header  pl-3 m-0 p-1 border-primary " style="background-color: #8ad0db;">
+                    <h5 class="modal-title  p-0 m-0"  style="background-color: #8ad0db;" >Elementos Abajo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body  m-0 ">
+            
+			</div>
+                <div class="modal-footer p-0 m-0 ">
+      
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <?php
 	echo ('
 		<script src="js/dropdownCheck.js?' . $aleatorio . '"></script>
 	<script type="text/javascript" src="js/corrigeAltoBody.js?' . $aleatorio . '"></script>

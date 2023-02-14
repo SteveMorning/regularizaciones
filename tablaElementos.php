@@ -46,6 +46,9 @@ $lstElementos = mysqli_query($con, $consulta);
 ?>
 
 
+
+
+
 <div class="row " id="tableElementosInterna" style="height: 500px;  overflow-y:auto; display:block; ">
 
     <div>
@@ -74,7 +77,7 @@ $lstElementos = mysqli_query($con, $consulta);
                         </div>
                     </th>
 
-                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">Tipo</th>
+                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 100px; ">Tipo</th>
 
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; min-width: 40;"> Pendientes </th>
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8;  width: 200;"> n</th>
@@ -121,13 +124,12 @@ $lstElementos = mysqli_query($con, $consulta);
                         <td class="text-left" style="width: 250px; border-right: 1px solid; border-right-color: #17a2b8;">
                              <img class="btn btn-xs  pinche p-0 mr-1 " src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 </img>
-                                <strong ><?php echo $mostrar['Elemento']; ?> </strong>
+                              <strong onclick="mostrarElementosAbajo('<?php echo $mostrar['Elemento'] ?>','<?php echo $mostrar['Tipo_Elemento'] ?>')"  type="button" ><?php echo $mostrar['Elemento']; ?> </strong>
                            <img class="text-right" style="position: absolute; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
                            
                  
                         </td> 
-                        <!-- <td class="text-right" style=" border-right: 1px solid; border-right-color: #17a2b8; border-left: none; "> <img class="text-right" id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
-                        </td> -->
+       
 
                         <td class="text-left" style=" width: 90px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
                         <td class="text-center campoAntig "   style=" width: 40px;" ><?php echo $mostrar['Pendiente_Total']; ?></td>
@@ -195,6 +197,7 @@ $lstElementos = mysqli_query($con, $consulta);
             order: [[4, 'desc']]
         });
 
+        
 
     });
 </script>

@@ -4,6 +4,8 @@ $(document).ready(function () {
   cargarElementos();
   cargarGestiones();
   verificarPinchitos();
+
+
 });
 
 function inicializaCampos() {
@@ -138,7 +140,7 @@ function aplicaFiltrosElementos() {
     $switchSinGestion + 
     $filtraElemento;
 
-    console.log( $losFiltros);
+    // console.log( $losFiltros);
 
   cargarElementos($losFiltros);
 }
@@ -200,7 +202,7 @@ function cargarElementos($losFiltros) {
     data: { losFiltros: $losFiltros },
 
     beforeSend: function () {
-      console.log($losFiltros);
+      // console.log($losFiltros);
       $("#tablaElementos").html(
         '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
       );
@@ -287,3 +289,29 @@ function cambioSwitch(objeto) {
     $($switch).attr("text", "");
   }
 }
+
+
+function mostrarElementosAbajo(ele,tipo){
+
+//  console.log('mostrarElementosAbajo');
+//   console.log(obj);
+
+	$.ajax(
+		{
+			type: "POST",
+			url: "tablaElementosAbajo.php",
+			data: {elemento:ele , tipo:tipo  },
+			success: function (data) {
+
+				$('.modal-body').empty();
+				$('.modal-body').append(data);
+				$(".modal-title").text("Informacion sobre el " + tipo.toLowerCase() + " " + ele )
+				$("#elementosAbajo").modal({ show: true });
+
+
+			}
+		});
+
+
+}
+
