@@ -41,8 +41,8 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
         <h5 class="p-0 m-0"> Elementos Abajo </h5>
     </div>
     <div class="card-body m-0 p-0" style="max-height:260px; overflow-y: auto; ">
-        <div class="container m-0 p-0">
-            <table class="table table-hover  table-striped table-bordered table-sm" id="tablaElementoAbajo">
+        <div class="container  m-0 p-0 ">
+            <table class="table table-hover  table-striped table-bordered table-sm p-0 m-0" id="tablaElementoAbajo">
                 <thead>
                     <tr class=" table-info ">
                         <?php  
@@ -182,10 +182,8 @@ $(document).ready(function() {
     $('#tablaElementoAbajo').DataTable({
         paging: false,
         searching: false,
-        order: [
-            [2, 'desc']
-        ],
-        info: false
+        order: [[2, 'desc']],
+        info: false,
     });
 
 
