@@ -36,14 +36,11 @@
 
 	echo ("
 
-
 	<script type='text/javascript' src='js/funciones.js?" . $aleatorio . "'></script>
 	<script type='text/javascript' src='js/gestiones.js?" . $aleatorio . "'></script>
 	<script type='text/javascript' src='../recursos/js.js?" . $aleatorio . "'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/2.8.6/clipboard-polyfill.js?" . $aleatorio . "'></script>
 	<link rel='stylesheet' href='css/estilos.css?" . $aleatorio . "'>
-	
-
-
 
 
 "
@@ -134,11 +131,11 @@
 <footer>
 
 <!-- ################################## MODAL ################################## -->
-    <div class="modal  " tabindex="-1" id="elementosAbajo" role="dialog">
+    <div class="modal  " tabindex="-1" id="cuadroModal" role="dialog">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content " >
                 <div class="modal-header  pl-3 m-0 p-1 border-primary " style="background-color: #8ad0db;">
-                    <h5 class="modal-title  p-0 m-0"  style="background-color: #8ad0db;" >Elementos Abajo</h5>
+                    <strong class="modal-title  p-0 m-0"  style="background-color: #8ad0db;"  >Elementos Abajo</strong>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

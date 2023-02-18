@@ -4,8 +4,6 @@ $(document).ready(function () {
   cargarElementos();
   cargarGestiones();
   verificarPinchitos();
-
-
 });
 
 function inicializaCampos() {
@@ -122,9 +120,10 @@ function aplicaFiltrosElementos() {
   $switchRetencion =
     $switchRetencion != "" ? ($switchRetencion = " AND Retencion = 0 ") : "";
 
-    $switchSinGestion =
-    $switchSinGestion != "" ? ($switchSinGestion = " AND oper.id_elemento is not null ") : "";
-
+  $switchSinGestion =
+    $switchSinGestion != ""
+      ? ($switchSinGestion = " AND oper.id_elemento is not null ")
+      : "";
 
   $losFiltros =
     $droplistRegion +
@@ -137,10 +136,10 @@ function aplicaFiltrosElementos() {
     $switchImpe +
     $switchHold +
     $switchRetencion +
-    $switchSinGestion + 
+    $switchSinGestion +
     $filtraElemento;
 
-    // console.log( $losFiltros);
+  // console.log( $losFiltros);
 
   cargarElementos($losFiltros);
 }
@@ -290,28 +289,68 @@ function cambioSwitch(objeto) {
   }
 }
 
+function mostrarElementosAbajo(ele, tipo) {
+  //  console.log('mostrarElementosAbajo');
+  //   console.log(obj);
 
-function mostrarElementosAbajo(ele,tipo){
+  $.ajax({
+    type: "POST",
+    url: "tablaElementosAbajo.php",
+    data: { elemento: ele, tipo: tipo },
+    success: function (data) {
+      $(".modal-body").empty();
+      $(".modal-body").append(data);
+      $(".modal-title").text(
+        "Informacion sobre el " + tipo.toLowerCase() + " " + ele
+      );
+      $("#cuadroModal").modal({ show: true });
+    },
+  });
+}
 
-//  console.log('mostrarElementosAbajo');
-//   console.log(obj);
+function mostrarTicketsPendientes(obj) {
+  // console.log("mostrarTicketsPendientes");
+  // console.log(obj);
+  // console.log(obj.getAttribute("xelemento"));
+  // console.log(obj.getAttribute("xtipo"));
 
-	$.ajax(
-		{
-			type: "POST",
-			url: "tablaElementosAbajo.php",
-			data: {elemento:ele , tipo:tipo  },
-			success: function (data) {
+  let elemento = obj.getAttribute("xelemento");
+  let tipo = obj.getAttribute("xtipo");
 
-				$('.modal-body').empty();
-				$('.modal-body').append(data);
-				$(".modal-title").text("Informacion sobre el " + tipo.toLowerCase() + " " + ele )
-				$("#elementosAbajo").modal({ show: true });
+  $.ajax({
+    type: "POST",
+    url: "tablaTickets.php",
+    data: { elemento: elemento, tipo: tipo },
+    success: function (data) {
+      $(".modal-body").empty();
+      $(".modal-body").append(data);
+      $(".modal-title").text(
+        "Tickets Pendientes en el " + tipo.toLowerCase() + " " + elemento
+      );
+      $("#cuadroModal").modal({ show: true });
+    },
+    // beforeSend:function(){
+
+    //   $("#elementosAbajo").html(
+    //     '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+    //   );
+    // }
+  });
+}
 
 
-			}
-		});
+function copiarClipboard(id_elemento) {
+  // console.log("copiarClipboard");
+  // console.log(id_elemento);
+  // console.log(id_elemento.trim());
+  // console.log(document.getElementById(id_elemento.trim()));
 
+   clipboard.writeText(id_elemento.trim());
 
 }
 
+
+function listarTicketPendientes(listado){
+console.log('listarTicketPendientes');
+console.log(listado);
+}

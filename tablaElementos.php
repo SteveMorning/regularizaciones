@@ -23,22 +23,21 @@ LEFT JOIN (SELECT
 ID_Elemento 
 FROM bd3_gestiones.gestiones_operadores_elementos 
 WHERE DIA = curdate()
--- WHERE TIMESTAMPDIFF(DAY ,  DIA , curdate()) <2
 AND ID_ITEM_GESTION != 0 
 AND ID_ITEM_GESTION != 8
 group by ID_Elemento
 ) oper
 on elem.elemento  = oper.id_elemento
-WHERE cinum IS NOT null  " .  $losFiltros . " 
+WHERE elemento IS NOT null  " .  $losFiltros . " 
 ORDER BY Pend_N1 DESC   
 LIMIT 100
 ;";
 
-
+// -- WHERE TIMESTAMPDIFF(DAY ,  DIA , curdate()) <2
 
 // console_log($consulta);
 //  var_dump($losFiltros);
-//   var_dump($consulta);
+//    var_dump($consulta);
 
 $lstElementos = mysqli_query($con, $consulta);
 
@@ -65,7 +64,7 @@ $lstElementos = mysqli_query($con, $consulta);
                     <th colspan="4" class="table-info campoEstados text-center" style="border-right: 1px solid; border-color: #17a2b8; ">Estado Tkts</th>
                 </tr>
                 <tr>
-                    <th class="encabeza2s table-info text-center   "  style="border-color: #17a2b8;  ">
+                    <th class="encabeza2s table-info text-center   "  style="border-color: #17a2b8; min-width: 250px;  ">
                         <div class="row ml-2">
                             <div class="col-3">Elementos</div>
                             <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
@@ -121,18 +120,22 @@ $lstElementos = mysqli_query($con, $consulta);
 
                     ?>
 
-                        <td class="text-left" style="width: 250px; border-right: 1px solid; border-right-color: #17a2b8;">
+                        <td class="text-left" style=" width: 250px; border-right: 1px solid; border-right-color: #17a2b8;">
                              <img class="btn btn-xs  pinche p-0 mr-1 " src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
                                 </img>
-                              <strong onclick="mostrarElementosAbajo('<?php echo $mostrar['Elemento'] ?>','<?php echo $mostrar['Tipo_Elemento'] ?>')"  type="button" ><?php echo $mostrar['Elemento']; ?> </strong>
-                           <img class="text-right" style="position: absolute; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
-                           
-                 
+                              <strong onclick="mostrarElementosAbajo('<?php echo $mostrar['Elemento'] ?>','<?php echo $mostrar['Tipo_Elemento'] ?>')"  type="button"  class="d-inline-block" data-toggle="tooltip" data-placement="right" title="Muestra elementos abajo de <?php echo $mostrar['Elemento']; ?> "  ><?php echo $mostrar['Elemento']; ?> </strong>
+                              <!-- <img class="text-right" src="https://img.icons8.com/windows/32/null/clone-figure.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                              <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-copy-file-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                              <img class="text-right ml-1 " src="https://img.icons8.com/metro/26/null/restore-down.png" style="height:12px ; weidth:12px;" alt="" data-toggle="tooltip" data-placement="right" title="Copia elemento en el portapapeles"   onclick="copiarClipboard(' <?php echo $mostrar['Elemento']; ?> ')">
+                              <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-clone-design-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:15px ; weidth:15px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                              <img class="text-right" style="position: absolute; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
+
                         </td> 
        
 
                         <td class="text-left" style=" width: 90px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
-                        <td class="text-center campoAntig "   style=" width: 40px;" ><?php echo $mostrar['Pendiente_Total']; ?></td>
+                        <!-- <td class="text-center campoAntig "   style=" width: 40px;" >  <span   onclick="mostrarTicketsPendientes(this)" type="button" xelemento="<?php echo $mostrar['Elemento']; ?>" xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>" > <?php echo $mostrar['Pendiente_Total']; ?>   </span>  </td> -->
+                        <td class="text-center campoAntig "   style=" width: 40px;"  data-toggle="tooltip" data-placement="right" title="Lista Tickets Pendientes de <?php echo $mostrar['Elemento']; ?> "  onclick="mostrarTicketsPendientes(this)" xelemento="<?php echo $mostrar['Elemento']; ?>" xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>" >  <?php echo $mostrar['Pendiente_Total']; ?>    </td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N0']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N1']; ?></td>
                         <td class="text-center campoAntig "><?php echo $mostrar['Pend_N2']; ?></td>

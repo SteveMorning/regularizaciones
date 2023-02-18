@@ -9,6 +9,10 @@ body {
 
 
 
+#tablaticketspendientes , #tablaIncidencias , #tablaElementoAbajo , #tablaGestionesHistoricas {
+  font-size: 80%;
+}
+
 #status,
 #gestiones {
   font-size: small;
