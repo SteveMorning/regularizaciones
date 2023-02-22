@@ -168,6 +168,22 @@ ORDER by ACTUALSTART Desc
 //  var_dump($consulta);
 
 $lstGestiones = mysqli_query($con, $consulta);
+$cantGestiones = mysqli_num_rows ($lstGestiones);
+
+if ($cantGestiones == 0) {
+        $consulta = "SELECT 
+        globalticketid AS TICKETID , '' AS STATUS , '' AS CLASSIFICATIONID  , '' as OWNERGROUP , '' as CINAME , '' as ACCLASSIFICATIONID ,
+        '' as T_ALARMSINTOM , '' as T_SUPGLOBALTICKETID ,  
+        '' as  ACTUALSTART ,  '' as  AFFECTEDDATE
+        FROM bd3_reportes_externos.bit_incidents_pendientes
+        WHERE " .  $elTipo . " =  '" .  $elElemento . "' 
+        and globalticketid != 0
+        group by globalticketid
+        ;";
+        $lstGestiones = mysqli_query($con, $consulta);
+        $cantGestiones = mysqli_num_rows ($lstGestiones);
+}
+
 $cantCamposGestiones = mysqli_num_fields ($lstGestiones);
 $cantGestiones = mysqli_num_rows ($lstGestiones);
 $camposNombresGestiones = [];
