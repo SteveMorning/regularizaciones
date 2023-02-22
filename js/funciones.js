@@ -339,13 +339,19 @@ function mostrarTicketsPendientes(obj) {
 }
 
 
-function copiarClipboard(id_elemento) {
+function copiarClipboard(textoAMemoria , mensaje) {
   // console.log("copiarClipboard");
   // console.log(id_elemento);
   // console.log(id_elemento.trim());
   // console.log(document.getElementById(id_elemento.trim()));
+let vacio = null;
 
-   clipboard.writeText(id_elemento.trim());
+   clipboard.writeText(textoAMemoria.trim());
+   if (mensaje != '' && mensaje != undefined  ) {
+            // alert(mensaje);
+            alert(mensaje.replace('***' ,   textoAMemoria ) );
+      };
+ 
 
 }
 

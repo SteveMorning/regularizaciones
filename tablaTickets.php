@@ -124,14 +124,14 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
                 <img class="text-right ml-2 mt-1" src="https://img.icons8.com/metro/26/null/restore-down.png"
                     style="height:15px ; weidth:15px;" alt="" data-toggle="tooltip" data-placement="right"
                     title="Copia el listado de Tickets Pendientes"
-                    onclick="copiarClipboard(' <?php echo  $listadoTickets; ?> ')">
+                    onclick="copiarClipboard(' <?php echo  $listadoTickets; ?> ' , 'Se copiaron <?php echo  $cantfilas; ?> tickets en el portapeles.' )">
             </div>
             <div class="col-6  m-0 p-0 " style="display:flex;">
                 <p class=" m-0 p-0  text-danger "> Hay <?php echo  $cantSinHoldear; ?> tickets sin Holdear </p>
                 <img class="text-right ml-2 mt-1" src="https://img.icons8.com/metro/26/null/restore-down.png"
                     style="height:15px ; weidth:15px;" alt="" data-toggle="tooltip" data-placement="right"
                     title="Copia el listado de Tickets sin Holdear"
-                    onclick="copiarClipboard(' <?php echo  $listadoSinHoldear; ?> ')">
+                    onclick="copiarClipboard(' <?php echo  $listadoSinHoldear; ?> ' , 'Se copiaron <?php echo  $cantSinHoldear; ?> tickets en el portapeles.')">
             </div>
         </div>
         <!-- 

@@ -61,7 +61,7 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
 
                             <td class="text-left p-0 m-0 pl-1" style="max-width: 250px;" >
                                 <?php echo $mostrar[$camposNombres[0]]; ?> 
-                                <img class="text-right" src="https://img.icons8.com/windows/32/null/clone-figure.png" style="height:20px ; weidth:20px;" alt=""    data-toggle="tooltip" data-placement="right" title="Copia elemento en la papelera"  onclick="copiarClipboard(' <?php echo $mostrar[$camposNombres[0]]; ?> ')">
+                                <img class="text-right" src="https://img.icons8.com/windows/32/null/clone-figure.png" style="height:20px ; weidth:20px;" alt=""    data-toggle="tooltip" data-placement="right" title="Copia elemento en la papelera"  onclick="copiarClipboard(' <?php echo $mostrar[$camposNombres[0]]; ?> ' , 'Elemento *** copiado en el portapeles'  )">
                                 <!-- <img class="text-right" src="https://img.icons8.com/metro/26/null/restore-down.png" style="height:15px ; weidth:15px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar[$camposNombres[0]]; ?> ')"> -->
                         </td>
                             <td class="text-left p-0 m-0 pl-2" >
