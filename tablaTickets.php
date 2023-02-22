@@ -8,16 +8,20 @@ include "consolelog.php";
 
 if ($_POST) {
     $elElemento = $_POST['elemento'];
-    
+    // var_dump($_POST['tipo']);
     switch ( $_POST['tipo']) {
         case 'ARMARIO PRIMARIO':
             $elTipo = 'AC_armario';
-            break;
+        break;
+
+        case 'Dslam-Placa-Puerto':
+                $elTipo = 'DSLAM_placa_port';
+        break;
       
         default:
         $elTipo =  'AC_' . strtolower(str_replace(' ' , '_',  $_POST['tipo']));
-            break;
-            }
+        break;
+        }
 
 
 } else {
@@ -40,6 +44,8 @@ SELECT  ticketid,  status,
 FROM bd3_reportes_externos.bit_incidents_pendientes
 WHERE " .  $elTipo . " =  '" .  $elElemento . "' 
 ;";
+
+// var_dump($consulta);
 
 $listadoTickets = '';
 $listadoSinHoldear = '';
@@ -112,15 +118,15 @@ while ($campos = mysqli_fetch_field($lstElementos)) {
     </div>
     <div class="card-footer text-dark bg-light   border-primary  p-1">
 
-        <div class="row ml-1"  >
-            <div class="col-6 m-0 p-0" style="display:flex;" >
+        <div class="row ml-1">
+            <div class="col-6 m-0 p-0" style="display:flex;">
                 <p class=" m-0 p-0 text-success "> Actualmente quedan <?php echo  $cantfilas; ?> tickets pendientes </p>
                 <img class="text-right ml-2 mt-1" src="https://img.icons8.com/metro/26/null/restore-down.png"
                     style="height:15px ; weidth:15px;" alt="" data-toggle="tooltip" data-placement="right"
                     title="Copia el listado de Tickets Pendientes"
                     onclick="copiarClipboard(' <?php echo  $listadoTickets; ?> ')">
             </div>
-            <div class="col-6  m-0 p-0 "  style="display:flex;">
+            <div class="col-6  m-0 p-0 " style="display:flex;">
                 <p class=" m-0 p-0  text-danger "> Hay <?php echo  $cantSinHoldear; ?> tickets sin Holdear </p>
                 <img class="text-right ml-2 mt-1" src="https://img.icons8.com/metro/26/null/restore-down.png"
                     style="height:15px ; weidth:15px;" alt="" data-toggle="tooltip" data-placement="right"
