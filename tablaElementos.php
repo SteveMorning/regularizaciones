@@ -61,51 +61,78 @@ $lstElementos = mysqli_query($con, $consulta);
                     <th colspan="3" class="table-info campoAntigFlag text-center">Antiguedad Flags</th>
                     <th colspan="8" class="table-info campoIngresos text-center">Ingresos Tkts</th>
                     <th colspan="2" class="table-info campoAfectaciones text-center">Afectaciones</th>
-                    <th colspan="4" class="table-info campoEstados text-center" style="border-right: 1px solid; border-color: #17a2b8; ">Estado Tkts</th>
+                    <th colspan="4" class="table-info campoEstados text-center"
+                        style="border-right: 1px solid; border-color: #17a2b8; ">Estado Tkts</th>
                 </tr>
                 <tr>
-                    <th class="encabeza2s table-info text-center   "  style="border-color: #17a2b8;   ">
+                    <th class="encabeza2s table-info text-center   " style="border-color: #17a2b8;   ">
                         <div class="row ml-2">
                             <div class="col-3">Elementos</div>
-                            <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; " id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
-                            <div class="col-3 mr-0 text-right"> 
-                                <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse" data-target="#buscarElemento" style="width: 25px; height:25px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px" data-trigger="hover" data-toggle="tooltip" data-original-title="Buscar texto cargado en el listado de elementos">
+                            <div class="col-6"> <input class=" p-0 m-0 collapse" style="height:fit-content; "
+                                    id="buscarElemento" type="text" placeholder="Buscar Elemento..."></div>
+                            <div class="col-3 mr-0 text-right">
+                                <button class="btn btn-sm btn-outline-dark m-0 p-0" data-toggle="collapse"
+                                    data-target="#buscarElemento" style="width: 25px; height:25px;" type="button"
+                                    data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    <img src="ico/search.svg" alt="" style="width:16px; height:16px"
+                                        data-trigger="hover" data-toggle="tooltip"
+                                        data-original-title="Buscar texto cargado en el listado de elementos">
                                 </button>
                             </div>
                         </div>
                     </th>
 
-                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">Tipo</th>
+                    <th class="encabeza2s table-info text-center " style="border-color: #17a2b8;   min-width: 90px; ">
+                        Tipo</th>
 
-                    <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; min-width: 40;"> Pendientes </th>
-                    <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8;  width: 200;"> n</th>
-                    <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8;  min-width: 100;"> n-1 </th>
-                    <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8;  min-width: 80;"> n-2 </th>
+                    <th class="encabeza2s table-info campoAntig text-center"
+                        style="border-color: #17a2b8; min-width: 40;"> Pendientes </th>
+                    <th class="encabeza2s table-info campoAntig text-center"
+                        style="border-color: #17a2b8;  width: 200;"> n</th>
+                    <th class="encabeza2s table-info campoAntig text-center"
+                        style="border-color: #17a2b8;  min-width: 100;"> n-1 </th>
+                    <th class="encabeza2s table-info campoAntig text-center"
+                        style="border-color: #17a2b8;  min-width: 80;"> n-2 </th>
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; "> n-3 </th>
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; "> n-4 </th>
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; "> n-5 </th>
                     <th class="encabeza2s table-info campoAntig text-center" style="border-color: #17a2b8; "> >n-5 </th>
 
-                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> > n-15</th>
-                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> > n-30 </th>
-                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> Antig Max </th>
+                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> > n-15
+                    </th>
+                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> > n-30
+                    </th>
+                    <th class="encabeza2s table-info campoAntigFlag text-center" style="border-color: #17a2b8; "> Antig
+                        Max </th>
 
                     <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-1 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-2 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-3 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-4 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-5 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-6 </th>
-                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-7 </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-1
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-2
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-3
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-4
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-5
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-6
+                    </th>
+                    <th class="encabeza2s table-info campoIngresos text-center" style="border-color: #17a2b8; "> n-7
+                    </th>
 
-                    <th class="encabeza2s table-info campoAfectaciones text-center" style="border-color: #17a2b8; max-width: 20px; "> IMPI </th>
-                    <th class="encabeza2s table-info campoAfectaciones text-center" style="border-color: #17a2b8; max-width: 20px; "> IMPE </th>
+                    <th class="encabeza2s table-info campoAfectaciones text-center"
+                        style="border-color: #17a2b8; max-width: 20px; "> IMPI </th>
+                    <th class="encabeza2s table-info campoAfectaciones text-center"
+                        style="border-color: #17a2b8; max-width: 20px; "> IMPE </th>
 
-                    <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; max-width: 25px;  "> HOLD </th>
-                    <th class="encabeza2s table-info campoEstados text-center" style="border-color: #17a2b8; max-width: 50px; ">RETENCION </th>
-                    <th class="encabeza2s table-info campoEstados text-center" style="border-right: 1px solid;  border-color: #17a2b8; max-width: 25px; "> OTROS </th>
+                    <th class="encabeza2s table-info campoEstados text-center"
+                        style="border-color: #17a2b8; max-width: 25px;  "> HOLD </th>
+                    <th class="encabeza2s table-info campoEstados text-center"
+                        style="border-color: #17a2b8; max-width: 50px; ">RETENCION </th>
+                    <th class="encabeza2s table-info campoEstados text-center"
+                        style="border-right: 1px solid;  border-color: #17a2b8; max-width: 25px; "> OTROS </th>
 
                 </tr>
 
@@ -120,55 +147,89 @@ $lstElementos = mysqli_query($con, $consulta);
 
                     ?>
 
-                        <td class="text-left" style=" width: 260px; border-right: 1px solid; border-right-color: #17a2b8;">
-                             <img class="btn btn-xs  pinche p-0 mr-1 " src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png" style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; " data-trigger="hover" data-html="true" data-toggle="tooltip" onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button" id="<?php echo $mostrar['Elemento']; ?>">
-                                </img>
-                              <strong onclick="mostrarElementosAbajo('<?php echo $mostrar['Elemento'] ?>','<?php echo $mostrar['Tipo_Elemento'] ?>')"  type="button"  class="d-inline-block" data-toggle="tooltip" data-placement="right" title="Muestra informacion de <?php echo $mostrar['Elemento']; ?> "  ><?php echo $mostrar['Elemento']; ?> </strong>
-                              <!-- <img class="text-right" src="https://img.icons8.com/windows/32/null/clone-figure.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
-                              <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-copy-file-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
-                              <img class="text-right ml-1 " src="https://img.icons8.com/metro/26/null/restore-down.png" style="height:12px ; weidth:12px;" alt="" data-toggle="tooltip" data-placement="right" title="Copia elemento en el portapapeles"   onclick="copiarClipboard(' <?php echo $mostrar['Elemento']; ?> ' ,'Elemento *** copiado al portapapeles.' )">
-                              <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-clone-design-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:15px ; weidth:15px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
-                              <img class="text-right" style="position: absolute; " id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt="" data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo" data-content="Some content inside the popover">
+                    <td class="text-left" style=" width: 260px; border-right: 1px solid; border-right-color: #17a2b8;">
+                        <img class="btn btn-xs  pinche p-0 mr-1 "
+                            src="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png"
+                            style="width: 25px; heigth:25px;  border-color:#0d6efd; background-color:#cfe2ff ; "
+                            data-trigger="hover" data-html="true" data-toggle="tooltip"
+                            onclick="return iniciarGestion('<?php echo $mostrar['Elemento'] ?>', this)" type="button"
+                            id="<?php echo $mostrar['Elemento']; ?>">
+                        </img>
+                        <strong
+                            onclick="mostrarElementosAbajo('<?php echo $mostrar['Elemento'] ?>','<?php echo $mostrar['Tipo_Elemento'] ?>')"
+                            type="button" class="d-inline-block" data-toggle="tooltip" data-placement="right"
+                            title="Muestra informacion de <?php echo $mostrar['Elemento']; ?> "><?php echo $mostrar['Elemento']; ?>
+                        </strong>
+                        <!-- <img class="text-right" src="https://img.icons8.com/windows/32/null/clone-figure.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                        <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-copy-file-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:20px ; weidth:20px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                        <img class="text-right ml-1 " src="https://img.icons8.com/metro/26/null/restore-down.png"
+                            style="height:12px ; weidth:12px;" alt="" data-toggle="tooltip" data-placement="right"
+                            title="Copia elemento en el portapapeles"
+                            onclick="copiarClipboard(' <?php echo $mostrar['Elemento']; ?> ' ,'Elemento *** copiado al portapapeles.' )">
+                        <!-- <img class="text-right" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/null/external-clone-design-royyan-wijaya-detailed-outline-royyan-wijaya.png" style="height:15px ; weidth:15px;" alt=""   onclick="copiarClipboard(' <?php echo $mostrar['Elemento'];; ?> ')"> -->
+                        <img class="text-right" style="position: absolute; "
+                            id="icodelay<?php echo $mostrar['Elemento']; ?>" class="text-right  " alt=""
+                            data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="titulo"
+                            data-content="Some content inside the popover">
 
-                        </td> 
-       
-
-                        <td class="text-left" style=" width: 90px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Tipo_Elemento']; ?></td>
-                        <!-- <td class="text-center campoAntig "   style=" width: 40px;" >  <span   onclick="mostrarTicketsPendientes(this)" type="button" xelemento="<?php echo $mostrar['Elemento']; ?>" xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>" > <?php echo $mostrar['Pendiente_Total']; ?>   </span>  </td> -->
-                        <td class="text-center campoAntig "   style=" width: 40px;"  data-toggle="tooltip" data-placement="right" title="Lista Tickets Pendientes de <?php echo $mostrar['Elemento']; ?> "  onclick="mostrarTicketsPendientes(this)" xelemento="<?php echo $mostrar['Elemento']; ?>" xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>" > <u> <?php echo $mostrar['Pendiente_Total']; ?>   </u> </td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N0']; ?></td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N1']; ?></td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N2']; ?></td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N3']; ?></td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N4']; ?></td>
-                        <td class="text-center campoAntig "><?php echo $mostrar['Pend_N5']; ?></td>
-                        <td class="text-center campoAntig " style="border-right: 1px solid; border-right-color: #17a2b8; min-width:45px;"><?php echo $mostrar['Pend_mas_N5']; ?></td>
-                        <td class="text-center campoAntigFlag " style="min-width:45px;"><?php echo $mostrar['Pend_mas_N15']; ?></td>
-                        <td class="text-center campoAntigFlag" style="min-width:45px;"><?php echo $mostrar['Pend_mas_N30']; ?></td>
-                        <td class="text-center campoAntigFlag " style="min-width:20px; border-right: 1px solid;  border-right-color: #17a2b8;"><?php echo $mostrar['Max_Antig']; ?></td>
-
-
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N0']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N1']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N2']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N3']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N4']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N5']; ?></td>
-                        <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N6']; ?></td>
-                        <td class="text-center campoIngresos " style="border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Ingreso_N7']; ?></td>
+                    </td>
 
 
-                        <td class="text-center campoAfectaciones" style="max-width: 20px; "><?php echo $mostrar['IMPI']; ?></td>
-                        <td class="text-center campoAfectaciones" style="max-width: 20px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['IMPE']; ?></td>
+                    <td class="text-left" style=" width: 90px; border-right: 1px solid; border-right-color: #17a2b8;">
+                        <?php echo $mostrar['Tipo_Elemento']; ?></td>
+                    <!-- <td class="text-center campoAntig "   style=" width: 40px;" >  <span   onclick="mostrarTicketsPendientes(this)" type="button" xelemento="<?php echo $mostrar['Elemento']; ?>" xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>" > <?php echo $mostrar['Pendiente_Total']; ?>   </span>  </td> -->
+                    <td class="text-center campoAntig " style=" width: 40px;" data-toggle="tooltip"
+                        data-placement="right" title="Lista Tickets Pendientes de <?php echo $mostrar['Elemento']; ?> "
+                        onclick="mostrarTicketsPendientes(this)" xelemento="<?php echo $mostrar['Elemento']; ?>"
+                        xtipo="<?php echo $mostrar['Tipo_Elemento']; ?>"> <u> <?php echo $mostrar['Pendiente_Total']; ?>
+                        </u> </td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N0']; ?></td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N1']; ?></td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N2']; ?></td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N3']; ?></td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N4']; ?></td>
+                    <td class="text-center campoAntig "><?php echo $mostrar['Pend_N5']; ?></td>
+                    <td class="text-center campoAntig "
+                        style="border-right: 1px solid; border-right-color: #17a2b8; min-width:45px;">
+                        <?php echo $mostrar['Pend_mas_N5']; ?></td>
+                    <td class="text-center campoAntigFlag " style="min-width:45px;">
+                        <?php echo $mostrar['Pend_mas_N15']; ?></td>
+                    <td class="text-center campoAntigFlag" style="min-width:45px;">
+                        <?php echo $mostrar['Pend_mas_N30']; ?></td>
+                    <td class="text-center campoAntigFlag "
+                        style="min-width:20px; border-right: 1px solid;  border-right-color: #17a2b8;">
+                        <?php echo $mostrar['Max_Antig']; ?></td>
 
-                        <td class="text-center campoEstados " style="max-width: 25px; " ><?php echo $mostrar['HOLD']; ?></td>
-                        <td class="text-center campoEstados " style="max-width: 50px; "><?php echo $mostrar['Retencion']; ?></td>
-                        <td class="text-center campoEstados " style="max-width: 25px; border-right: 1px solid; border-right-color: #17a2b8;"><?php echo $mostrar['Otros']; ?></td>
 
-                       
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N0']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N1']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N2']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N3']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N4']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N5']; ?></td>
+                    <td class="text-center campoIngresos "><?php echo $mostrar['Ingreso_N6']; ?></td>
+                    <td class="text-center campoIngresos "
+                        style="border-right: 1px solid; border-right-color: #17a2b8;">
+                        <?php echo $mostrar['Ingreso_N7']; ?></td>
+
+
+                    <td class="text-center campoAfectaciones" style="max-width: 20px; "><?php echo $mostrar['IMPI']; ?>
+                    </td>
+                    <td class="text-center campoAfectaciones"
+                        style="max-width: 20px; border-right: 1px solid; border-right-color: #17a2b8;">
+                        <?php echo $mostrar['IMPE']; ?></td>
+
+                    <td class="text-center campoEstados " style="max-width: 25px; "><?php echo $mostrar['HOLD']; ?></td>
+                    <td class="text-center campoEstados " style="max-width: 50px; "><?php echo $mostrar['Retencion']; ?>
+                    </td>
+                    <td class="text-center campoEstados "
+                        style="max-width: 25px; border-right: 1px solid; border-right-color: #17a2b8;">
+                        <?php echo $mostrar['Otros']; ?></td>
+
+
 
                 </tr>
-            <?php
+                <?php
                     }
             ?>
             </tbody>
@@ -181,26 +242,31 @@ $lstElementos = mysqli_query($con, $consulta);
 
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $("#buscarElemento").on("keyup", function() {
-            $cajaItem = "#listadoElementos";
-            var value = $(this).val().toLowerCase();
-            $($cajaItem + "  > tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
+    $("#buscarElemento").on("keyup", function() {
+        $cajaItem = "#listadoElementos";
+        var value = $(this).val().toLowerCase();
+        $($cajaItem + "  > tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
-
-        $("[data-toggle='popover']").popover();
-
-
-        $('#laTabla').DataTable({
-            paging: false,
-            searching: false,
-            order: [[4, 'desc']]
-        });
-
-        
-
     });
+
+    $("[data-toggle='popover']").popover();
+
+
+    $('#laTabla').DataTable({
+        paging: false,
+        searching: false,
+        order: [
+            [4, 'desc']
+        ]
+    });
+
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    $('#companyUpdOK').toast();
+});
 </script>

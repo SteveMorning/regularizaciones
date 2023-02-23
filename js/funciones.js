@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   cargarStatus();
   cargarFiltros();
   cargarElementos();
@@ -349,11 +350,20 @@ let vacio = null;
    clipboard.writeText(textoAMemoria.trim());
    if (mensaje != '' && mensaje != undefined  ) {
             // alert(mensaje);
-            alert(mensaje.replace('***' ,   textoAMemoria ) );
+            // alert(mensaje.replace('***' ,   textoAMemoria ) );
+            let elMensaje = mensaje.replace('***' ,   textoAMemoria )
+            document.getElementById("textoNotificacion").innerText =  elMensaje; 
+            
+            $('#companyUpdOK').toast({delay: 2500, autohide: true , animation: true}); 
+            $('#companyUpdOK').toast("show");
+            $('#companyUpdOK').toast("hide");
+          
+
       };
  
 
 }
+
 
 
 function listarTicketPendientes(listado){

@@ -8,6 +8,10 @@ body {
 } */
 
 
+#companyUpdOK.fade {
+  transition: opacity 1s linear !important;
+}
+
 
 #tablaticketspendientes , #tablaIncidencias , #tablaElementoAbajo , #tablaGestionesHistoricas {
   font-size: 80%;

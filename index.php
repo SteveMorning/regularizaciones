@@ -48,6 +48,7 @@
 
 	?>
 
+
     <link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
 
     <title>Análisis Cobre</title>
@@ -97,11 +98,37 @@
                 <div id="status" class="ml-3 m-0 p-1 mt-1 "> </div>
             </div>
 
-
             <!-- ################# FILTROS ################# -->
             <div class="card-header m-0 p-0 ">
                 <div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
             </div>
+
+
+            <!-- ############################### NOTIFICACION ################################# -->
+            <!-- <div aria-live="polite" aria-atomic="true"
+                class=" position-relative  d-flex justify-content-center align-items-center"
+                style=" z-index: 5; top: 430px; left: 500px;  ">
+
+                <div class="toast-container position-absolute  " id="toastPlacement">
+
+                    <div class="toast  border-dark" id="companyUpdOK" name="companyUpdOK" role="alert" autohide="false"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-warning">
+                            <img src="https://img.icons8.com/color/48/null/check-all--v1.png" class="rounded mr-2"
+                                style="heigth:25px; width: 25px; ">
+                            <strong class="mr-auto " style="color: black;">Análisis Cobre</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body">
+                            <div id="textoNotificacion"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
 
             <!-- ################# TABLA ELEMENTOS ################# -->
             <div class="card-header m-0 p-0">
@@ -130,26 +157,56 @@
 
 <footer>
 
-<!-- ################################## MODAL ################################## -->
+
+    <!-- ################################## MODAL ################################## -->
     <div class="modal  " tabindex="-1" id="cuadroModal" role="dialog">
         <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content " >
+            <div class="modal-content ">
                 <div class="modal-header  pl-3 m-0 p-1 border-primary " style="background-color: #8ad0db;">
-                    <strong class="modal-title  p-0 m-0"  style="background-color: #8ad0db;"  >Elementos Abajo</strong>
+                    <strong class="modal-title  p-0 m-0" style="background-color: #8ad0db;">Elementos Abajo</strong>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body  m-0 ">
-            
-			</div>
+
+                </div>
                 <div class="modal-footer p-0 m-0 ">
-      
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
+
+
+            <!-- ############################### NOTIFICACION ################################# -->
+            <div aria-live="polite" aria-atomic="true"
+                class=" position-relative  d-flex justify-content-center align-items-center"
+                style=" z-index: 7000; top: 565px; left: 500px;  ">
+
+                <div class="toast-container position-absolute  " id="toastPlacement">
+
+                    <div class="toast  border-dark" id="companyUpdOK" name="companyUpdOK" role="alert" autohide="false"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-warning">
+                            <!-- <img src="https://img.icons8.com/fluency/48/null/rounded-square.png" class="rounded mr-2" style="heigth:20px; width: 20px;">   -->
+                            <img src="https://img.icons8.com/color/48/null/check-all--v1.png" class="rounded mr-2"
+                                style="heigth:25px; width: 25px; ">
+                            <!-- <img src="..." class="rounded mr-2" alt="..."> -->
+                            <strong class="mr-auto " style="color: black;">Análisis Cobre</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body">
+                            <div id="textoNotificacion"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 
 
     <?php
