@@ -30,7 +30,7 @@ group by ID_Elemento
 on elem.elemento  = oper.id_elemento
 WHERE elemento IS NOT null  " .  $losFiltros . " 
 ORDER BY Pend_N1 DESC   
-LIMIT 100
+LIMIT 500
 ;";
 
 // -- WHERE TIMESTAMPDIFF(DAY ,  DIA , curdate()) <2
