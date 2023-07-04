@@ -57,7 +57,7 @@ where MOSTRAR = true;";
 		<textarea name="area1" id="comentgestion" cols=60 rows=3 placeholder="Comentario de la gestion"></textarea>
 	</div>
 
-	<div class="col-4 m-0 p-0">
+	<div class="col-3 m-0 p-0">
 		<div class="alert alert-info border-primary    m-0 p-0" role="alert">
 			<div class="row m-1">
 				<h6> <strong> Tipo de Elemento:</strong> </h6>
@@ -77,8 +77,17 @@ where MOSTRAR = true;";
 
 	
 	<div class="col-1 p-0">
-		<button class="btn btn-primary ml-5 mt-3 " style="margin-top: 48px;" onclick="return finalizarGestion()" type="button" id="Gestionar">
+		<button class="btn  btn-primary ml-3 mt-1 " style="margin-top: 48px;" onclick="return finalizarGestion()" type="button" id="Gestionar">
 			Gestionar
+		</button>
+		<!-- <button class="btn btn-primary ml-5 mt-3 " style="margin-top: 48px;" onclick="return finalizarGestion()" type="button" id="Gestionar">
+			Gestionar
+		</button> -->
+	</div>
+
+	<div class="col-1 p-0 ml-5" style="border-left: black; border-left-style: solid; border-left-width: 1px;">
+		<button class="btn btn-sm btn-dark ml-4  mt-1 " style="margin-top: 48px;" onclick="return otrasGestiones()" type="button" id="otrasGestiones">
+		Otras Gestiones
 		</button>
 	</div>
 
