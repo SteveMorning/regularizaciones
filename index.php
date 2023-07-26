@@ -159,8 +159,8 @@
 
 
     <!-- ################################## MODAL ################################## -->
-    <div class="modal  " tabindex="-1" id="cuadroModal" role="dialog">
-        <div class="modal-dialog modal-xl" role="document">
+    <div class="modal" tabindex="-1" id="cuadroModal" role="dialog">
+        <div class="modal-dialog modal-xl" id="modalSize"  role="document">
             <div class="modal-content ">
                 <div class="modal-header  pl-3 m-0 p-1 border-primary " style="background-color: #8ad0db;">
                     <strong class="modal-title  p-0 m-0" style="background-color: #8ad0db;">Elementos Abajo</strong>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="modal-footer p-0 m-0 ">
 
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -181,9 +181,12 @@
 
 
             <!-- ############################### NOTIFICACION ################################# -->
+            <!-- <div aria-live="polite" aria-atomic="true"
+                class=" position-absoute  d-flex justify-content-center align-items-center"
+                style=" z-index: 7000; top: 100px; left: 10px;  "> -->
             <div aria-live="polite" aria-atomic="true"
-                class=" position-relative  d-flex justify-content-center align-items-center"
-                style=" z-index: 7000; top: 565px; left: 500px;  ">
+                class=" position-relative  d-flex justify-content-end align-items-center"
+                style=" z-index: 7000; top: 565px; left: 0px;  ">
 
                 <div class="toast-container position-absolute  " id="toastPlacement">
 

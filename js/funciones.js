@@ -305,6 +305,8 @@ function mostrarElementosAbajo(ele, tipo) {
         "Informacion sobre el " + tipo.toLowerCase() + " " + ele
       );
       $("#cuadroModal").modal({ show: true });
+      let element = document.getElementById("modalSize");
+      element.classList.add("modal-xl");
     },
   });
 }
@@ -329,6 +331,8 @@ function mostrarTicketsPendientes(obj) {
         "Tickets Pendientes en el " + tipo.toLowerCase() + " " + elemento
       );
       $("#cuadroModal").modal({ show: true });
+      let element = document.getElementById("modalSize");
+      element.classList.add("modal-xl");
     },
     // beforeSend:function(){
 
