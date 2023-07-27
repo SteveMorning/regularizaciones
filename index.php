@@ -184,7 +184,7 @@
             <!-- <div aria-live="polite" aria-atomic="true"
                 class=" position-absoute  d-flex justify-content-center align-items-center"
                 style=" z-index: 7000; top: 100px; left: 10px;  "> -->
-            <div aria-live="polite" aria-atomic="true"
+            <div aria-live="polite" aria-atomic="true" id="idNotificacion"
                 class=" position-relative  d-flex justify-content-end align-items-center"
                 style=" z-index: 7000; top: 565px; left: 0px;  ">
 
