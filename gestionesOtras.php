@@ -68,8 +68,8 @@ AND HERRAMIENTA = 'Analisis Cobre';";
             </div>
 
             <div class="form-group mb-4">
-                <label for="listadoTickets" class="mb-1">Ticket a Cancelar </label>
-                <textarea class="form-control" id="listadoTickets" name="listadoTickets" rows="8" cols="50"
+                <label for="listadoTickets" class="mb-1">Ticket a Cancelar</label>
+                <textarea class="form-control" id="listadoTickets" name="listadoTickets"   rows="8" cols="50"
                     placeholder="Pegar aquí el listado de Tickets a cancelar"></textarea>
             </div>
 
@@ -90,9 +90,18 @@ AND HERRAMIENTA = 'Analisis Cobre';";
                 </div>
 
             </div>
-            <!-- <div class="col-2"> -->
-            <input class="btn btn-sm btn-danger " type="submit" value="Cancelar Tickets" onclick="muestraspinner()">
-            <!-- </div> -->
+
+            <div class="row">
+                <div class="col-4 ">
+                <button type="button" class="btn btn-sm btn-primary" id="btnVerificarTkts" onclick="generaListado()">Verifica Tickets</button>
+                </div>
+                <div class="col-4 ">
+                </div>
+                <div class="col-4 ">
+                    <input class="btn btn-sm btn-danger  " id="btnCancelarTkts" disabled type="submit"   onclick="mensajecancelado()"  value="Cancelar Tickets" onclick="muestraspinner()">
+                </div>
+            </div>
+
 
             <!-- <button class="btn  btn-sm btn-danger text-right " onclick="return cancelarTickets(this)" type="button"
                 id="Gestionar">

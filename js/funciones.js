@@ -364,7 +364,6 @@ function copiarClipboard(textoAMemoria, mensaje) {
 		$("#companyUpdOK").toast({ delay: 2500, autohide: true, animation: true });
 		$("#companyUpdOK").toast("show");
 		$("#companyUpdOK").toast("hide");
-
 	}
 }
 
@@ -377,4 +376,106 @@ function notificaciones() {
 function listarTicketPendientes(listado) {
 	console.log("listarTicketPendientes");
 	console.log(listado);
+}
+
+function generaListado() {
+	// console.log("function generaListado()");
+	let motivo = document.getElementById("motivoCancelacion");
+	let idMotivo = motivo.value;
+	let txtMotivo = motivo.options[motivo.selectedIndex].innerText;
+	let comentarioCancelacion = document
+		.getElementById("comentarioCancelacion")
+		.value.trimEnd()
+		.trimLeft();
+
+	let listadoTickets = document.getElementById("listadoTickets").value;
+	let btnCancelarTkts = document.getElementById("btnCancelarTkts");
+	let btnVerificarTkts = document.getElementById("btnVerificarTkts");
+	let obtlistadoTickets = document.getElementById("listadoTickets");
+
+	// console.log(motivo);
+	// console.log(idMotivo);
+	// console.log(txtMotivo);
+	// console.log(comentarioCancelacion);
+	// console.log(listadoTickets);
+	// console.log(idMotivo.length);
+
+	if (idMotivo.length > 2) {
+		alert("Seleccionar el Motivo de Cancelacion.");
+	} else {
+		if (comentarioCancelacion.length < 1) {
+			alert("Ingrese el comentario de la cancelacion");
+		} else {
+			if (listadoTickets.length < 1) {
+				alert("Ingrese el listado de Tickets");
+			} else {
+				$.ajax({
+					type: "post",
+					url: "validarTicketsCancelados.php",
+					data: {
+						listadoTickets: listadoTickets,
+					},
+					success: function (data) {
+						data = data.trim().split("|");
+						// console.log(data[0]);
+						if (data == 0) {
+							alert("No se encontraron Tickets pendientes.");
+						} else {
+							if (data[0] == "Err") {
+								alert(
+									"Error en la verificacion. Validar los Tickets ingresados."
+								);
+							} else {
+								if (data[1] == 0) {
+									alert("No se encontraton Tickets Pendientes");
+								} else {
+									alert("Se encontraron " + data[1] + " Tickets pendientes.");
+									btnCancelarTkts.removeAttribute("disabled");
+									// obtlistadoTickets.disabled = true;
+									btnVerificarTkts.disabled = true;
+								}
+							}
+						}
+					},
+				});
+			}
+		}
+	}
+}
+
+
+function mensajecancelado()
+{
+	// alert("Tickets cancelados");
+
+
+
+	let elHTML = `
+
+    <title>Document</title>
+<body>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aviso!!</h5>                    
+                </div>
+                <div class="modal-body">
+                    <p>Se cancelaron  <?php echo $cant_Ok  ?> Tickets</p><br><br>
+                    <button class="btn btn-primary">
+                        <a style="color: white;" href="index.php">Cerrar</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ `
+
+ let contenedor = document.createElement ('div');
+ contenedor.innerHTML = elHTML;
+ document.body.appendChild(contenedor);
+
+ $("#myModal").modal('show');
+
 }

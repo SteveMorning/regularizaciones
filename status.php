@@ -1,6 +1,6 @@
 <?php
 
-// include "consultas.php";
+//  include "consultas.php";
 
 include "../recursos/recursos.php";
 ############################################
@@ -12,16 +12,19 @@ DATE_FORMAT( ult_actualstart , '%d/%m/%Y %H:%i:%s') as  actualstart,
 DATE_FORMAT( ult_actualfinish , '%d/%m/%Y %H:%i:%s') as  actualfinish, 
 DATE_FORMAT( ult_affecteddate , '%d/%m/%Y %H:%i:%s') as affecteddate, 
 DATE_FORMAT( ult_statusdate , '%d/%m/%Y %H:%i:%s') as  statusdate, 
-DATE_FORMAT( ult_fechadecarga , '%d/%m/%Y %H:%i:%s') as fechadecarga
+DATE_FORMAT( ult_fechadecarga , '%d/%m/%Y %H:%i:%s') as fechadecarga,
+DATE_FORMAT( ult_reportdate , '%d/%m/%Y %H:%i:%s') as reportdate
 FROM bd3_reportes_internos.bit_incidents_semaforo
 ORDER BY id DESC
 LIMIT 1;";
+
+//  var_dump($consulta);
 
 $status = mysqli_query($con, $consulta);
 
 
 
- $dato = mysqli_fetch_assoc($status);
+$dato = mysqli_fetch_assoc($status);
 // $dato = mysqli_fetch_assoc($GLOBALS['status']);
 
 $ultejecucion = $dato['ultejecucion'];
@@ -36,7 +39,9 @@ $actualfinish = $dato['actualfinish'];
 $affecteddate = $dato['affecteddate'];
 $statusdate = $dato['statusdate'];
 $fechadecarga = $dato['fechadecarga'];
+$reportdate = $dato['reportdate'];
 
+// var_dump($reportdate);
 ?>
 
 
@@ -48,7 +53,7 @@ $fechadecarga = $dato['fechadecarga'];
         <h6>Fecha de Datos</h6> <?php echo $fechadecarga; ?>
     </div>
     <div class="col-2">
-        <h6>Ult. Ingreso</h6> <?php echo $actualstart; ?>
+        <h6>Ult. Ingreso</h6> <?php echo $reportdate; ?>
     </div>
     <div class="col-2">
         <h6>Ult. Cierre</h6> <?php echo $actualfinish; ?>

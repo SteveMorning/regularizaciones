@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html">
+<HTML>
+<HEAD> 
     <?php
     include "../recursos/recursos.php";
     include "../recursos/encabezado.php";
-    include "consolelog.php";
+    // include "consolelog.php";
+    include "gestiondearchivos.php";
     session_start();
     headerBasico();
     headerBootstrap(1);
@@ -15,13 +16,18 @@
     echo "<link rel='stylesheet' type='text/css' href='style.css?$aleatorio'>";
     echo "<meta charset='utf-8'>";
 
-    $datos = $_POST;
-    console_log($datos);
 
+
+
+    $datos = $_POST;
+    // console_log($datos);
 
     $motivoCancelacion = $_POST['motivoCancelacion'];
     $comentarioCancelacion = $_POST['comentarioCancelacion'];
     $listadoTickets = $_POST['listadoTickets'];
+    // console_log("motivoCancelacion: " . $motivoCancelacion);
+    // console_log("comentarioCancelacion: " . $comentarioCancelacion);
+    // console_log("listadoTickets" . $listadoTickets);
 
     $tipoElemento = 'Varios' /*  $_POST['tipoElemento'] */ ;
     $elemento = 'Varios' /* $_POST['elemento']  */;
@@ -31,114 +37,149 @@
     $comentario =  $_POST['comentarioCancelacion'];
     $cantTickets = 666 /* $_POST['cantidadTickets'] */;
 
-    // console_log($motivoCancelacion);
-    // console_log($comentarioCancelacion);
-    
-    
-    $lstTkt = explode("\n", $listadoTickets);
-    // console_log($lstTkt);
-    
-    
-    if (($clave = array_search("", $lstTkt)) !== false) {
-        unset($lstTkt[$clave]);
-    }
-    // console_log($lstTkt);
-    
+
     //Limpia los espacios en blanco de cada elemento del array
     function limpia_valores(&$valor)
     {
         $valor = trim($valor);
     }
-    
+
+    $lstTkt = explode("\n", $listadoTickets);
+
+    if (($clave = array_search("", $lstTkt)) !== false) {
+        unset($lstTkt[$clave]);
+    }
+
+
+    //Limpia los espacios en blanco de cada elemento del array
     array_walk($lstTkt, 'limpia_valores');
     $cantTickets = count($lstTkt);
-    console_log($lstTkt);
-    
+
+
+
 
     // ##################### INSERTA LA GESTION DEL USUARIO #####################
     $consulta = "INSERT into bd3_test.gestiones_operadores_elementos
-    ( ID_GESTION, FECHA_INICIO, ID_Elemento_Inicio, FECHA_GESTION, TIPO_ELEMENTO, 
-    ID_Elemento, NOMBRE_ELEMENTO, DATOS_ELEMENTO, ID_ITEM_GESTION, USUARIO, 
-    OBSERVACIONES, DIA, REGION, SUBREGION, HERRAMIENTA, TICKETS_ALCANZADOS )
-    values(
-            NUll , 
-            now() ,
-            ''  ,
-            now()  ,
-            'Varios' , 
-            'Varios' , 
-            'Varios' , 
-            '' , 
-            '".$motivoCancelacion."',  
-            '".$_SESSION['id']."',  
-            '".$comentarioCancelacion."',  
-            curdate() , 
-            'REGION'  , 
-            'SUBREGION' ,
-            'analisis_cobre' ,
-            ".$cantTickets."
-        );";
-        $resultado = mysqli_query($con_w, $consulta);
-        
-        
+        ( ID_GESTION, FECHA_INICIO, ID_Elemento_Inicio, FECHA_GESTION, TIPO_ELEMENTO,
+        ID_Elemento, NOMBRE_ELEMENTO, DATOS_ELEMENTO, ID_ITEM_GESTION, USUARIO,
+        OBSERVACIONES, DIA, REGION, SUBREGION, HERRAMIENTA, TICKETS_ALCANZADOS )
+        values(
+                NUll ,
+                now() ,
+                ''  ,
+                now()  ,
+                'Varios' ,
+                'Varios' ,
+                'Varios' ,
+                '' ,
+                '".$motivoCancelacion."',
+                '".$_SESSION['id']."',
+                '".$comentarioCancelacion."',
+                curdate() ,
+                'REGION'  ,
+                'SUBREGION' ,
+                'analisis_cobre' ,
+                ".$cantTickets."
+            );";
+
+    $resultado = mysqli_query($con_w, $consulta);
+
+    // ##################### Consulta Ultima Gestion #####################
     $consulta = "SELECT  max(ID_GESTION) as cant
-    FROM bd3_test.gestiones_operadores_elementos
-    WHERE USUARIO = '".$_SESSION['id']."'
-     and  HERRAMIENTA   = '" . "analisis_cobre" . "'
-    ;";
-    
-    // console_log($consulta);
+        FROM bd3_test.gestiones_operadores_elementos
+        WHERE USUARIO = '".$_SESSION['id']."'
+         and  HERRAMIENTA   = '" . "analisis_cobre" . "'
+         ;";
     $resultado = mysqli_query($con, $consulta);
     $ultIdGestion = mysqli_fetch_array($resultado)["cant"];
-    console_log($ultIdGestion);
-    // console_log($ultIdGestion["cant"]);
+    // console_log("Ult Gestion" . $ultIdGestion);
 
-    $inicio = "Insert into bd3_test.gestiones_operadores_tickets 
-    (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )
-    values   ";
-    
 
-    $medio = "";
-    $fin =  " ;";    
 
+
+    ##################################################### Genera las Querys ##################################################
+
+    $inicio_cant = "Select count(*) as cant from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in (  ";
+    $medio_cant  = "";
+    $fin_cant =  " ) limit 1;";
+
+    $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )        values   ";
+    $medio_insert  = "";
+    $fin_insert =  " ;";
+
+    // $inicio_archivo = " Select ticketuid , '". $motivoCancelacion . " - ". $comentarioCancelacion ."' as comentario from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in ( ";
+    // $medio_archivo  = "";
+    // $fin_archivo  =  " ) ;";
+
+    $inicio_archivo = "Select Tkt.ticketuid , CONCAT( Gest.TEXTO_A_MOSTRAR ,' - ". $comentarioCancelacion ."') as comentario 
+    from bd3_reportes_externos.bit_incidents_pendientes  Tkt , bd3_gestiones.cobre_items_gestiones Gest
+    Where Gest.ID_ITEM_GESTION = ". $motivoCancelacion . " AND  Tkt.ticketid in ( ";
+    $medio_archivo  = "";
+    $fin_archivo  =  " ) ;";
 
     foreach ($lstTkt as $ticket_id) {
-        // Consulta SQL de inserción
-        $medio =  $medio . " ( " . $ultIdGestion . " , now() , " . $ticket_id . " , curdate() ),";
-
+        $medio_cant =  $medio_cant ." ". $ticket_id  . ",";
+        $medio_insert =  $medio_insert . " ( " . $ultIdGestion . " , now() , " . $ticket_id . " , curdate() ),";
+        $medio_archivo =  $medio_archivo . " ". $ticket_id  . " ,";
     }
-    $medio= substr($medio, 0, -1);
 
-    // console_log($medio);
-    $consulta = $inicio.$medio.$fin;
+    $medio_cant= substr($medio_cant, 0, -1);
+    $medio_insert= substr($medio_insert, 0, -1);
+    $medio_archivo= substr($medio_archivo, 0, -1);
 
-    console_log($consulta);
+    $consulta_cant = $inicio_cant.$medio_cant.$fin_cant;
+    $consulta_insert = $inicio_insert.$medio_insert.$fin_insert;
+    $consulta_archivo = $inicio_archivo.$medio_archivo.$fin_archivo;
 
-     $resultado = mysqli_query($con_w, $consulta);
-    
+    // console_log("consulta_cant: " . $consulta_cant);
+    // console_log("consulta_insert: " . $consulta_insert);
+    // console_log("consulta_archivo: " . $consulta_archivo);
+
+
+    ##################################################### Verifica Tickets ##################################################
+
+    $resultado = mysqli_query($con, $consulta_cant);
+    if($resultado === false) {
+        $msgExport =  "Err|Error en consulta";
+    } else {
+        $cant_Ok = mysqli_fetch_array($resultado)["cant"];
+        $cant_Ok = trim($cant_Ok);
+        $cant_Ok = intval($cant_Ok);
+    }
+
+
+
+
+    // ##################### INSERTA DE TALLE DE TICKETS #####################
+
+    $resultado = mysqli_query($con_w, $consulta_insert);
+
+
+    // #########################  Exporta listado para cerrar  #########################
+    $fecha = date("ymd h:i:s");
+    //console_log($fecha);
+    //echo date("d-m-Y",strtotime($fecha_actual."- 1 month"));
+    $dt = new DateTimeZone("America/Buenos_Aires");
+    $fecha2 = new DateTime("now", $dt);
+    //console_log($fecha2);
+
+    $fecha3 = date_format($fecha2, "ymd_his");
+    //console_log( $fecha3 );
+
+    // $consulta = "SELECT * FROM bd3_reportes_externos.cobre_listadosprocesoebsp_cierres_anticipados_pic_ok_icd;";
+    $nomArchivo = "LSTOFFSPROREPACTACITASERVICE_AdE_" . $fecha3;
+    // $nomArchivo = "este_arch" . $fecha3;
+    // console_log($nomArchivo);
+    $extArchivo = ".txt";
+    $cantLotes = '1';
+    $maxRegistos = '';
+    $habilitaEncabezado = false;
+    $separador = '|';
+    $ruta = explode('/', $_SERVER["REQUEST_URI"]);
+    $ruta = $ruta[1] ;
+    // $ruta = $ruta[1] . "/files_to_PIC/";
+
+    ExportaConsulta($consulta_archivo, $nomArchivo, $extArchivo, $cantLotes, $maxRegistos, $habilitaEncabezado, $ruta, $separador);
+   
     ?>
-    <script>
-	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
-    </script>
-    <title>Document</title>
-</head>
-<body>
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Aviso!!</h5>                    
-                </div>
-                <div class="modal-body">
-                    <p>Se cancelaron  <?php echo $cantTickets  ?> Tickets</p><br><br>
-                    <button class="btn btn-primary">
-                        <a style="color: white;" href="index.php">Volver</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+   

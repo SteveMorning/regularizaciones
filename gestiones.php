@@ -16,7 +16,8 @@ if ($_POST) {
 $consulta = "SELECT DISTINCT ID_ITEM_GESTION,
 TEXTO_A_MOSTRAR
 FROM bd3_gestiones.cobre_items_gestiones
-where MOSTRAR = true;";
+where MOSTRAR = true
+AND HERRAMIENTA = 'Desvio Ingreso Evento';";
 
 $lstDesplegableGestiones = mysqli_query($con, $consulta);
 
@@ -87,7 +88,7 @@ where MOSTRAR = true;";
 
 	<div class="col-1 p-0 ml-5" style="border-left: black; border-left-style: solid; border-left-width: 1px;">
 		<button class="btn btn-sm btn-dark ml-4  mt-1 " style="margin-top: 48px;" onclick="return otrasGestiones()" type="button" id="otrasGestiones">
-		Otras Gestiones
+		Otras Cancelaciones
 		</button>
 	</div>
 
