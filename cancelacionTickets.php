@@ -84,7 +84,7 @@
 
 
     // ##################### INSERTA LA GESTION DEL USUARIO #####################
-    $consulta = "INSERT into bd3_test.gestiones_operadores_elementos
+    $consulta = "INSERT into bd3_gestiones.gestiones_operadores_elementos
         ( ID_GESTION, FECHA_INICIO, ID_Elemento_Inicio, FECHA_GESTION, TIPO_ELEMENTO,
         ID_Elemento, NOMBRE_ELEMENTO, DATOS_ELEMENTO, ID_ITEM_GESTION, USUARIO,
         OBSERVACIONES, DIA, REGION, SUBREGION, HERRAMIENTA, TICKETS_ALCANZADOS )
@@ -111,7 +111,7 @@
 
     // ##################### Consulta Ultima Gestion #####################
     $consulta = "SELECT  max(ID_GESTION) as cant
-        FROM bd3_test.gestiones_operadores_elementos
+        FROM bd3_gestiones.gestiones_operadores_elementos
         WHERE USUARIO = '".$_SESSION['id']."'
          and  HERRAMIENTA   = '" . "analisis_cobre" . "'
          ;";
@@ -128,8 +128,8 @@
     $medio_cant  = "";
     $fin_cant =  " ) limit 1;";
 
-    // $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )        values   ";
-    $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets
+    // $inicio_insert = "Insert into bd3_gestiones.gestiones_operadores_tickets (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )        values   ";
+    $inicio_insert = "Insert into bd3_gestiones.gestiones_operadores_tickets
                         SELECT  ". $ultIdGestion ." as ID_GESTION,  now() as FECHA_GESTION_Tkt, ticketid as  NroTicket,  curdate() as DIA
                         FROM bd3_reportes_externos.bit_incidents_pendientes
                         WHERE ticketid in ( ";
