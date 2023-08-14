@@ -103,9 +103,14 @@
     $medio_cant  = "";
     $fin_cant =  " ) limit 1;";
 
-    $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )        values   ";
+    // $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets (ID_GESTION, FECHA_GESTION_Tkt, NroTicket, DIA )        values   ";
+    $inicio_insert = "Insert into bd3_test.gestiones_operadores_tickets
+                        SELECT  ". $ultIdGestion ." as ID_GESTION,  now() as FECHA_GESTION_Tkt, ticketid as  NroTicket,  curdate() as DIA
+                        FROM bd3_reportes_externos.bit_incidents_pendientes
+                        WHERE ticketid in ( ";
     $medio_insert  = "";
-    $fin_insert =  " ;";
+    // $fin_insert =  " ;";
+    $fin_insert =  " );";
 
     // $inicio_archivo = " Select ticketuid , '". $motivoCancelacion . " - ". $comentarioCancelacion ."' as comentario from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in ( ";
     // $medio_archivo  = "";
@@ -119,7 +124,8 @@
 
     foreach ($lstTkt as $ticket_id) {
         $medio_cant =  $medio_cant ." ". $ticket_id  . ",";
-        $medio_insert =  $medio_insert . " ( " . $ultIdGestion . " , now() , " . $ticket_id . " , curdate() ),";
+        // $medio_insert =  $medio_insert . " ( " . $ultIdGestion . " , now() , " . $ticket_id . " , curdate() ),";
+        $medio_insert =  $medio_cant ." ". $ticket_id  . ",";
         $medio_archivo =  $medio_archivo . " ". $ticket_id  . " ,";
     }
 
@@ -130,14 +136,13 @@
     $consulta_cant = $inicio_cant.$medio_cant.$fin_cant;
     $consulta_insert = $inicio_insert.$medio_insert.$fin_insert;
     $consulta_archivo = $inicio_archivo.$medio_archivo.$fin_archivo;
-
     // console_log("consulta_cant: " . $consulta_cant);
     // console_log("consulta_insert: " . $consulta_insert);
     // console_log("consulta_archivo: " . $consulta_archivo);
-
+    
 
     ##################################################### Verifica Tickets ##################################################
-
+    
     $resultado = mysqli_query($con, $consulta_cant);
     if($resultado === false) {
         $msgExport =  "Err|Error en consulta";
@@ -146,15 +151,15 @@
         $cant_Ok = trim($cant_Ok);
         $cant_Ok = intval($cant_Ok);
     }
+    
 
-
-
-
+    
+    
     // ##################### INSERTA DE TALLE DE TICKETS #####################
-
+    
     $resultado = mysqli_query($con_w, $consulta_insert);
 
-
+    
     // #########################  Exporta listado para cerrar  #########################
     $fecha = date("ymd h:i:s");
     //console_log($fecha);
@@ -162,10 +167,10 @@
     $dt = new DateTimeZone("America/Buenos_Aires");
     $fecha2 = new DateTime("now", $dt);
     //console_log($fecha2);
-
+    
     $fecha3 = date_format($fecha2, "ymd_his");
     //console_log( $fecha3 );
-
+    
     // $consulta = "SELECT * FROM bd3_reportes_externos.cobre_listadosprocesoebsp_cierres_anticipados_pic_ok_icd;";
     $nomArchivo = "LSTOFFSPROREPACTACITASERVICE_AdE_" . $fecha3;
     // $nomArchivo = "este_arch" . $fecha3;
@@ -180,6 +185,6 @@
     // $ruta = $ruta[1] . "/files_to_PIC/";
 
     ExportaConsulta($consulta_archivo, $nomArchivo, $extArchivo, $cantLotes, $maxRegistos, $habilitaEncabezado, $ruta, $separador);
-   
+
     ?>
    
