@@ -45,17 +45,42 @@
     }
 
     $lstTkt = explode("\n", $listadoTickets);
-
+    
     if (($clave = array_search("", $lstTkt)) !== false) {
         unset($lstTkt[$clave]);
     }
 
-
+    
     //Limpia los espacios en blanco de cada elemento del array
     array_walk($lstTkt, 'limpia_valores');
     $cantTickets = count($lstTkt);
-
-
+    
+    
+        ##################################################### Genera las Querys ##################################################
+    
+        $inicio_cant = "Select count(*) as cant from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in (  ";
+        $medio_cant  = "";
+        $fin_cant =  " ) limit 1;";
+    
+        foreach ($lstTkt as $ticket_id) {
+            $medio_cant =  $medio_cant ." ". $ticket_id  . ",";
+        }
+    
+        $medio_cant= substr($medio_cant, 0, -1);
+    
+        $consulta_cant = $inicio_cant.$medio_cant.$fin_cant;
+    
+    ##################################################### Verifica Tickets ##################################################
+    
+    $resultado = mysqli_query($con, $consulta_cant);
+    if($resultado === false) {
+        $msgExport =  "Err|Error en consulta";
+    } else {
+        $cant_Ok = mysqli_fetch_array($resultado)["cant"];
+        $cant_Ok = trim($cant_Ok);
+        $cant_Ok = intval($cant_Ok);
+    }
+    
 
 
     // ##################### INSERTA LA GESTION DEL USUARIO #####################
@@ -79,7 +104,7 @@
                 'REGION'  ,
                 'SUBREGION' ,
                 'analisis_cobre' ,
-                ".$cantTickets."
+                ".$cant_Ok."
             );";
 
     $resultado = mysqli_query($con_w, $consulta);
@@ -141,17 +166,6 @@
     // console_log("consulta_archivo: " . $consulta_archivo);
     
 
-    ##################################################### Verifica Tickets ##################################################
-    
-    $resultado = mysqli_query($con, $consulta_cant);
-    if($resultado === false) {
-        $msgExport =  "Err|Error en consulta";
-    } else {
-        $cant_Ok = mysqli_fetch_array($resultado)["cant"];
-        $cant_Ok = trim($cant_Ok);
-        $cant_Ok = intval($cant_Ok);
-    }
-    
 
     
     
