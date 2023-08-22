@@ -141,7 +141,7 @@
     // $medio_archivo  = "";
     // $fin_archivo  =  " ) ;";
 
-    $inicio_archivo = "Select Tkt.ticketuid , CONCAT( Gest.TEXTO_A_MOSTRAR ,' - ". $comentarioCancelacion ."') as comentario 
+    $inicio_archivo = "Select Tkt.ticketuid , CONCAT( Gest.TEXTO_A_MOSTRAR ,' ". $comentarioCancelacion ."') as comentario 
     from bd3_reportes_externos.bit_incidents_pendientes  Tkt , bd3_gestiones.cobre_items_gestiones Gest
     Where Gest.ID_ITEM_GESTION = ". $motivoCancelacion . " AND  Tkt.ticketid in ( ";
     $medio_archivo  = "";
