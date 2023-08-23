@@ -165,7 +165,8 @@ function CreaArchivoLocal($xConsulta , $ArchivoLocal , $ExtensionLocal, $xHabili
         };                
 
     //CIERRA ARCHIVO
-    fclose($file);;
+    fclose($file);
+    fclose($ArchivoLocal);
 }
 
 

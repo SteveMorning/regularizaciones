@@ -201,4 +201,3 @@
     ExportaConsulta($consulta_archivo, $nomArchivo, $extArchivo, $cantLotes, $maxRegistos, $habilitaEncabezado, $ruta, $separador);
 
     ?>
-   
