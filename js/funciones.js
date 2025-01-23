@@ -1,7 +1,11 @@
 $(document).ready(function () {
+
 	cargarStatus();
 	cargarFiltros();
-	cargarElementos();
+	cargarAnalistas();
+	cargarBases();
+	detalleSolicitud();
+	// cargarElementos();
 	cargarGestiones();
 	notificaciones();
 	verificarPinchitos();
@@ -195,27 +199,74 @@ function cargarFiltros() {
 	});
 }
 
-function cargarElementos($losFiltros) {
+// function cargarElementos($losFiltros) {
+// 	$.ajax({
+// 		type: "post",
+// 		url: "tablaElementos.php",
+// 		data: { losFiltros: $losFiltros },
+
+// 		beforeSend: function () {
+// 			// console.log($losFiltros);
+// 			$("#tablaElementos").html(
+// 				'<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+// 			);
+// 		},
+
+// 		success: function (data) {
+// 			$("#tablaElementos").empty();
+// 			$("#tablaElementos").append(data);
+// 			corrigeAltoBody();
+// 			inicializaCampos();
+// 		},
+// 	});
+// }
+
+
+function cargarAnalistas($losFiltros) {
 	$.ajax({
 		type: "post",
-		url: "tablaElementos.php",
+		url: "tablaAnalistas.php",
 		data: { losFiltros: $losFiltros },
 
 		beforeSend: function () {
 			// console.log($losFiltros);
-			$("#tablaElementos").html(
+			$("#tablaAnalistas").html(
 				'<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
 			);
 		},
 
 		success: function (data) {
-			$("#tablaElementos").empty();
-			$("#tablaElementos").append(data);
+			$("#tablaAnalistas").empty();
+			$("#tablaAnalistas").append(data);
 			corrigeAltoBody();
 			inicializaCampos();
 		},
 	});
 }
+
+
+function cargarBases($losFiltros) {
+	$.ajax({
+		type: "post",
+		url: "tablaBases.php",
+		data: { losFiltros: $losFiltros },
+
+		beforeSend: function () {
+			// console.log($losFiltros);
+			$("#tablaBases").html(
+				'<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+			);
+		},
+
+		success: function (data) {
+			$("#tablaBases").empty();
+			$("#tablaBases").append(data);
+			corrigeAltoBody();
+			inicializaCampos();
+		},
+	});
+}
+
 
 function cargarGestiones() {
 	$.ajax({
@@ -348,6 +399,9 @@ function copiarClipboard(textoAMemoria, mensaje) {
 	// console.log(id_elemento);
 	// console.log(id_elemento.trim());
 	// console.log(document.getElementById(id_elemento.trim()));
+
+
+
 	let noti = document.getElementById("idNotificacion");
 	let vacio = null;
 
@@ -478,4 +532,57 @@ function mensajecancelado()
 
  $("#myModal").modal('show');
 
+}
+
+
+function detalleSolicitud (idSolicitud){
+
+	$.ajax({
+		type: "post",
+		url: "detalleSolicitud.php",
+		data: { idSolicitud: idSolicitud },
+
+		beforeSend: function () {
+			// console.log($losFiltros);
+			$("#detalleSolicitud").html(
+				'<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+			);
+		},
+
+		success: function (data) {
+			$("#detalleSolicitud").empty();
+			$("#detalleSolicitud").append(data);
+			// corrigeAltoBody();
+			inicializaCampos();
+		},
+	});
+
+
+}
+
+
+function cargarSolicitud(idSolicitud) {
+
+	console.log('cargarSolicitud');
+
+	$.ajax({
+		type: "POST",
+		url: "altaSolicitud.php",
+		data: { idSolicitud:idSolicitud },
+		success: function (data) {
+			$(".modal-body").empty();
+			$(".modal-body").append(data);
+			$(".modal-title").text(	"Regularizacion de Equipos" );
+			$("#cuadroModal").modal({ show: true });
+			let element = document.getElementById("modalSize");
+			element.classList.add("modal-xl");
+		},
+		// beforeSend:function(){
+
+		//   $("#elementosAbajo").html(
+		//     '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+		//   );
+		// }
+	});
+	
 }

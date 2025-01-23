@@ -84,21 +84,25 @@ div.card-header.border-info.bg-light.m-0.p-0 div div h5 img {
 
 td {
   min-width: 35px;
+  padding: 0px;
 }
 
 th {
   position: sticky;
   top: 0;
-  background-color: #abdde5;
+  /* background-color: #abdde5; */
   border-color: #17a2b8;
   border-style: solid;
   border: 1px;
   width: auto;
+  padding:0%;
+  text-align: center;
 }
 
 .table thead th {
   vertical-align: bottom;
   border: 1px solid #17a2b8;
+  padding:0%;
 }
 
 .table td{
@@ -153,3 +157,5 @@ padding: 1px;
 @media only screen and (min-width: 1200px) {
 
 }
+
+

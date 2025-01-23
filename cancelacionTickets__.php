@@ -98,7 +98,7 @@
     $medio_insert  = "";
     $fin_insert =  " ;";    
     
-    $inicio_archivo = " Select ticketuid , '". $motivoCancelacion . " - ". $comentarioCancelacion ."' as comentario from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in ( ";
+    $inicio_archivo = " Select ticketuid , '". $motivoCancelacion . " ". $comentarioCancelacion ."' as comentario from bd3_reportes_externos.bit_incidents_pendientes  Where ticketid in ( ";
     $medio_archivo  = "";
     $fin_archivo  =  " ) ;";    
 

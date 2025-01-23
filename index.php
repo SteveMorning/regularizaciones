@@ -21,13 +21,13 @@
 	global $idUsuario;
 	global $web;
 	$idUsuario =  $_SESSION['id'];
-	$web = "analisis_cobre";
+	$web = "Regularizaciones";
 
 
 	// $GLOBALS['idUsuario'] =  $_SESSION['user'];
 	// $GLOBALS['web'] = "analisis_cobre";
 
-	validar_sesion('analisis_cobre');
+	validar_sesion('Regularizaciones');
 	headerBasico();
 	headerBootstrap(1);
 	headerDatatables();
@@ -51,7 +51,7 @@
 
     <link rel="shortcut icon" href="ico/person-workspace.svg" type="icon">
 
-    <title>Análisis Cobre</title>
+    <title>Regularizaciones</title>
 
 </head>
 
@@ -61,12 +61,16 @@
         <!-- ################# HEADER ################# -->
         <div class="card-header" id="encabezado">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
-                <a class="navbar-brand" href="#">Análisis Cobre</a>
+                <a class="navbar-brand" href="#">Regularizaciones</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <button type="button" class="btn btn-success btn-sm ml-5" onclick="cargarSolicitud()" >Nueva Regularización</button>
+                <!-- <button type="button" class="btn btn-success btn-sm ml-5" onclick="cargarSolicitud(1)" >Nueva Regularización</button>
+                <button type="button" class="btn btn-success btn-sm ml-5" onclick="cargarSolicitud('2')" >Nueva Regularización</button> -->
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
@@ -95,49 +99,39 @@
 
             <!-- ################# STATUS ################# -->
             <div class="card-header m-0 p-0">
-                <div id="status" class="ml-3 m-0 p-1 mt-1 "> </div>
+                <!-- <div id="status" class="ml-3 m-0 p-1 mt-1 "> </div> -->
             </div>
 
             <!-- ################# FILTROS ################# -->
             <div class="card-header m-0 p-0 ">
-                <div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
+                <!-- <div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div> -->
             </div>
 
 
-            <!-- ############################### NOTIFICACION ################################# -->
-            <!-- <div aria-live="polite" aria-atomic="true"
-                class=" position-relative  d-flex justify-content-center align-items-center"
-                style=" z-index: 5; top: 430px; left: 500px;  ">
-
-                <div class="toast-container position-absolute  " id="toastPlacement">
-
-                    <div class="toast  border-dark" id="companyUpdOK" name="companyUpdOK" role="alert" autohide="false"
-                        aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header bg-warning">
-                            <img src="https://img.icons8.com/color/48/null/check-all--v1.png" class="rounded mr-2"
-                                style="heigth:25px; width: 25px; ">
-                            <strong class="mr-auto " style="color: black;">Análisis Cobre</strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="toast-body">
-                            <div id="textoNotificacion"></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
 
-
-            <!-- ################# TABLA ELEMENTOS ################# -->
+            <!-- ################# TABLA Analistas ################# -->
             <div class="card-header m-0 p-0">
-                <div id="tablaElementos" class="ml-3  m-0 p-0"> </div>
+                <!-- <div id="tablaAnalistas" class="ml-3  m-0 p-0"> </div> -->
             </div>
+
+            <!-- ################# TABLA Bases ################# -->
+            <div class="card-header m-0 p-0">
+                <div id="tablaBases" class="ml-3  m-0 p-0"> </div>
+            </div>
+
+
+            <!-- ################# Detalle Solicitud ################# -->
+            <div class="card-header m-0 p-0">
+                <!-- <div id="tablaElementos" class="ml-3  m-0 p-0"> </div> -->
+                <!-- <div id="detalleSolicitud" class="ml-3  m-0 p-0"> </div> -->
+            </div>
+
+
 
             <!-- ################# GESTION ################# -->
             <div class="card-header m-0 p-0">
-                <div id="gestiones" class="ml-3  m-0 p-0 pt-1 pb-1"> </div>
+                <!-- <div id="gestiones" class="ml-3  m-0 p-0 pt-1 pb-1"> </div> -->
             </div>
 
 
