@@ -1,66 +1,122 @@
 $(document).ready(function () {
-	marcarElementoInicialTomado();
+	// marcarElementoInicialTomado();
 	setInterval(() => {
 		verificarPinchitos();
 	}, 5000);
 });
 
-function iniciarGestion(idElementoNuevo, obj) {
-	// console.log("iniciarGestion");
-	// console.log(idElemento);
+function iniciarGestion(idSolicitud) {
+	console.log("iniciarGestion");
+	console.log(idSolicitud);
+
+	cargarSolicitud(idSolicitud);
 	// console.log(obj);
-	let icoDefault =
-		"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
-	let elementoActual = document.getElementById("elemento").innerText;
-	let objActual = document.getElementById(elementoActual);
-	let ListaElementos = "'" + idElementoNuevo + "' , '" + elementoActual + "'";
+	// let icoDefault =
+	// 	"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+	// let elementoActual = document.getElementById("elemento").innerText;
+	// let objActual = document.getElementById(elementoActual);
+	// let ListaElementos = "'" + idElementoNuevo + "' , '" + elementoActual + "'";
 
 	$.ajax({
 		type: "POST",
 		url: "gestionInicio.php",
 		dataType: "json",
-		data: { idElemento: idElementoNuevo, web: "analisis_cobre" },
-		success: function (data) {
-			// console.log(data.status);
-			// console.log(data);
-			if (data.status == "ok") {
+		data: { idSolicitud: idSolicitud },
+		success: function (response) {
+			// console.log(response);
+
+			if (response.status == "ok") {
 				/*  ################   AGREGO CORRECTAMENTE EL INICIO DE LA GESTION ################# */
-				dibujarGestionDescripcion(data.result);
-
-				$.ajax({
-					type: "POST",
-					url: "pinchitos.php",
-					dataType: "json",
-					data: { idElemento: ListaElementos },
-					success: function (data2) {
-						if (data2.status == "ok") {
-							$(objActual).css("border-color", "#0d6efd");
-							$(objActual).css("background-color", "#cfe2ff");
-							$(objActual).attr("src", icoDefault);
-
-							data2.result.forEach((element) => {
-								dibujarpinchito(data2.fields, element);
-							});
-						}
-					},
-				});
+				// dibujarGestionDescripcion(data.result);
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: "pinchitos.php",
+				// 	dataType: "json",
+				// 	data: { idElemento: ListaElementos },
+				// 	success: function (data2) {
+				// 		if (data2.status == "ok") {
+				// 			$(objActual).css("border-color", "#0d6efd");
+				// 			$(objActual).css("background-color", "#cfe2ff");
+				// 			$(objActual).attr("src", icoDefault);
+				// 			data2.result.forEach((element) => {
+				// 				dibujarpinchito(data2.fields, element);
+				// 			});
+				// 		}
+				// 	},
+				// });
 			} else {
 				/*  ################   ELEMENTO TOMADO  ################# */
 				let desde =
-					data.result.Tomado_Dias == 0
-						? data.result.Tomado_Horas + "Hs"
-						: data.result.Tomado_Dias + " Dias";
+					response.result.Tomado_Dias == 0
+						? response.result.Tomado_Horas + "Hs"
+						: response.result.Tomado_Dias + " Dias";
 				let mensaje =
-					"Elemento tomado por " +
-					data.result.Colaborador +
+					"Solicitud tomada por " +
+					response.result.Colaborador +
 					" (" +
-					data.result.mail +
+					response.result.mail +
 					") hace " +
 					desde;
 				alert(mensaje);
 			}
 		},
+
+		// beforeSend:function(){
+
+		//   $("#elementosAbajo").html(
+		//     '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+		//   );
+		// }
 	});
+
+	verificarPinchitos();
+
+	// $.ajax({
+	// 	type: "POST",
+	// 	url: "gestionInicio.php",
+	// 	dataType: "json",
+	// 	data: { idElemento: idElementoNuevo, web: "analisis_cobre" },
+	// 	success: function (data) {
+	// 		// console.log(data.status);
+	// 		// console.log(data);
+	// 		if (data.status == "ok") {
+	// 			/*  ################   AGREGO CORRECTAMENTE EL INICIO DE LA GESTION ################# */
+	// 			dibujarGestionDescripcion(data.result);
+
+	// 			$.ajax({
+	// 				type: "POST",
+	// 				url: "pinchitos.php",
+	// 				dataType: "json",
+	// 				data: { idElemento: ListaElementos },
+	// 				success: function (data2) {
+	// 					if (data2.status == "ok") {
+	// 						$(objActual).css("border-color", "#0d6efd");
+	// 						$(objActual).css("background-color", "#cfe2ff");
+	// 						$(objActual).attr("src", icoDefault);
+
+	// 						data2.result.forEach((element) => {
+	// 							dibujarpinchito(data2.fields, element);
+	// 						});
+	// 					}
+	// 				},
+	// 			});
+	// 		} else {
+	// 			/*  ################   ELEMENTO TOMADO  ################# */
+	// 			let desde =
+	// 				data.result.Tomado_Dias == 0
+	// 					? data.result.Tomado_Horas + "Hs"
+	// 					: data.result.Tomado_Dias + " Dias";
+	// 			let mensaje =
+	// 				"Elemento tomado por " +
+	// 				data.result.Colaborador +
+	// 				" (" +
+	// 				data.result.mail +
+	// 				") hace " +
+	// 				desde;
+	// 			alert(mensaje);
+	// 		}
+	// 	},
+	// });
 }
 
 function dibujarGestionDescripcion(descripcion) {
@@ -74,102 +130,30 @@ function dibujarGestionDescripcion(descripcion) {
 		"idElemento cinum=" + descripcion.cinum;
 }
 
-function finalizarGestion() {
-	//  console.log("function finalizarGestion");
+function finalizarGestion(idSolicitud) {
+	 console.log("finalizarGestion");
+	 console.log(idSolicitud);
 
-	// let tipoGestion = document.getElementById("selectGestion").value;
-	let tipoGestion =
-		document.getElementById("selectGestion").options[
-			document.getElementById("selectGestion").selectedIndex
-		].value;
-	let tipoGestionName =
-		document.getElementById("selectGestion").options[
-			document.getElementById("selectGestion").selectedIndex
-		].text;
-	let comentario = document.getElementById("comentgestion").value;
-	let elemento = document.getElementById("elemento").textContent;
-	let tipoElemento = document.getElementById("tipoElemento").textContent;
-	let cantidadTickets = document.getElementById("cantidadTickets").textContent;
-	let errElemento;
-	let errtipoGestion = 0;
+	 $.ajax({
+		type: "POST",
+		url: "gestionFin.php",
+		dataType: "json",
+		data: { idSolicitud: idSolicitud },
+		success: function (response) {
+			console.log(response);
 
-	errElemento = elemento == " " ? (errElemento = 1) : (errElemento = 0);
-	errtipoGestion =
-		tipoGestion == "Seleccione Gestion..."
-			? (errtipoGestion = 1)
-			: (errtipoGestion = 0);
-	cantidadTickets =
-		tipoGestion == 8
-			? (cantidadTickets = 0)
-			: (cantidadTickets = cantidadTickets);
-	// console.log({
-	//   tipoGestion,
-	//   tipoGestionName,
-	//   comentario,
-	//   tipoElemento,
-	//   elemento,
-	//   cantidadTickets, errElemento,errtipoGestion
-	// });
+		},
 
-	if (errElemento + errtipoGestion == 0) {
-		let acepta = confirm(
-			"¿Desea guardar la gestion " +
-				tipoGestionName +
-				" del " +
-				tipoElemento +
-				"  " +
-				elemento +
-				" ?"
-		);
-		// console.log("Acepta:" + acepta);
+		// beforeSend:function(){
 
-		if (acepta == true) {
-			// console.log("Acepta:" + 'si');
-			blanquearGestion();
-			$.ajax({
-				type: "POST",
-				url: "gestionFin.php",
-				dataType: "json",
-				data: {
-					tipoGestion: tipoGestion,
-					comentario: comentario,
-					elemento: elemento,
-					tipoElemento: tipoElemento,
-					cantidadTickets: cantidadTickets,
-				},
-				// verificar la devolucion OK
-				success: function (data) {
-					// console.log('exito');
-					// console.log(data);
-					// console.log(data.status);
-					if (data.status == "ok") {
-						alert("Gestion registrada correctamente");
-					} else {
-						alert("Error al guardar Gestion");
-					}
-				},
-				error: function (data) {
-					// console.log('error');
-					//Cuando la interacción retorne un error, se ejecutará esto.
-				},
-			});
+		//   $("#elementosAbajo").html(
+		//     '<div class="spinner-border" role="status" style=" margin-left: 50%; height: 20px; width: 20px; " ><span class="sr-only"  >Loading...</span> </div>'
+		//   );
+		// }
+	});
 
-			verificarPinchitos();
-		} else {
-			// console.log('No se impacto la gestion');
-		}
-	} else {
-		let mensaje = "";
-		mensaje =
-			errElemento == 1
-				? mensaje + " Seleccione el elemento a gestionar. "
-				: mensaje;
-		mensaje =
-			errtipoGestion == 1
-				? mensaje + " Seleccione la gestion realizada. "
-				: mensaje;
-		alert("Error al guardar la gestion!!! " + mensaje);
-	}
+	verificarPinchitos(); 
+
 }
 
 function blanquearGestion() {
@@ -218,6 +202,7 @@ function verificarPinchitos() {
 		dataType: "json",
 		data: {},
 		success: function (data) {
+			// console.log(data);
 			if (data.status == "ok") {
 				data.result.forEach((element) => {
 					dibujarpinchito(data.fields, element);
@@ -229,23 +214,27 @@ function verificarPinchitos() {
 }
 
 function dibujarpinchito(fields, element) {
-	let icoDefault =
-		"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+	// console.log("dibujarpinchito");
+	// console.log(fields);
+	// console.log(element);
+
+	let icoDefault ="https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png";
+	// let icoDefault ="https://img.icons8.com/?size=100&id=c5h3yYH2MjgA&format=png&color=000000";
 	let icoTomado = "https://img.icons8.com/fluency/25/000000/coworking.png";
-	let icoTomadoMio =
-		"https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
-	let icoResuelto = icoDefault;
-	let icoResueltoHoy = "https://img.icons8.com/color/25/000000/checked--v1.png";
+	// let icoTomado = "https://img.icons8.com/?size=100&id=54295&format=png&color=000000";
+	let icoTomadoMio ="https://img.icons8.com/external-konkapp-outline-color-konkapp/25/228BE6/external-working-work-from-home-konkapp-outline-color-konkapp-1.png";
+	// let icoResuelto = icoDefault;
+	let icoResuelto = "https://img.icons8.com/color/25/000000/checked--v1.png";
+	// let icoEspera = "https://img.icons8.com/?size=100&id=TmC56UwpgC0V&format=png&color=000000";
+	// let icoEspera = "https://img.icons8.com/?size=100&id=8fhQlXX19CCr&format=png&color=000000";
+	let icoEspera = "https://img.icons8.com/?size=100&id=z8VDNr3xBWo8&format=png&color=000000";
 
-	let obj = document.getElementById(element[0]);
-	let icodelay = document.getElementById("icodelay" + element[0]);
-	if (icodelay != null) {
-		let otrocampo = icodelay.parentElement.offsetWidth;
-		// console.log(otrocampo);
-		let b = otrocampo - 15;
+	let btn = document.getElementById(element[0]);
+	let obj = btn.querySelector("img");
 
-		$(icodelay).css("left", b);
-	}
+	// console.log(element[0]);
+	// console.log(obj);
+	// console.log(obj.childNodes.currentSrc= icoTomadoMio);
 
 	if (obj !== null) {
 		//  /* este es el usuario 0:tomado por mi, 1:tomado  , 2:resuelto  y el element[5]  te dice cuando fue resuelto */
@@ -253,7 +242,9 @@ function dibujarpinchito(fields, element) {
 			case "0": // #######################  TOMADO POR MI  #######################
 				// Amarillo
 				$(obj).css("border-color", "#ffc107");
-				$(obj).css("background-color", "#fff3cd");
+				// $(obj).css("background-color", "#fff3cd");
+				$(obj).css("background-color", "#fbdc79");
+				
 				$(obj).attr("src", icoTomadoMio);
 				// dibujarGestionDescripcion(element);
 
@@ -261,105 +252,58 @@ function dibujarpinchito(fields, element) {
 			case "1": // #######################  TOMADO   #######################
 				// ROJO
 				$(obj).css("border-color", "#dc3545");
-				$(obj).css("background-color", "#f8d7da");
+				// $(obj).css("background-color", "#f8d7da");
+				$(obj).css("background-color", "#ffadadd4");
 				$(obj).attr("src", icoTomado);
 				let mensaje =
 					"<strong>Tomado por </strong>: " +
-					element[10] +
+					element[14] +
 					" <br>" +
 					"<strong>email</strong>: " +
-					element[11] +
+					element[15] +
 					" <br>" +
 					"<strong>Desde </strong>: " +
-					element[3] +
+					element[5] +
 					"Hs";
-				$(obj).attr("data-original-title", mensaje);
+	
+					// <img class="text-right" 
+					// style="position: absolute; left: 378px;" 
+					// id="icodelayLAF->VIP->XXX->REPVIP" alt="" 
+					// data-trigger="hover" 
+					// data-html="true" 
+					// data-toggle="popover" 
+					// data-original-title="Analizado el 11/04/25 11:21Hs" 
+					// data-content="<strong>Gestion: </strong> IM ya creada<br><strong>Tkts Vinculados: </strong> 70<br><strong>Observaciones: </strong> VIP9 rango neq VIP9-0100/101 - IM 23096088 VIP9 - Falla de ringer AEP-VL Silvio Diaz<br><strong>Colaborador: </strong> José Pereyra<br>" 
+					// src="https://img.icons8.com/color/25/null/calendar-week3.png">
+					// </img>
+				
+				$(obj).attr("data-trigger", "hover");
+				$(obj).attr("data-html", "true");
+				$(obj).attr("data-toggle", "popover");
+				$(obj).attr("data-original-title", "TomadoS");
+				$(obj).attr("data-content", mensaje);
 
+				// $(obj).attr("title",'');
 				break;
 			case "2":
-				// #######################  RESUELTO HOY   #######################
-				if (element[5] == "0") {
-					$(obj).css("border-color", "#198754");
-					$(obj).css("background-color", "#d1e7dd");
-					$(obj).attr("src", icoResueltoHoy);
-
-					$(icodelay).attr(
-						"src",
-						"https://img.icons8.com/color/25/null/today.png"
-					);
-					$(icodelay).attr(
-						"data-original-title",
-						"Analizado el " + element[4] + "Hs"
-					);
-					$(icodelay).attr(
-						"data-content",
-						"<strong>" +
-							fields[6].name +
-							": </strong> " +
-							element[6] +
-							"<br>" +
-							"<strong>" +
-							fields[7].name +
-							": </strong> " +
-							element[7] +
-							"<br>" +
-							"<strong>" +
-							fields[8].name +
-							": </strong> " +
-							element[8] +
-							"<br>" +
-							"<strong>" +
-							fields[10].name +
-							": </strong> " +
-							element[10] +
-							"<br>"
-					);
-				} else {
-					// #######################  RESUELTO ANTES   #######################
-					$(obj).css("border-color", "#0d6efd");
-					$(obj).css("background-color", "#cfe2ff");
-					$(obj).attr("src", icoResuelto);
-
-					$(icodelay).attr(
-						"src",
-						"https://img.icons8.com/color/25/null/calendar-week" +
-							element[5] +
-							".png"
-					);
-
-					$(icodelay).attr(
-						"data-original-title",
-						"Analizado el " + element[4] + "Hs"
-					);
-					$(icodelay).attr(
-						"data-content",
-						"<strong>" +
-							fields[6].name +
-							": </strong> " +
-							element[6] +
-							"<br>" +
-							"<strong>" +
-							fields[7].name +
-							": </strong> " +
-							element[7] +
-							"<br>" +
-							"<strong>" +
-							fields[8].name +
-							": </strong> " +
-							element[8] +
-							"<br>" +
-							"<strong>" +
-							fields[10].name +
-							": </strong> " +
-							element[10] +
-							"<br>" /* +
-              "<strong>" +
-              fields[9].name +
-              ": </strong> " +
-              element[9] +
-              "<br>" */
-					);
-				}
+				// #######################  PENDIENTE   #######################
+				$(obj).css("border-color", "#198754");
+				$(obj).css("background-color", "#d1e7dd");
+				// $(obj).attr("src", icoResueltoHoy);
+				$(obj).attr("src", icoDefault);
+				break;
+			case "3":
+				// #######################  En Espera   #######################
+				$(obj).css("border-color", "#198754");
+				$(obj).css("background-color", "#d1e7dd");
+				// $(obj).attr("src", icoResueltoHoy);
+				$(obj).attr("src", icoEspera);
+				break;
+			case "4":
+				// #######################  RESUELTO    #######################
+				$(obj).css("border-color", "#0d6efd");
+				$(obj).css("background-color", "#cfe2ff");
+				$(obj).attr("src", icoResuelto);
 				break;
 			default: // #######################  DEFAULT   #######################
 				$(obj).css("border-color", "#0d6efd");
@@ -384,22 +328,20 @@ function otrasGestiones() {
 			$(".modal-title").text("Otras Cancelaciones");
 			$("#cuadroModal").modal({ show: true });
 			// $("#cuadroModal").classlist.remove("modal-xl");
-      let element = document.getElementById("modalSize");
-      element.classList.remove("modal-xl");
+			let element = document.getElementById("modalSize");
+			element.classList.remove("modal-xl");
 		},
 	});
 }
 
-
 function cancelarTickets(obj) {
-	  console.log('function cancelarTickets');
+	console.log("function cancelarTickets");
 
-	   let com = document.getElementById("textComentarioCancelacion")
-	   let lstTkt = document.getElementById("textListadoTicketCancelar")
-		console.log(com)
-		console.log(lstTkt)
-		console.log(lstTkt.textContent)
-		
+	let com = document.getElementById("textComentarioCancelacion");
+	let lstTkt = document.getElementById("textListadoTicketCancelar");
+	console.log(com);
+	console.log(lstTkt);
+	console.log(lstTkt.textContent);
 
 	// $.ajax({
 	// 	type: "POST",
@@ -411,8 +353,8 @@ function cancelarTickets(obj) {
 	// 		$(".modal-title").text("Otras Cancelaciones");
 	// 		$("#cuadroModal").modal({ show: true });
 	// 		// $("#cuadroModal").classlist.remove("modal-xl");
-    //   let element = document.getElementById("modalSize");
-    //   element.classList.remove("modal-xl");
+	//   let element = document.getElementById("modalSize");
+	//   element.classList.remove("modal-xl");
 	// 	},
 	// });
 }
