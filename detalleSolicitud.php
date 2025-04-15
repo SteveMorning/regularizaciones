@@ -6,7 +6,7 @@ $posicion =0;
 $consultaSol = "SELECT id_solicitud, region, subregion, base, unidad_operativa, movil, id_ot, estado_ot, fecha_creacion_ot, domicilio, comentario, id_usuario_carga, 
 usuario_carga, fecha_de_socilitud, createdAt, updatedAt, prioridad, id_estado_item, estado, id_equipo, serie_a_instalar, serie_a_recuperar, comentarios, 
 id_regularizacion, id_resolucion_item, resolucion, id_usuario_resolucion, usuario_resolucion, fecha_resolucion, observaciones
-FROM bd3_regularizaciones.lst_regularizaciones
+FROM bd3_regularizaciones.lst_regularizaciones__total
 WHERE id_solicitud = 1
 Limit 1
 ;";
@@ -31,7 +31,17 @@ WHERE habilitado = TRUE
 ORDER BY orden ASC
 ;";
 
-
+$consultaResol = "SELECT 
+-- id_solicitud , id_regularizacion, id_resolucion_item, 
+resolucion as Resolucion, 
+-- id_usuario_resolucion, 
+fecha_resolucion as Fecha,
+usuario_resolucion as Usuario
+-- ,observaciones as Observaciones
+FROM bd3_regularizaciones.lst_regularizaciones__total
+WHERE id_solicitud = 1
+;
+";
 
 $consultaResol = "SELECT 
 -- id_solicitud , id_regularizacion, id_resolucion_item, 
@@ -40,10 +50,12 @@ resolucion as Resolucion,
 fecha_resolucion as Fecha,
 usuario_resolucion as Usuario
 -- ,observaciones as Observaciones
-FROM bd3_regularizaciones.lst_regularizaciones
+FROM bd3_regularizaciones.lst_resoluciones
 WHERE id_solicitud = 1
 ;
 ";
+
+// id_solicitud, id_equipo, id_regularizacion, id_resolucion_item, id_Ot, serie_a_instalar, resolucion, id_usuario_resolucion, usuario_resolucion, fecha_resolucion, observaciones, res_eliminado
 
 $resultResol = mysqli_query($con, $consultaResol);
 

@@ -23,7 +23,7 @@ id_solicitud, region, subregion, base, unidad_operativa,
   observaciones, createdAt, updatedAt, prioridad,
    cant_equipos, estado, habilitado,
    resolucion, resolhabilitado
-FROM bd3_regularizaciones.lst_regularizaciones_analistas
+FROM bd3_regularizaciones.lst_regularizaciones__total_analistas
 ;";
 
 // -- WHERE TIMESTAMPDIFF(DAY ,  DIA , curdate()) <2

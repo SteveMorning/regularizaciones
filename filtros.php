@@ -5,13 +5,15 @@ include "consultas.php";
 include "consolelog.php";
 
 
-
 $region = [];
 $subRegion = [];
 $baseTecnica = [];
 $central = [];
-$dslam = [];
-$tElemento = [];
+$tMovil=[];
+$tUserCarga=[];
+$tEstado=[];
+$tResolucion=[];
+
 
 $geo = $GLOBALS['geografia'];
 
@@ -19,344 +21,292 @@ $cont = 0;
 
 if ($_POST) {
 
-	// var_dump("si");
-	// console_log("Si");
+    // var_dump("si");
+    // console_log("Si");
 } else {
-	foreach ($geografia as $datos) {
-		array_push($region, $datos['Region']);
-		array_push($subRegion, $datos['SubRegion']);
-		array_push($baseTecnica, $datos['BaseTecnica']);
-		array_push($central, $datos['Central']);
-	}
-	$lstRegiones = array_unique($region);
-	$lstSubRegiones = array_unique($subRegion);
-	$lstBaseTecnica = array_unique($baseTecnica);
-	$lstCentrales = array_unique($central);
+    foreach ($geografia as $datos) {
+        array_push($region, $datos['Region']);
+        array_push($subRegion, $datos['SubRegion']);
+        array_push($baseTecnica, $datos['BaseTecnica']);
+        array_push($central, $datos['Central']);
+    }
+    $lstRegiones = array_unique($region);
+    $lstSubRegiones = array_unique($subRegion);
+    $lstBaseTecnica = array_unique($baseTecnica);
+    $lstCentrales = array_unique($central);
 }
-
-
-// if (isset($_POST)) {
-// 	var_dump($_POST['resultadotxt']);
-// 	var_dump($_POST['proximaCaja']);
-// } else {
-// 	var_dump("vacia");
-// }
-
-
-
-
-
-
-
-
-// $subRegionesfiltradas = [];
-// foreach ($r  as $datito) {
-// 	array_push($subRegionesfiltradas, $datito['SubRegion']);
-// }
-// $lstSubRegiones = array_unique($subRegionesfiltradas);
-
-
-// $lstRegiones = [];
-// $lstSubRegiones = [];
-// $lstBaseTecnica = [];
-// $lstCentrales = [];
-
-// $lstRegiones = array_unique($datos['Region']);
-// $lstSubRegiones = array_unique($datos['SubRegion']);
-// $lstBaseTecnica = array_unique($datos['BaseTecnica']);
-// $lstCentrales = array_unique($datos['Central']);
-
-
-
-
-
-// $Filtrado = array_filter($datos, function ($e) {
-// 	return $e['Region'] == 'LITORAL';
-// });
-
-// $subRegionesfiltradas = [];
-// foreach ($r  as $datito) {
-// 	array_push($subRegionesfiltradas, $datito['SubRegion']);
-// }
-// $lstSubRegiones = array_unique($subRegionesfiltradas);
-
-
-
-
-
-
-
-############################################
-########### Listado de DSLAM ########
-############################################
-
-$consulta = "SELECT Region, SubRegion, DSLAM
-FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
-where Region is not null AND Region != '' 
-AND SubRegion is not null AND SubRegion != ''
-AND DSLAM is not null 
-GROUP by Region, SubRegion, DSLAM;";
-
-$resultado = mysqli_query($con, $consulta);
-
-while ($datos = mysqli_fetch_assoc($resultado)) {
-	array_push($dslam, $datos['DSLAM']);
-}
-
-// $dslams = array_unique($dslam);
-// $lstDSLAM = array_values($dslams);
-
-$lstDSLAM = array_unique($dslam);
 
 
 
 
 #############################################
-########### Listado de Tipo Elemento ########
+########### Listado de Movil ########
 #############################################
-$consulta = "SELECT Tipo_Elemento 
-FROM bd3_reportes_acumulados.bit_agrupacion_elements_diarios
-where Tipo_Elemento is not null AND Tipo_Elemento != ''
-GROUP by Tipo_Elemento;";
-
-$consulta = "SELECT Tipo_Elemento 
-FROM bd3_reportes_externos.bit_agrupacion_elementos_04_web
-where Tipo_Elemento is not null AND Tipo_Elemento != ''
-GROUP by Tipo_Elemento;";
+$consulta = "SELECT movil 
+FROM bd3_regularizaciones.filtro_moviles;"
+;
 
 $resultado = mysqli_query($con, $consulta);
 
 while ($datos = mysqli_fetch_assoc($resultado)) {
-	array_push($tElemento, $datos['Tipo_Elemento']);
+    array_push($tMovil, $datos['movil']);
 }
 
 // $tElementos = array_unique($tElemento);
 // $lstTipoElemento = array_values($tElementos);
 
-$lstTipoElemento = array_unique($tElemento);
+$lstMovil = array_unique($tMovil);
+
+
+#############################################
+########### USUARIO DE CARGA  ########
+#############################################
+$consulta = "SELECT id_usuario_carga, usuario_nombre 
+ FROM bd3_regularizaciones.filtro_usuarios;";
+
+$resultado = mysqli_query($con, $consulta);
+
+while ($datos = mysqli_fetch_assoc($resultado)) {
+    array_push($tUserCarga, $datos['usuario_nombre']);
+}
+
+// $tElementos = array_unique($tElemento);
+// $lstTipoElemento = array_values($tElementos);
+
+$lstUserCarga = array_unique($tUserCarga);
+
+
+
+#############################################
+################### ESTADO  ##################
+#############################################
+$consulta = "SELECT id_estado_item, estado 
+FROM bd3_regularizaciones.filtro_estados
+;";
+
+$resultado = mysqli_query($con, $consulta);
+
+while ($datos = mysqli_fetch_assoc($resultado)) {
+    array_push($tEstado, $datos['estado']);
+}
+
+// $tElementos = array_unique($tElemento);
+// $lstTipoElemento = array_values($tElementos);
+
+$lstEstado = array_unique($tEstado);
+
+
+#############################################
+############### RESOLUCION  ##################
+#############################################
+$consulta = "SELECT id_resolucion_item, resolucion 
+FROM bd3_regularizaciones.filtro_resoluciones;";
+
+$resultado = mysqli_query($con, $consulta);
+
+while ($datos = mysqli_fetch_assoc($resultado)) {
+    array_push($tResolucion, $datos['resolucion']);
+}
+
+$lstResolucion = array_unique($tResolucion);
+
 
 
 
 function mostrarLista($Lista)
 {
-	$lst = $GLOBALS[$Lista];
-
-	foreach ($lst as $value) {
-		echo ('
+    $lst = $GLOBALS[$Lista];
+    foreach ($lst as $value) {
+        echo('
         <a class="dropdown-item  ml-3 btn-sm pr-1" style="padding-left: 10px;"  value=' . $value . '  text="' . $value . '" >
         <input type="checkbox" class="form-check-input"  onclick="chkItem(this)"  value=' . $value . ' text="' .  $value . '" >
         <label class="form-check-label">' .  $value . '</label>
         </a>
          ');
-	}
+    }
 }
 
 ?>
 
-<div class="row">
-<div class="col-md-8 col-xl-9 pr-0">
-		<!-- ############## DropDown Filtros  ############### -->
-		<div class="row col-11" id="contenedorDropDown">
+<div class="row mt-1 ">
 
-			<!-- ############## Regiones ############### -->
-			<div class="dropdown m-0 " data-mdb-filter="true" id="droplistRegion" value="" text="">
-				<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="region" data-toggle="dropdown">
-					Regiones
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
-					<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0 " href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstRegiones" class="listaValores">
-						<?php mostrarLista('lstRegiones')  ?>
+	<!-- ############## DropDown Filtros  ############### -->
+	<div class="row col-12 ml-1" id="contenedorDropDown">
+
+		<div class="">
+			<div class="row">
+
+				<!-- ############## Regiones ############### -->
+				<div class="dropdown m-0 col-1" data-mdb-filter="true" id="droplistRegion" value="" text="">
+					<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="region" data-toggle="dropdown">
+						Regiones
+					</button>
+					<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
+						<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0 " href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosRegion">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin: 0px ;">
+						<div id="lstRegiones" class="listaValores">
+							<?php mostrarLista('lstRegiones')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## SubRegiones ############### -->
-			<div class="dropdown p-0 m-0 ml-3" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
-				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion" data-toggle="dropdown">
-					SubRegion
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0" href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstSubRegiones" class="listaValores">
-						<?php mostrarLista('lstSubRegiones')  ?>
+				<!-- ############## SubRegiones ############### -->
+				<div class="dropdown p-0 m-0 ml-1 col-1" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="subRegion" data-toggle="dropdown">
+						SubRegion
+					</button>
+					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0" href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosAnio">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstSubRegiones" class="listaValores">
+							<?php mostrarLista('lstSubRegiones')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## Base Tecnica ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
-				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica" data-toggle="dropdown">
-					Base Tecnica
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0" href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosBaseTecnica">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstBaseTecnica" class="listaValores">
-						<?php mostrarLista('lstBaseTecnica')  ?>
+				<!-- ############## Base Tecnica ############### -->
+				<div class="dropdown p-0 m-0 col-1" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="BaseTecnica" data-toggle="dropdown">
+						Base Tecnica
+					</button>
+					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0" href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosBaseTecnica">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstBaseTecnica" class="listaValores">
+							<?php mostrarLista('lstBaseTecnica')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## Tipo Elemento ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistTipoElemento" value="" text="">
-				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento" data-toggle="dropdown">
-					Tipo de Elemento
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarTipoElemento" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0" href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosTipoElemento">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstTipoElemento">
-						<?php mostrarLista('lstTipoElemento')  ?>
+				<!-- ############## Movil ############### -->
+				<div class="dropdown p-0 m-0 ml-4 col-1" data-mdb-filter="true" id="droplistMovil" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="TipoElemento" data-toggle="dropdown">
+						Movil
+					</button>
+					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarMoviles"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0" href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosTipoElemento">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstTipoElemento">
+							<?php mostrarLista('lstMovil')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## Central ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistCentrales" value="" text="">
-				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="centrales" data-toggle="dropdown">
-					Central
-				</button>
-				<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarCentrales" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0 " href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstCentrales" class="listaValores">
-						<?php mostrarLista('lstCentrales')  ?>
+				<!-- ############## Usuario de Carga ############### -->
+				<div class="dropdown p-0 m-0 col-1"  style="left: -34px;" data-mdb-filter="true" id="droplistUserCarga" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="DSLAM" data-toggle="dropdown">
+						Usuario de Carga
+					</button>
+					<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarUsrCarga"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0 " href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosDSLAM">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstDSLAM">
+							<?php mostrarLista('lstUserCarga')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## DSLAM ############### -->
-			<div class="dropdown m-0 ml-3" data-mdb-filter="true" id="droplistDSLAM" value="" text="">
-				<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM" data-toggle="dropdown">
-					DSLAM
-				</button>
-				<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-					<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarDSLAM" type="text" placeholder="Buscar..">
-					<a class="dropdown-item  btn-sm pr-0 " href="#">
-						<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
-						<label class="form-check-label">(Todos)</label>
-					</a>
-					<hr class="hr" style="margin : 0px ; ">
-					<div id="lstDSLAM">
-						<?php mostrarLista('lstDSLAM')  ?>
+				<!-- ############## Estado ############### -->
+				<div class="dropdown p-0 m-0 ml-4 col-1"   data-mdb-filter="true" id="droplistEstado" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="centrales" data-toggle="dropdown">
+						Estado
+					</button>
+					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarEstados"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0 " href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosCentrales">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstCentrales" class="listaValores">
+							<?php mostrarLista('lstEstado')  ?>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- ############## Filtra Elemento ############### -->
-
-
-			<div class="mt-1">
-				<input class="form-control border border-dark p-0 ml-3 m-0" id="filtraElemento" style="height:fit-content; height:22px;  " type="text" placeholder="Filtra Elemento...">
-			</div>
-
-		</div>
-
-		<!-- ############## Botones de Filtros  ############### -->
-		<div class="row mt-1 m-0">
-
-			<div class="row col-8 text-Left">
-
-				<!-- ############## IMPI ############### -->
-				<div class="ml-2 m-1" data-toggle="tooltip"  title="Filtra IMPI= No">s/IMPI</div>
-				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra IMPI= No">
-					<input type="checkbox" class="custom-control-input" id="switchIMPI" onchange=cambioSwitch(this)   text="">
-					<label class="custom-control-label" for="switchIMPI"></label>
+				<!-- ############## Resolucion ############### -->
+				<div class="dropdown p-0 m-0 col-1" style="left: -26px;" data-mdb-filter="true" id="droplistResolucion" value="" text="">
+					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
+						id="DSLAM" data-toggle="dropdown">
+						Resolucion
+					</button>
+					<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarResoluciones"
+							type="text" placeholder="Buscar..">
+						<a class="dropdown-item  btn-sm pr-0 " href="#">
+							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+								id="chkTodosResolucion">
+							<label class="form-check-label">(Todos)</label>
+						</a>
+						<hr class="hr" style="margin : 0px ; ">
+						<div id="lstCentrales">
+							<?php mostrarLista('lstResolucion')  ?>
+						</div>
+					</div>
 				</div>
 
-				<!-- ############## IMPE ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip"  title="Filtra IMPE= No">s/IMPE</div>
-				<div class="custom-control custom-switch m-1 "  data-toggle="tooltip"  title="Filtra IMPE= No">
-					<input type="checkbox" class="custom-control-input" id="switchIMPE"  onchange=cambioSwitch(this) text="">
-					<label class="custom-control-label" for="switchIMPE"></label>
+				<!-- ############## Filtra OT ############### -->
+				<div class=" p-0 col-1 " style="left: -10px; ">
+					<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraOT"
+						style="height:fit-content; height:28px; width: 150px; " type="text" 
+						placeholder="Filtra OT...">
 				</div>
 
-				<!-- ############## Hold ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Holdeados= 0">s/Hold</div>
-				<div class="custom-control custom-switch m-1"  data-toggle="tooltip"  title="Filtra cantidad de Holdeados= 0">
-					<input type="checkbox" class="custom-control-input" id="switchHold" onchange=cambioSwitch(this)   text="">
-					<label class="custom-control-label" for="switchHold"></label>
+				<!-- ############## Filtra Equipo ############### -->
+				<div class=" p-0 col-1 " style="left: 40px; ">
+					<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
+						style="height:fit-content; height:28px; width: 150px; " type="text"
+						placeholder="Filtra Equipo...">
 				</div>
 
-				<!-- ############## Retenidos ############### -->
-				<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >s/Retenidos</div>
-				<div class="custom-control custom-switch m-1"  data-toggle="tooltip" data-placement="top" title="Filtra cantidad de Retenidos= 0" >
-					<input type="checkbox" class="custom-control-input" id="switchRetencion"  onchange=cambioSwitch(this)   text="">
-					<label class="custom-control-label" for="switchRetencion" ></label>
-				</div>
-
-		<!-- ############## Gestionados ############### -->
-		<div class="ml-3 m-1" data-toggle="tooltip" data-placement="top" title="Filtra los elementos con gestiones hoy" >c/Gestiones</div>
-				<div class="custom-control custom-switch m-1"  data-toggle="tooltip" data-placement="top" title="Filtra los elementos con gestiones hoy" >
-					<input type="checkbox" class="custom-control-input" id="switchSinGestion"  onchange=cambioSwitch(this)   text="">
-					<label class="custom-control-label" for="switchSinGestion" ></label>
-				</div>
-
-			</div>
-			<!-- ############## Boton Limpia de Filtros ############### -->
-			<div class="col-3 ml-4 pt-0 pr-0 text-right">
-				<!-- ############## Boton Aplicar Filtros ############### -->
-				<button type="button" id="btnAplicarFiltros" onclick="aplicaFiltrosElementos()" class="btn btn-primary btn-sm">Aplicar Filtros</button>
-				<button type=" button" id="btnLimpiarFiltros" onclick="limpiaFiltrosElementos()" class="btn btn-danger btn-sm">Limpiar Filtros</button>
+				<!-- ############## Boton  Filtros ############### -->
+	
+					<button type="button" id="btnAplicarFiltros" onclick="aplicarFiltrosListado()"
+						class="btn btn-primary btn-sm col-1" style="left: 120px;">Aplicar Filtros</button>
+					<button type=" button" id="btnLimpiarFiltros" onclick="limpiarFiltrosListado()"
+					class="btn btn-danger btn-sm col-1"  style="left: 130px;">Limpiar Filtros</button>
+		
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 col-xl-3">
-		<!-- ############## Mostrar / Ocultar   ############### -->
-		<div class="alert alert-info  border-primary text-center p-0 m-0 mr-1 mt-1" id="infoMostrarOcultar" style="max-width: 350px;">
-			<!-- <h6 class="mb-0">Mostrar / Ocultar Campos</h6> -->
-			<!-- <hr class="m-1"> -->
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" onclick="mostrarOcultarCampos(this)" value="campoAntig" checked>
-				<label class="form-check-label" for="inlineCheckbox1">Antiguedad</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" onclick="mostrarOcultarCampos(this)" value="campoAntigFlag">
-				<label class="form-check-label" for="inlineCheckbox2">Antig Flags</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox3" onclick="mostrarOcultarCampos(this)" value="campoIngresos">
-				<label class="form-check-label" for="inlineCheckbox3">Ingresos</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox4" onclick="mostrarOcultarCampos(this)" value="campoAfectaciones" checked>
-				<label class="form-check-label" for="inlineCheckbox4">Afectacion</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox5" onclick="mostrarOcultarCampos(this)" value="campoEstados" checked>
-				<label class="form-check-label" for="inlineCheckbox5">Estado Tkt</label>
-			</div>
-			<!-- <div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="inlineCheckbox6" onclick="mostrarOcultarCampos(this)" value="campoParque" checked>
-				<label class="form-check-label" for="inlineCheckbox6">Parque</label>
-			</div> -->
-		</div>
-
-	</div>
-
 
 </div>
 
@@ -364,73 +314,98 @@ function mostrarLista($Lista)
 
 
 <Script>
-	$(document).ready(function() {
+	$(document).ready(function () {
 		//Repetir este codigo JS el document.ready- por cada Id de textbox de busqueda
-		$("#buscarRegion").on("keyup", function() {
+		$("#buscarRegion").on("keyup", function () {
 			$cajaItem = "#" + $(this).next().next().next().attr("id");
 
 			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
+			$($cajaItem + " .dropdown-item").filter(function () {
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 			});
 		});
 
-		$("#buscarSubRegion").on("keyup", function() {
+		$("#buscarSubRegion").on("keyup", function () {
 			$cajaItem = "#" + $(this).next().next().next().attr("id");
 
 			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
+			$($cajaItem + " .dropdown-item").filter(function () {
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 			});
 		});
 
-		$("#buscarBaseTecnica").on("keyup", function() {
+		$("#buscarBaseTecnica").on("keyup", function () {
 			$cajaItem = "#" + $(this).next().next().next().attr("id");
 
 			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-
-		$("#buscarTipoElemento").on("keyup", function() {
-			$cajaItem = "#" + $(this).next().next().next().attr("id");
-
-			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-
-		$("#buscarCentrales").on("keyup", function() {
-			$cajaItem = "#" + $(this).next().next().next().attr("id");
-
-			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-
-		$("#buscarDSLAM").on("keyup", function() {
-			$cajaItem = "#" + $(this).next().next().next().attr("id");
-
-			var value = $(this).val().toLowerCase();
-			$($cajaItem + " .dropdown-item").filter(function() {
+			$($cajaItem + " .dropdown-item").filter(function () {
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 			});
 		});
 
 
-		// VERIFICA EL ENTER PARA BUSCAR ELEMENTO
-		var input = document.getElementById("filtraElemento");
-		input.addEventListener("keypress", function(event) {
+
+
+		$("#buscarMoviles").on("keyup", function () {
+			$cajaItem = "#" + $(this).next().next().next().attr("id");
+
+			var value = $(this).val().toLowerCase();
+			$($cajaItem + " .dropdown-item").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+
+		$("#buscarUsrCarga").on("keyup", function () {
+			$cajaItem = "#" + $(this).next().next().next().attr("id");
+
+			var value = $(this).val().toLowerCase();
+			$($cajaItem + " .dropdown-item").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+
+		$("#buscarEstados").on("keyup", function () {
+			$cajaItem = "#" + $(this).next().next().next().attr("id");
+
+			var value = $(this).val().toLowerCase();
+			$($cajaItem + " .dropdown-item").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+
+		$("#buscarResoluciones").on("keyup", function () {
+			$cajaItem = "#" + $(this).next().next().next().attr("id");
+
+			var value = $(this).val().toLowerCase();
+			$($cajaItem + " .dropdown-item").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+
+
+
+
+		// VERIFICA EL ENTER PARA BUSCAR FILTRO OT
+		var input = document.getElementById("filtraOT");
+		input.addEventListener("keypress", function (event) {
 			if (event.key === "Enter") {
 				event.preventDefault();
 				// mostrarFiltrosSeleccionados();
-				aplicaFiltrosElementos();
+				console.log("filtraOT");
+				aplicaFiltrosListado();
 			}
 		});
 
+		// VERIFICA EL ENTER PARA BUSCAR FILTRO DE EQUIPO
+		var input = document.getElementById("filtraEquipo");
+		input.addEventListener("keypress", function (event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				// mostrarFiltrosSeleccionados();
+				console.log("filtraEquipo");
+				aplicaFiltrosListado();
+			}
+		});
 
 
 	});

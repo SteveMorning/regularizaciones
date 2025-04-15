@@ -70,12 +70,18 @@ div.card-header.border-info.bg-light.m-0.p-0 div div h5 img {
   width: 28px;
 }
 
-.dropdownfiltros {
+.dropdown{
+  height: 30px;
+}
+
+.dropdownfiltros  {
   padding-left: 1;
   padding-right: 1;
   padding-top: 0;
   padding-bottom: 0;
+  height: 30px;
 }
+
 
 .card-header {
   margin-top: 50px;
@@ -90,7 +96,7 @@ td {
 th {
   position: sticky;
   top: 0;
-  /* background-color: #abdde5; */
+  background-color: #abdde5;
   border-color: #17a2b8;
   border-style: solid;
   border: 1px;
