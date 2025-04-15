@@ -128,187 +128,546 @@ function mostrarLista($Lista)
 
 ?>
 
-<div class="row mt-1 ">
 
-	<!-- ############## DropDown Filtros  ############### -->
-	<div class="row col-12 ml-1" id="contenedorDropDown">
+<div class="row">
+	<div class="col-1">1</div>
+	<div class="col-1">2</div>
+	<div class="col-1">3</div>
+	<div class="col-1">4</div>
+	<div class="col-1">5</div>
+	<div class="col-1">6</div>
+	<div class="col-1">7</div>
+	<div class="col-1">8</div>
+	<div class="col-1">9</div>
+	<div class="col-1">10</div>
+	<div class="col-1">11</div>
+	<div class="col-1">12</div>
 
-		<div class="">
-			<div class="row">
+</div>
 
-				<!-- ############## Regiones ############### -->
-				<div class="dropdown m-0 col-1" data-mdb-filter="true" id="droplistRegion" value="" text="">
-					<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="region" data-toggle="dropdown">
-						Regiones
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
-						<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosRegion">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin: 0px ;">
-						<div id="lstRegiones" class="listaValores">
-							<?php mostrarLista('lstRegiones')  ?>
-						</div>
-					</div>
+<div class="row">
+	<div class="col-1"> 
+		<!-- ############## Regiones ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistRegion" value="" text="">
+			<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="region"
+				data-toggle="dropdown">Regiones</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
+				<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text"
+					placeholder="Buscar.."s>
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin: 0px ;">
+				<div id="lstRegiones" class="listaValores">
+					<?php mostrarLista('lstRegiones')  ?>
 				</div>
-
-				<!-- ############## SubRegiones ############### -->
-				<div class="dropdown p-0 m-0 ml-1 col-1" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="subRegion" data-toggle="dropdown">
-						SubRegion
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosAnio">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstSubRegiones" class="listaValores">
-							<?php mostrarLista('lstSubRegiones')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Base Tecnica ############### -->
-				<div class="dropdown p-0 m-0 col-1" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="BaseTecnica" data-toggle="dropdown">
-						Base Tecnica
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosBaseTecnica">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstBaseTecnica" class="listaValores">
-							<?php mostrarLista('lstBaseTecnica')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Movil ############### -->
-				<div class="dropdown p-0 m-0 ml-4 col-1" data-mdb-filter="true" id="droplistMovil" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="TipoElemento" data-toggle="dropdown">
-						Movil
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarMoviles"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0" href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosTipoElemento">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstTipoElemento">
-							<?php mostrarLista('lstMovil')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Usuario de Carga ############### -->
-				<div class="dropdown p-0 m-0 col-1"  style="left: -34px;" data-mdb-filter="true" id="droplistUserCarga" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="DSLAM" data-toggle="dropdown">
-						Usuario de Carga
-					</button>
-					<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarUsrCarga"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosDSLAM">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstDSLAM">
-							<?php mostrarLista('lstUserCarga')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Estado ############### -->
-				<div class="dropdown p-0 m-0 ml-4 col-1"   data-mdb-filter="true" id="droplistEstado" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="centrales" data-toggle="dropdown">
-						Estado
-					</button>
-					<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarEstados"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosCentrales">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstCentrales" class="listaValores">
-							<?php mostrarLista('lstEstado')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Resolucion ############### -->
-				<div class="dropdown p-0 m-0 col-1" style="left: -26px;" data-mdb-filter="true" id="droplistResolucion" value="" text="">
-					<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button"
-						id="DSLAM" data-toggle="dropdown">
-						Resolucion
-					</button>
-					<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
-						<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarResoluciones"
-							type="text" placeholder="Buscar..">
-						<a class="dropdown-item  btn-sm pr-0 " href="#">
-							<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
-								id="chkTodosResolucion">
-							<label class="form-check-label">(Todos)</label>
-						</a>
-						<hr class="hr" style="margin : 0px ; ">
-						<div id="lstCentrales">
-							<?php mostrarLista('lstResolucion')  ?>
-						</div>
-					</div>
-				</div>
-
-				<!-- ############## Filtra OT ############### -->
-				<div class=" p-0 col-1 " style="left: -10px; ">
-					<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraOT"
-						style="height:fit-content; height:28px; width: 150px; " type="text" 
-						placeholder="Filtra OT...">
-				</div>
-
-				<!-- ############## Filtra Equipo ############### -->
-				<div class=" p-0 col-1 " style="left: 40px; ">
-					<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
-						style="height:fit-content; height:28px; width: 150px; " type="text"
-						placeholder="Filtra Equipo...">
-				</div>
-
-				<!-- ############## Boton  Filtros ############### -->
-	
-					<button type="button" id="btnAplicarFiltros" onclick="aplicarFiltrosListado()"
-						class="btn btn-primary btn-sm col-1" style="left: 120px;">Aplicar Filtros</button>
-					<button type=" button" id="btnLimpiarFiltros" onclick="limpiarFiltrosListado()"
-					class="btn btn-danger btn-sm col-1"  style="left: 130px;">Limpiar Filtros</button>
-		
 			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## SubRegiones ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion"
+				data-toggle="dropdown">Sub Region</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstSubRegiones" class="listaValores">
+					<?php mostrarLista('lstSubRegiones')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Base Tecnica ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica"
+				data-toggle="dropdown">Base Tecnica</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosBaseTecnica">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstBaseTecnica" class="listaValores">
+					<?php mostrarLista('lstBaseTecnica')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Movil ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistMovil" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento"
+				data-toggle="dropdown">Movil</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarMoviles" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosTipoElemento">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstTipoElemento">
+					<?php mostrarLista('lstMovil')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Usuario de Carga ############### -->
+		<div class="dropdown" style="left: -34px;" data-mdb-filter="true" id="droplistUserCarga"
+			value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown" data-toggle="popover" title="Usuario de Carga">Usuario</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarUsrCarga" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstDSLAM">
+					<?php mostrarLista('lstUserCarga')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Estado ############### -->
+		<div class="dropdown" style="left: -54px;" data-mdb-filter="true" id="droplistEstado" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle" type="button" id="centrales"
+				data-toggle="dropdown" data-toggle="popover" title="Estado de Regularizacion">Estado</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarEstados" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales" class="listaValores">
+					<?php mostrarLista('lstEstado')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Resolucion ############### -->
+		<div class="dropdown" style="left: -80px;" data-mdb-filter="true" id="droplistResolucion" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown">Resolucion</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarResoluciones"
+					type="text" placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosResolucion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales">
+					<?php mostrarLista('lstResolucion')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Filtra Fecha ############### -->
+		<div class="">
+			<input class="form-control  border border-dark p-0 m-0" id="filtraEquipo"
+				style="height:fit-content; height:30px; width: 120px; " type="date" placeholder="Fecha de Carga"
+				data-toggle="popover" title="Fecha de Carga">
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Filtra OT ############### -->
+		<div class="">
+			<input class="form-control  border border-dark p-0  m-0" id="filtraOT"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra OT...">
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Filtra Equipo ############### -->
+		<div class="" style="left: 0px;">
+			<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra Equipo...">
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Boton  Filtros APLICAR ############### -->
+		<div class="">
+			<button type="button" id="btnAplicarFiltros" onclick="aplicarFiltrosListado()"
+				class="btn btn-primary btn-sm ">Filtrar</button>
+		</div>
+	</div>
+	<div class="col-1"> 
+		<!-- ############## Boton  Filtros LIMPIAR ############### -->
+		<div class="">
+			<button type=" button" id="btnLimpiarFiltros" onclick="limpiarFiltrosListado()"
+				class="btn btn-danger btn-sm ">Limpiar</button>
 		</div>
 	</div>
 
 </div>
+
+
+<div class="row">
+	<div class="col-1"> <!-- ############## Regiones ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistRegion" value="" text="">
+			<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="region"
+				data-toggle="dropdown">Regiones</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
+				<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text"
+					placeholder="Buscar.."s>
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin: 0px ;">
+				<div id="lstRegiones" class="listaValores">
+					<?php mostrarLista('lstRegiones')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## SubRegiones ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion"
+				data-toggle="dropdown">Sub Region</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstSubRegiones" class="listaValores">
+					<?php mostrarLista('lstSubRegiones')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Base Tecnica ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica"
+				data-toggle="dropdown">Base Tecnica</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosBaseTecnica">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstBaseTecnica" class="listaValores">
+					<?php mostrarLista('lstBaseTecnica')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Movil ############### -->
+		<div class="dropdown" data-mdb-filter="true" id="droplistMovil" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento"
+				data-toggle="dropdown">Movil</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarMoviles" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosTipoElemento">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstTipoElemento">
+					<?php mostrarLista('lstMovil')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Usuario de Carga ############### -->
+		<div class="dropdown" style="left: -34px;" data-mdb-filter="true" id="droplistUserCarga"
+			value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown" data-toggle="popover" title="Usuario de Carga">Usuario</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarUsrCarga" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstDSLAM">
+					<?php mostrarLista('lstUserCarga')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Estado ############### -->
+		<div class="dropdown" style="left: -54px;" data-mdb-filter="true" id="droplistEstado" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle" type="button" id="centrales"
+				data-toggle="dropdown" data-toggle="popover" title="Estado de Regularizacion">Estado</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarEstados" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales" class="listaValores">
+					<?php mostrarLista('lstEstado')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Resolucion ############### -->
+		<div class="dropdown" style="left: -80px;" data-mdb-filter="true" id="droplistResolucion" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown">Resolucion</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarResoluciones"
+					type="text" placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosResolucion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales">
+					<?php mostrarLista('lstResolucion')  ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Filtra Fecha ############### -->
+		<div class="">
+			<input class="form-control  border border-dark p-0 m-0" id="filtraEquipo"
+				style="height:fit-content; height:30px; width: 120px; " type="date" placeholder="Fecha de Carga"
+				data-toggle="popover" title="Fecha de Carga">
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Filtra OT ############### -->
+		<div class="">
+			<input class="form-control  border border-dark p-0  m-0" id="filtraOT"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra OT...">
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Filtra Equipo ############### -->
+		<div class="" style="left: 0px;">
+			<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra Equipo...">
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Boton  Filtros APLICAR ############### -->
+		<div class="">
+			<button type="button" id="btnAplicarFiltros" onclick="aplicarFiltrosListado()"
+				class="btn btn-primary btn-sm ">Filtrar</button>
+		</div>
+	</div>
+	<div class="col-1"> <!-- ############## Boton  Filtros LIMPIAR ############### -->
+		<div class="">
+			<button type=" button" id="btnLimpiarFiltros" onclick="limpiarFiltrosListado()"
+				class="btn btn-danger btn-sm ">Limpiar</button>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- ############## DropDown Filtros  ############### -->
+<!-- ############## DropDown Filtros  ############### -->
+<!-- ############## DropDown Filtros  ############### -->
+<!-- ############## DropDown Filtros  ############### -->
+<div class="col-12 " id="contenedorDropDown">
+	<div class="row" style="min-width: 1200px;">
+
+		<!-- ############## Regiones ############### -->
+		<div class="dropdown m-0 ml-1 col-1" data-mdb-filter="true" id="droplistRegion" value="" text="">
+			<button class="btn  dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="region"
+				data-toggle="dropdown">Regiones</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height:300px; overflow-y:max; ">
+				<input class="form-control p-0 d-none" style="height:fit-content;  " id="buscarRegion" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosRegion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin: 0px ;">
+				<div id="lstRegiones" class="listaValores">
+					<?php mostrarLista('lstRegiones')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## SubRegiones ############### -->
+		<div class="dropdown p-0 m-0 ml-1  col-1" data-mdb-filter="true" id="droplistSubRegion" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="subRegion"
+				data-toggle="dropdown">Sub Region</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1 " style="height:fit-content;  " id="buscarSubRegion" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosAnio">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstSubRegiones" class="listaValores">
+					<?php mostrarLista('lstSubRegiones')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Base Tecnica ############### -->
+		<div class="dropdown p-0 m-0 ml-1  col-1" data-mdb-filter="true" id="droplistBaseTecnica" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="BaseTecnica"
+				data-toggle="dropdown">Base Tecnica</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;" id="buscarBaseTecnica" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosBaseTecnica">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstBaseTecnica" class="listaValores">
+					<?php mostrarLista('lstBaseTecnica')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Movil ############### -->
+		<div class="dropdown p-0 pl-1 m-0 ml-1 col-1" data-mdb-filter="true" id="droplistMovil" value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="TipoElemento"
+				data-toggle="dropdown">Movil</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarMoviles" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0" href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosTipoElemento">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstTipoElemento">
+					<?php mostrarLista('lstMovil')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Usuario de Carga ############### -->
+		<div class="dropdown p-0 m-0 ml-1 col-1" style="left: -34px;" data-mdb-filter="true" id="droplistUserCarga"
+			value="" text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown" data-toggle="popover" title="Usuario de Carga">Usuario</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarUsrCarga" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosDSLAM">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstDSLAM">
+					<?php mostrarLista('lstUserCarga')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Estado ############### -->
+		<div class="dropdown p-0 m-0 col-1" style="left: -54px;" data-mdb-filter="true" id="droplistEstado" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle" type="button" id="centrales"
+				data-toggle="dropdown" data-toggle="popover" title="Estado de Regularizacion">Estado</button>
+			<div class="dropdown-menu m-0 p-0" style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarEstados" type="text"
+					placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)" id="chkTodosCentrales">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales" class="listaValores">
+					<?php mostrarLista('lstEstado')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Resolucion ############### -->
+		<div class="dropdown p-0 m-0 col-1" style="left: -80px;" data-mdb-filter="true" id="droplistResolucion" value=""
+			text="">
+			<button class="btn dropdownfiltros btn-outline-dark btn-sm dropdown-toggle " type="button" id="DSLAM"
+				data-toggle="dropdown">Resolucion</button>
+			<div class="dropdown-menu m-0 p-0 " style=" max-height: 300px; max-width: 200px; overflow-y:auto; ">
+				<input class="form-control p-0 ml-1 m-1" style="height:fit-content;  " id="buscarResoluciones"
+					type="text" placeholder="Buscar..">
+				<a class="dropdown-item  btn-sm pr-0 " href="#">
+					<input type="checkbox" class="form-check-input" onclick="chkItemTodos(this)"
+						id="chkTodosResolucion">
+					<label class="form-check-label">(Todos)</label>
+				</a>
+				<hr class="hr" style="margin : 0px ; ">
+				<div id="lstCentrales">
+					<?php mostrarLista('lstResolucion')  ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############## Filtra Fecha ############### -->
+		<div class=" p-0 col-1 " style="left: -78px;">
+			<input class="form-control  border border-dark p-0 m-0" id="filtraEquipo"
+				style="height:fit-content; height:30px; width: 120px; " type="date" placeholder="Fecha de Carga"
+				data-toggle="popover" title="Fecha de Carga">
+		</div>
+
+
+		<!-- ############## Filtra OT ############### -->
+		<div class=" p-0 col-1 " style="left: -56px;">
+			<input class="form-control  border border-dark p-0  m-0" id="filtraOT"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra OT...">
+		</div>
+
+		<!-- ############## Filtra Equipo ############### -->
+		<div class=" p-0 col-1 " style="left: 0px;">
+			<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
+				style="height:fit-content; height:29px; width: 150px; " type="text" placeholder="Filtra Equipo...">
+		</div>
+
+
+		<!-- ############## Boton  Filtros APLICAR ############### -->
+		<div class="p-0 m-0 col-1 ">
+			<button type="button" id="btnAplicarFiltros" onclick="aplicarFiltrosListado()"
+				class="btn btn-primary btn-sm ">Aplicar</button>
+		</div>
+
+		<!-- ############## Boton  Filtros LIMPIAR ############### -->
+		<div class="p-0 m-0 col-1 ">
+			<button type=" button" id="btnLimpiarFiltros" onclick="limpiarFiltrosListado()"
+				class="btn btn-danger btn-sm ">Limpiar</button>
+		</div>
+
+	</div>
+</div>
+
 
 
 

@@ -1532,14 +1532,27 @@ function validarFrmSolicitudNew() {
 	// }
 
 	// Validar xEqp_serie_a_instalar (No puede estar vacío)
-	if (xEqp_serie_a_instalar === "") {
-		mensajeError += "⚠️ Serie a Instalar.\n";
+	// if (xEqp_serie_a_instalar === "" ) {
+	// 	mensajeError += "⚠️ Serie a Instalar.\n";
+	// 	valido = false;
+	// }
+
+	// Validar xEqp_serie_a_instalar (No puede estar vacío)
+	if (xEqp_serie_a_instalar.length < 8 ) {
+		mensajeError += "⚠️ Serie a Instalar valido.\n";
 		valido = false;
 	}
 
+	
 	// Validar xEqp_serie_a_instalar (No puede estar vacío)
-	if (xEqp_serie_a_recuperar === "") {
-		mensajeError += "⚠️ Serie a Recuperar.\n";
+	// if (xEqp_serie_a_recuperar === "" ) {
+	// 	mensajeError += "⚠️ Serie a Recuperar.\n";
+	// 	valido = false;
+	// }
+
+	// Validar xEqp_serie_a_instalar (No puede estar vacío)
+	if (xEqp_serie_a_recuperar.length < 8 ) {
+		mensajeError += "⚠️ Serie a Recuperar valido.\n";
 		valido = false;
 	}
 

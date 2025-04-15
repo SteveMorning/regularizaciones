@@ -144,8 +144,8 @@
             </div>
 
             <!-- ################# FILTROS ################# -->
-            <div class="card-header m-0 p-0 ">
-                <div id="filtros" class="ml-3  m-0 p-0 pb-1"> </div>
+            <div class="card-header m-0 p-0 pt-1">
+                <div id="filtros" > </div>
             </div>
 
 

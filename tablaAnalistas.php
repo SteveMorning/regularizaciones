@@ -15,19 +15,46 @@ if ($_POST) {
        // data-toggle=\"tooltip\" data-placement=\"right\" title=\"Regularizar Equipo\"  
         onclick=\"iniciarGestion(', `lst`.`id_solicitud`, ')\">',
 
-    CASE 
+    -- CASE 
+    --     WHEN `lst`.`id_estado_item` = 1 THEN 
+    --     '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: #0d6efd; background-color: #cfe2ff;\"  src=\"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png\"  >'
+    --     WHEN `lst`.`id_estado_item` = 2 THEN 
+    --     '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+    --     WHEN `lst`.`id_estado_item` = 3 THEN 
+    --     '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+    --     WHEN `lst`.`id_estado_item` = 4 THEN 
+    --         '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+    --     WHEN `lst`.`id_estado_item` = 5 THEN 
+    --     '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+    --    ELSE 
+    --    '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+    --   END,
+
+      CASE 
         WHEN `lst`.`id_estado_item` = 1 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: #0d6efd; background-color: #cfe2ff;\"  src=\"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: #0d6efd; background-color: #cfe2ff;\"  src=\"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN `lst`.`id_estado_item` = 2 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN `lst`.`id_estado_item` = 3 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN `lst`.`id_estado_item` = 4 THEN 
-            '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+            '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN `lst`.`id_estado_item` = 5 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
        ELSE 
-       '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+       '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
       END,
 
     '</button>',
@@ -106,19 +133,38 @@ ORDER BY `lst`.`fecha_de_socilitud` DESC;";
 
     CASE 
         WHEN _id_estado_item = 1 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: #0d6efd; background-color: #cfe2ff;\"  src=\"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: #0d6efd; background-color: #cfe2ff;\"  src=\"https://img.icons8.com/pastel-glyph/64/228BE6/information--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN _id_estado_item = 2 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN _id_estado_item = 3 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN _id_estado_item = 4 THEN 
-            '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+            '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
         WHEN _id_estado_item = 5 THEN 
-        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+        '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
        ELSE 
-       '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  >'
+       '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"        data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      data-original-title=\"\" 
+      data-content=\"\">'
       END,
-
+      -- '<img    alt=\"Regularizar\" style=\"width:25px; height:25px;  border-color: rgb(25, 135, 84); background-color: rgb(209, 231, 221);\"  
+      -- src=\"https://img.icons8.com/color/25/000000/checked--v1.png\"  
+      -- data-trigger=\"hover\" data-html=\"true\" data-toggle=\"popover\" 
+      -- data-original-title=\"\" 
+      -- data-content=\"\"
+      -- data-original-title=\"Analizado el 11/04/25 11:21Hs\" 
+      -- data-content=\"<strong>Gestion: </strong> IM ya creada<br><strong>Tkts Vinculados: </strong> 70<br><strong>Observaciones: </strong> VIP9 rango neq VIP9-0100/101 - IM 23096088 VIP9 - Falla de ringer AEP-VL Silvio Diaz<br><strong>Colaborador: </strong> José Pereyra<br>\"
+        -- >' , 
     '</button>',
     '<div style=\"margin-left: auto;\">', OT, '</div>',
     '</div>'
@@ -162,14 +208,14 @@ $posicion = 0;
 //creaTabla($con,$consulta,"tablaDetalle", "table table-hover table-striped", "=tablaDetalleComentario(this)", "");
 ?>
 
-<div>
+<!-- <div>
   Test
   <img class="text-right" 
   style="position: relative; left: 378pdx;" 
   id="icodelayLAF->VIP->XXX->REPVIP" alt="" 
   data-trigger="hover" data-html="true" data-toggle="popover" data-original-title="Analizado el 11/04/25 11:21Hs" data-content="<strong>Gestion: </strong> IM ya creada<br><strong>Tkts Vinculados: </strong> 70<br><strong>Observaciones: </strong> VIP9 rango neq VIP9-0100/101 - IM 23096088 VIP9 - Falla de ringer AEP-VL Silvio Diaz<br><strong>Colaborador: </strong> José Pereyra<br>" src="https://img.icons8.com/color/25/null/calendar-week3.png">
-                
-</div>
+  </div> -->
+
 <table class="table table-hover table-striped" id="tablaAnalistas">
   <thead>
     <tr>
