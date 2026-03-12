@@ -129,8 +129,6 @@ function mostrarLista($Lista)
 ?>
 
 
-
-
 <div class="row flex-nowrap" style="width: 100%;">
 	<div class="col-6 ">
 		<div class="row ml-1 d-flex justify-content-between">
@@ -269,20 +267,22 @@ function mostrarLista($Lista)
 			<!-- ############## Filtra OT ############### -->
 			<div class="ml-1">
 				<input class="form-control  border border-dark p-0  m-0" id="filtraOT"
-					style="height:fit-content; height:29px; width: 150px; " type="text" placeholder=" Filtra OT...">
+					style="height:fit-content; height:29px; width: 150px; " type="text" placeholder=" Filtra OT..."
+					onchange="aplicarFiltrosListado()" >
 			</div>
 			<!-- ############## Filtra Equipo ############### -->
 			<div class="ml-1 ">
 				<input class="form-control  border border-dark p-0 ml-1 m-0" id="filtraEquipo"
 					style="height:fit-content; height:29px; width: 150px; " type="text" placeholder=" Filtra Equipo Serie..."
-					data-toggle="popover" title="Filtra Serie a Instalar y serie a Recuperar ">
+					data-toggle="tooltip" title="Filtra Serie a Instalar y serie a Recuperar "
+					onchange="aplicarFiltrosListado()">
 			</div>
 			<!-- ############## Filtra Fecha ############### -->
 			<div class="ml-1">
 				<!-- <label for="filtraEquipo" class="form-label mb-0">Fecha de Carga</label> -->
-				<input class="form-control  border border-dark p-0 m-0" id="filtraEquipo"
+				<input class="form-control  border border-dark p-0 m-0" id="filtraFechaCarga"
 					style="height:fit-content; height:29px; width: 120px; " type="date" placeholder="Filtra Fecha de Carga"
-					data-toggle="popover" title="Fecha de Carga">
+					data-toggle="tooltip" title="Fecha de Carga">
 			</div>
 		</div>
 	</div>

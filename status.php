@@ -38,7 +38,6 @@ $ultRes = $dato['ult_res'];
         <!-- <p>Regularizaciones Pendientes</p> <?php echo $solPend; ?> -->
 
     </div>
-
     <div class="col-2">
         <h6>Solicitudes Hoy</h6> <?php echo $solHoy; ?>
     </div>

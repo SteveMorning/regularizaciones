@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	// cargarAvisoInicial();
+	cargarAvisoInicial();
 	cargarStatus();
 	cargarFiltros();
 	cargarAnalistas();
@@ -89,7 +89,7 @@ function mostrarOcultarCampos(e) {
 }
 
 function aplicarFiltrosListado() {
-	// console.log("aplicaFiltrosListado");
+	console.log("aplicaFiltrosListado");
 
 	$losFiltros = " ";
 	$droplistRegion = $("#droplistRegion").attr("text");
@@ -105,6 +105,7 @@ function aplicarFiltrosListado() {
 
 	$filtraOT = $("#filtraOT").prop("value");
 	$filtraEquipo = $("#filtraEquipo").prop("value");
+	$filtraFechaCarga = $("#filtraFechaCarga").prop("value");
 
 	$droplistRegion =
 		$droplistRegion != ""
@@ -166,6 +167,13 @@ function aplicarFiltrosListado() {
 					" OR serie_a_recuperar like '%" + $filtraEquipo + "%' ")
 			: "";
 
+	$filtraFechaCarga =
+		$filtraFechaCarga != ""
+			? ($filtraFechaCarga =
+					" AND  date(fecha_de_socilitud) = '" + $filtraFechaCarga + "' ")
+			: "";
+	
+	// console.log($filtraFechaCarga);
 	// $switchImpi =
 	// 	$switchImpi != "" ? ($switchImpi = " AND Impi IS NOT TRUE  ") : "";
 
@@ -196,7 +204,8 @@ function aplicarFiltrosListado() {
 		$droplistResolucion +
 		$filtraOT +
 		$serie_a_instalar +
-		$serie_a_recuperar;
+		$serie_a_recuperar + 
+		$filtraFechaCarga;
 
 	$losFiltrosBases =
 		$droplistRegion +
@@ -208,8 +217,10 @@ function aplicarFiltrosListado() {
 		$droplistResolucion +
 		$filtraOT +
 		$serie_a_instalar +
-		$serie_a_recuperar;
+		$serie_a_recuperar + 
+		$filtraFechaCarga;
 
+	console.log($losFiltrosAnalisis);
 	console.log($losFiltrosBases);
 
 	cargarAnalistas($losFiltrosAnalisis);
@@ -925,8 +936,6 @@ function cierraModal(ele) {
 	console.log("cierraModal");
 	console.log(ele);
 
-
-
 	modo = ele.getAttribute("modo");
 	id = ele.getAttribute("value");
 	// console.log(modo);
@@ -1538,12 +1547,11 @@ function validarFrmSolicitudNew() {
 	// }
 
 	// Validar xEqp_serie_a_instalar (No puede estar vacío)
-	if (xEqp_serie_a_instalar.length < 8 ) {
+	if (xEqp_serie_a_instalar.length < 8) {
 		mensajeError += "⚠️ Serie a Instalar valido.\n";
 		valido = false;
 	}
 
-	
 	// Validar xEqp_serie_a_instalar (No puede estar vacío)
 	// if (xEqp_serie_a_recuperar === "" ) {
 	// 	mensajeError += "⚠️ Serie a Recuperar.\n";
@@ -1551,7 +1559,7 @@ function validarFrmSolicitudNew() {
 	// }
 
 	// Validar xEqp_serie_a_instalar (No puede estar vacío)
-	if (xEqp_serie_a_recuperar.length < 8 ) {
+	if (xEqp_serie_a_recuperar.length < 8) {
 		mensajeError += "⚠️ Serie a Recuperar valido.\n";
 		valido = false;
 	}
