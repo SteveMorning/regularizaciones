@@ -50,13 +50,15 @@ CONCAT('<div style=\"text-align: left; min-width:10px; \"  data-toggle=\"tooltip
 
 CONCAT('<div style=\"text-align: left; min-width:160px; \"  data-toggle=\"tooltip\" data-placement=\"top\" title=\"',  (SELECT
       `aux2`.`resolucion`
-    FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `aux2`
+    FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `aux2`
     WHERE ((1 = 1)
     AND (`lst`.`id_solicitud` = `aux2`.`id_solicitud`)
     AND (`lst`.`id_equipo` = `aux2`.`id_equipo`))
     ORDER BY `aux2`.`fecha_resolucion` DESC LIMIT 1), '\">', LEFT( (SELECT
       `aux2`.`resolucion`
-    FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `aux2`
+    FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `aux2`
     WHERE ((1 = 1)
     AND (`lst`.`id_solicitud` = `aux2`.`id_solicitud`)
     AND (`lst`.`id_equipo` = `aux2`.`id_equipo`))
@@ -64,13 +66,15 @@ CONCAT('<div style=\"text-align: left; min-width:160px; \"  data-toggle=\"toolti
 
     CONCAT('<div style=\"text-align: left; min-width:10px; \"  data-toggle=\"tooltip\" data-placement=\"top\" title=\"',  date_format( (SELECT
       `aux3`.`fecha_resolucion`
-    FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `aux3`
+    FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `aux3`
     WHERE ((1 = 1)
     AND (`lst`.`id_solicitud` = `aux3`.`id_solicitud`)
     AND (`lst`.`id_equipo` = `aux3`.`id_equipo`))
     ORDER BY `aux3`.`fecha_resolucion` DESC LIMIT 1) , '%d/%m/%y %H:%m:%s'), '\">',  date_format(  (SELECT
       `aux3`.`fecha_resolucion`
-    FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `aux3`
+    FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `aux3`
     WHERE ((1 = 1)
     AND (`lst`.`id_solicitud` = `aux3`.`id_solicitud`)
     AND (`lst`.`id_equipo` = `aux3`.`id_equipo`))
@@ -94,12 +98,14 @@ CONCAT('<div style=\"text-align: left; min-width:160px; \"  data-toggle=\"toolti
 
   (SELECT
       `aux1`.`id_regularizacion`
-    FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `aux1`
+    FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `aux1`
     WHERE ((1 = 1)
     AND (`lst`.`id_solicitud` = `aux1`.`id_solicitud`))
     ORDER BY `aux1`.`fecha_resolucion` DESC LIMIT 1) AS `_Ult_Id_Resolucion`
 
-FROM `bd3_regularizaciones`.`lst_regularizaciones__total` `lst`
+FROM `bd3_regularizaciones`.`acc_regularizaciones__total_ult_mes`
+ `lst`
 WHERE ((`lst`.`sol_eliminado` <> TRUE)
 AND ((`lst`.`eqp_eliminado` <> TRUE)
 OR ISNULL(`lst`.`eqp_eliminado`)))

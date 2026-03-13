@@ -32,7 +32,8 @@ if ($accion == 'alta') {
     $consultaRegul = "SELECT
     id_solicitud , id_equipo , '' as id_regularizacion , '' as  id_resolucion_item, resolucion, '' as  id_usuario_resolucion,
     '' as  usuario_resolucion,  '' as  fecha_resolucion, '' as observaciones , '' as serie_a_instalar, '' as serie_a_recuperar
-    FROM bd3_regularizaciones.lst_regularizaciones__total
+    FROM bd3_regularizaciones.acc_regularizaciones__total_ult_mes
+
     Where id_regularizacion = 0
     LIMIT 1
     ;";
@@ -40,7 +41,8 @@ if ($accion == 'alta') {
     $consultaRegul = "SELECT
     id_solicitud , id_equipo , id_regularizacion , id_resolucion_item, resolucion, id_usuario_resolucion, usuario_resolucion, 
     fecha_resolucion, observaciones , serie_a_instalar, serie_a_recuperar
-    FROM bd3_regularizaciones.lst_regularizaciones__total
+    FROM bd3_regularizaciones.acc_regularizaciones__total_ult_mes
+
     Where id_regularizacion = $idRegularizacion
     LIMIT 1
     ;";

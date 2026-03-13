@@ -31,7 +31,8 @@ if ($accion == 'alta') {
   '' as  updatedAt,  '' as prioridad,  '' as id_estado_item,  '' as estado,  '' as  id_equipo,  '' as serie_a_instalar,  '' as serie_a_recuperar, 
   '' as comentarios,  '' as id_regularizacion,  '' as  id_resolucion_item, '' as resolucion,  '' as id_usuario_resolucion,  '' as usuario_resolucion, 
   '' as fecha_resolucion,  '' as observaciones , '' as color
- FROM bd3_regularizaciones.lst_regularizaciones__total
+ FROM bd3_regularizaciones.acc_regularizaciones__total_ult_mes
+
  WHERE id_solicitud = 0
  Limit 1
  ;";
@@ -45,7 +46,8 @@ Where id_solicitud = 0
     $consultaSol = "SELECT id_solicitud, region, subregion, base, unidad_operativa, movil, id_ot, estado_ot, fecha_creacion_ot, domicilio, comentario, id_usuario_carga, 
 usuario_carga, fecha_de_socilitud, createdAt, updatedAt, prioridad, id_estado_item, estado, id_equipo, serie_a_instalar, serie_a_recuperar, comentarios, 
 id_regularizacion, id_resolucion_item, resolucion, id_usuario_resolucion, usuario_resolucion, fecha_resolucion, observaciones, color
-FROM bd3_regularizaciones.lst_regularizaciones__total
+FROM bd3_regularizaciones.acc_regularizaciones__total_ult_mes
+
 WHERE id_solicitud = $id_solicitud
 Limit 1
 ;";
