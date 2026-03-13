@@ -95,7 +95,7 @@
         <!-- ################# HEADER ################# -->
         <div class="card-header" id="encabezado">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="height: 40px;">
-                <a class="navbar-brand" href="#" data-bs-toggle="tooltip" title="Perfil de <?php echo(ucwords(strtolower($perfil))) ?>">Regularizaciones</a>
+                <a class="navbar-brand" href="http://10.120.52.54/regularizaciones/" data-bs-toggle="tooltip" title="Perfil de <?php echo(ucwords(strtolower($perfil))) ?>">Regularizaciones</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

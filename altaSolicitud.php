@@ -262,7 +262,7 @@ $resultResol = mysqli_query($con, $consultaResol);
 
               <div class="col-7"> <!------------------ Comentario ---------------------->
                 <!-- <label for="solComentario" class="form-label mb-0 mt-1 ml-1">Comentario</label> -->
-                <textarea class="form-control mt-0" id="solComentario"
+                <textarea class="form-control mt-0 p-0 pl-1" id="solComentario"
                   style="height: 70px; resize: none; width: 356px; " rows="2"
                   placeholder="Comentario"><?php echo $solicitud['comentario']?></textarea>
               </div>
@@ -339,7 +339,7 @@ $resultResol = mysqli_query($con, $consultaResol);
           </div>
         </div>
 
-        <div class="card-body bg-light p-0 pb-2 ml-2 " style="max-height: 90px; overflow-y: scroll;">
+        <div class="card-body bg-light p-0 pb-2 ml-2 " style="max-height: 125px; overflow-y: scroll;">
 
           <table class="table table-hover table-striped" id="lstequipos">
             <thead>
